@@ -1,0 +1,60 @@
+{
+    "ts-node": {
+        "compilerOptions": {
+            "target": "es6",
+            "module": "commonjs"
+        }
+    },
+    "compilerOptions": {
+        "allowJs": true,
+        "target": "ES2017",
+        "module": "es2022",
+        "rootDirs": [
+            "./src",
+            "./test"
+        ],
+        "lib": [
+            "es5",
+            "es6",
+            "es2019",
+            "dom"
+        ],
+        "jsx": "react-jsx",
+        "sourceMap": true,
+        "strict": true,
+        "noStrictGenericChecks": false,
+        "strictNullChecks": true,
+        "noImplicitReturns": true,
+        "moduleResolution": "node",
+        "outDir": "./dist/",
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "typeRoots": [
+            "./custom_typing",
+            "./node_modules/@types"
+        ],
+        "baseUrl": "src",
+        "paths": {
+            "@coreStyles/*": ["styles/*"],
+            "@pages/*": ["pages/*"],
+            "@models/*": ["models/*"],
+            "@api/*": ["api/*"],
+            "@static/*": ["static/*"],
+            "@store/*": ["store/*"],
+            "@coreUtils/*": ["utils/*"],
+            "@components/*": ["components/*"],
+            "@parts/*": ["components/parts/*"],
+            "@hooks/*": ["utils/hooks/*"]
+        }
+    },
+    "exclude": [
+        "./node_modules"
+    ],
+    "include": [
+        "./src/**/*",
+        "./test/**/*",
+        "./custom_typing/**/*",
+        "./webpack.config.ts",
+        "./postcss.config.js"
+    ]
+}

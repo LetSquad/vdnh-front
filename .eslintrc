@@ -1,0 +1,234 @@
+{
+   "extends": [
+      "airbnb",
+      "airbnb-typescript",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:eslint-plugin-react/recommended",
+      "plugin:unicorn/recommended"
+   ],
+   "parser": "@typescript-eslint/parser",
+   "parserOptions": {
+      "ecmaFeatures": {
+         "experimentalObjectRestSpread": true,
+         "jsx": true
+      },
+      "sourceType": "module",
+      "project": "./tsconfig.json"
+   },
+   "env": {
+      "es6": true,
+      "browser": true
+   },
+   "plugins": [
+      "@typescript-eslint",
+      "react",
+      "react-hooks",
+      "unicorn",
+      "simple-import-sort",
+      "import",
+      "import-newlines"
+   ],
+   "rules": {
+      "max-len": [
+         "error",
+         {
+            "code": 135,
+            "ignoreStrings": true,
+            "ignoreTemplateLiterals": true,
+            "ignoreComments": true
+         }
+      ],
+      "curly": [
+         "error",
+         "all"
+      ],
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      "react/jsx-filename-extension": [
+         1,
+         {
+            "extensions": [
+               ".tsx"
+            ]
+         }
+      ],
+      "import/prefer-default-export": "off",
+      "import/extensions": [
+         "error",
+         "ignorePackages",
+         {
+            "ts": "never",
+            "tsx": "never"
+         }
+      ],
+      "import/no-extraneous-dependencies": "off",
+      "unicorn/filename-case": "off",
+      "no-use-before-define": "off",
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "unicorn/prevent-abbreviations": "off",
+      "no-console": "off",
+      "class-methods-use-this": "off",
+      "@typescript-eslint/ban-ts-comment": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "no-plusplus": "off",
+      "unicorn/no-null": "off",
+      "no-underscore-dangle": "off",
+      "unicorn/no-useless-undefined": "off",
+      "@typescript-eslint/indent": [
+         "error",
+         4
+      ],
+      "@typescript-eslint/quotes": [
+         "error",
+         "double"
+      ],
+      "@typescript-eslint/comma-dangle": [
+         "error",
+         "never"
+      ],
+      "react/jsx-indent": [
+         "error",
+         4
+      ],
+      "react/jsx-indent-props": [
+         "error",
+         4
+      ],
+      "@typescript-eslint/no-use-before-define": "off",
+      "react/destructuring-assignment": "off",
+      "react/display-name": "off",
+      "react/require-default-props": "off",
+      "naming-convention": "off",
+      "@typescript-eslint/naming-convention": [
+         "error",
+         {
+            "selector": "variable",
+            "format": [
+               "camelCase",
+               "UPPER_CASE",
+               "PascalCase"
+            ],
+            "leadingUnderscore": "allow",
+            "trailingUnderscore": "allow"
+         },
+         {
+            "selector": "function",
+            "format": [
+               "PascalCase",
+               "camelCase"
+            ],
+            "leadingUnderscore": "allow",
+            "trailingUnderscore": "allow"
+         },
+         {
+            "selector": "enumMember",
+            "format": [
+               "UPPER_CASE"
+            ]
+         },
+         {
+            "selector": "property",
+            "format": null
+         },
+         {
+            "selector": "typeLike",
+            "format": [
+               "PascalCase"
+            ]
+         },
+         {
+            "selector": "accessor",
+            "format": [
+               "PascalCase"
+            ]
+         },
+         {
+            "selector": "default",
+            "format": [
+               "camelCase"
+            ],
+            "leadingUnderscore": "allow",
+            "trailingUnderscore": "allow"
+         }
+      ],
+      "no-restricted-syntax": "off",
+      "no-await-in-loop": "off",
+      "default-case": [
+         "error",
+         {
+            "commentPattern": "^skip\\sdefault$"
+         }
+      ],
+      "consistent-return": "off",
+      "jsx-a11y/anchor-is-valid": "off",
+      "unicorn/prefer-node-protocol": "off",
+      "no-param-reassign": [
+         "error",
+         {
+            "props": false
+         }
+      ],
+      "operator-linebreak": [
+         "error",
+         "after",
+         {
+            "overrides": {
+               "?": "before",
+               ":": "before"
+            }
+         }
+      ],
+      "jsx-props-no-spreading": "off",
+      "react/jsx-props-no-spreading": "off",
+      "unicorn/no-unreadable-array-destructuring": "off",
+      "unicorn/prefer-export-from": "off",
+      "react/function-component-definition": [
+         2,
+         {
+            "namedComponents": ["function-declaration"]
+         }
+      ],
+      "import/no-import-module-exports": "off",
+      "react/jsx-uses-react": "off",
+      "react/react-in-jsx-scope": "off",
+      "react/jsx-max-props-per-line": [2, {"maximum": 1, "when": "always" }],
+      "no-nested-ternary": "error",
+      "import/order": "off",
+      "simple-import-sort/imports": [
+         "error",
+         {
+            "groups": [
+               ["^react$"],
+               ["^(\\w|@reduxjs\/toolkit)"],
+               ["^@(coreStyles|pages|models|api|static|store|coreUtils|components|parts|hooks)"],
+               ["^"],
+               ["^\\."]
+            ]
+         }
+      ],
+      "simple-import-sort/exports": "error",
+      "import/first": "error",
+      "import/newline-after-import": "error",
+      "import/no-duplicates": "error",
+      "import-newlines/enforce": [
+         "error",
+         {
+            "items": 3,
+            "semi": true
+         }
+      ],
+      "unicorn/prefer-module": "off",
+      "jsx-a11y/label-has-associated-control": [ 2, {
+         "controlComponents": ["Input"],
+         "depth": 3
+      }]
+   },
+   "settings": {
+      "import/resolver": {
+         "typescript": {}
+      },
+      "react": {
+         "version": "detect"
+      }
+   }
+}
