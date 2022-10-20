@@ -2,9 +2,11 @@ import { configureStore } from "@reduxjs/toolkit";
 import promise from "redux-promise-middleware";
 import thunk from "redux-thunk";
 
+import infoReducer from "./info/reducer";
+
 export const store = configureStore({
     reducer: {
-        // Put reducers here
+        info: infoReducer
     },
     devTools: process.env.NODE_ENV !== "production",
     // eslint-disable-next-line unicorn/prefer-spread

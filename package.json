@@ -6,9 +6,7 @@
    "private": true,
    "scripts": {
       "dev": "cross-env NODE_ENV=development webpack serve",
-      "dev:local": "cross-env NODE_ENV=development webpack serve",
-      "prod": "npm run lint && cross-env NODE_ENV=production EXTERNAL_URL=https://pethelper.gq webpack",
-      "prod:local": "npm run lint && cross-env NODE_ENV=production webpack",
+      "prod": "npm run lint && cross-env NODE_ENV=production webpack",
       "bundle-analyze": "mkdir -p dist/analyze && cross-env NODE_ENV=production WITH_ANALYZER=true webpack --profile --json > dist/analyze/stats.json && webpack-bundle-analyzer dist/analyze/stats.json",
       "lint": "npm run eslint && npm run stylelint",
       "eslint": "eslint --ext .ts,.tsx src --color --fix",

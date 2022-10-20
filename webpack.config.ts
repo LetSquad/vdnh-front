@@ -179,7 +179,7 @@ module.exports = () => {
                     test: /\.(ignore|zip|png|ico|jpg|ttf|otf|eot|svg|woff(2)?)(\?[\da-z]+)?$/,
                     type: "asset/resource",
                     generator: {
-                        filename: "static/assets/[name]-[contenthash].[ext]"
+                        filename: "static/assets/[name]-[contenthash][ext]"
                     }
                 }]
             }]
