@@ -1,0 +1,62 @@
+@use '~sass-mq' as *;
+@use 'src/styles/variables.module' as variables;
+
+.logo {
+  display: inline-block;
+  vertical-align: middle;
+
+  @include mq($until: 1024px) {
+    background: no-repeat url('../../../static/images/svg/logo.svg') 8px center, no-repeat url('../../../static/images/svg/logo.svg') 56px center;
+    background-size: 32px auto;
+    height: 48px;
+    margin: 4px 8px;
+    width: 48px;
+  }
+
+  @include mq($from: 1025px) {
+    background: no-repeat url('../../../static/images/svg/logo.svg') 11px center, no-repeat url('../../../static/images/svg/logo.svg') 79px center;
+    height: 68px;
+    margin: 6px 32px 6px 6px;
+    width: 68px;
+  }
+}
+
+.header {
+  background: variables.$white;
+  border-radius: 4px;
+  box-shadow: 0 0 12px rgb(0 0 0 / 4%), 0 12px 12px rgb(0 0 0 / 4%);
+  position: fixed;
+  top: variables.$header-vertical-margin;
+  z-index: 100;
+
+  @include mq($until: 1024px) {
+    bottom: auto !important;
+    height: variables.$header-height-mobile;
+    left: 8px !important;
+    max-width: calc(100% - 16px);
+    right: 8px !important;
+  }
+
+  @include mq($from: 1025px) {
+    bottom: -60px;
+    height: variables.$header-height;
+    left: 16px;
+    max-width: calc(100% - 32px);
+    right: 16px;
+  }
+}
+
+.meta {
+  position: absolute;
+
+  @include mq($until: 1024px) {
+    right: 60px;
+    top: 16px;
+  }
+
+  @include mq($from: 1025px) {
+    right: 20px;
+    top: 40px;
+    transform: translate3d(0, -50%, 0);
+  }
+}

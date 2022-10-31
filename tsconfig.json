@@ -35,8 +35,9 @@
         ],
         "baseUrl": "src",
         "paths": {
+            "@i18n": ["i18n.ts"],
             "@coreStyles/*": ["styles/*"],
-            "@pages/*": ["pages/*"],
+            "@routes/*": ["routes/*"],
             "@models/*": ["models/*"],
             "@api/*": ["api/*"],
             "@static/*": ["static/*"],

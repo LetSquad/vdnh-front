@@ -1,0 +1,92 @@
+@use 'src/styles/variables.module' as variables;
+
+.sidebar-menu {
+  background: variables.$white;
+  border-radius: 0 0 4px 4px;
+  display: block;
+  margin-top: -5px;
+  max-height: calc(100vh - #{variables.$header-height-mobile});
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+
+  &-icon {
+    color: variables.$primary;
+    display: block !important;
+    margin: 0 !important;
+    position: absolute;
+    right: 16px;
+    top: 16px;
+  }
+
+  &-top {
+    margin: 14px 0 0;
+    padding: 0;
+
+    > a {
+      border-bottom: solid 1px rgba(38, 38, 38, 0.08);
+      color: variables.$primary;
+      display: block;
+      font-family: 's', sans-serif;
+      font-size: 18px;
+      line-height: 24px;
+      margin: 0 16px;
+      padding: 16px 0;
+
+      &:global(.active) {
+        color: variables.$black;
+      }
+
+      &:hover {
+        color: variables.$black;
+      }
+    }
+  }
+
+  &-bottom {
+    background: variables.$primary-light;
+    border-radius: 0 0 4px 4px;
+    padding: 40px 16px 48px;
+
+    &-content {
+      float: none;
+      padding: 0;
+      width: auto;
+    }
+  }
+}
+
+.phone {
+  &-container {
+    font-family: 'vl2', sans-serif;
+    font-size: 24px;
+    letter-spacing: -2px;
+    line-height: 28px;
+    margin: 0 0 8px;
+    text-transform: lowercase;
+  }
+
+  &-link {
+    color: variables.$black;
+
+    &:hover {
+      color: variables.$black;
+    }
+  }
+}
+
+.email {
+  &-container {
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0 0 24px;
+  }
+
+  &-link {
+    color: variables.$black;
+
+    &:hover {
+      color: variables.$black;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+@use '~sass-mq' as *;
+@use 'src/styles/variables.module' as variables;
+
+.button,
+%inline-button {
+  background: none !important;
+  display: inline-block !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  margin: 0 !important;
+  padding: 0 5px !important;
+  text-align: center !important;
+  text-decoration: none !important;
+
+  @include mq($until: 1024px) {
+    height: 24px;
+    line-height: 24px !important;
+  }
+
+  @include mq($from: 1025px) {
+    height: 32px;
+    line-height: 32px !important;
+  }
+
+  &-base {
+    @extend %inline-button;
+    color: variables.$primary !important;
+  }
+
+  &-active {
+    @extend %inline-button;
+    color: variables.$black !important;
+  }
+
+  &:hover {
+    color: variables.$black !important;
+  }
+}

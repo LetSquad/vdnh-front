@@ -1,0 +1,22 @@
+@use '~sass-mq' as *;
+@use 'src/styles/variables.module' as variables;
+
+.container {
+  height: 100%;
+  overflow: hidden overlay;
+}
+
+.main-content-wrapper {
+  display: flow-root;
+  height: 100%;
+}
+
+.overlay {
+  background: variables.$overlay;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 99;
+}

@@ -1,0 +1,5 @@
+{
+  "events_one": "{{count}} event running",
+  "events_few": "{{count}} events running",
+  "events_many": "{{count}} events running"
+}

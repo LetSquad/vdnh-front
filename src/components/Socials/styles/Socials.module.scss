@@ -1,0 +1,54 @@
+@use 'src/styles/variables.module' as variables;
+
+.socials,
+%socials {
+  &-link {
+    color: transparent;
+    display: inline-block;
+    filter: brightness(0);
+    height: 32px;
+    margin-right: 24px;
+    opacity: 0.6;
+    overflow: hidden;
+    text-indent: 100px;
+    vertical-align: top;
+    white-space: nowrap;
+    width: 32px;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &-vk {
+      @extend %socials-link;
+
+      background: no-repeat url('../../../static/images/svg/socials/vk.svg') center center;
+    }
+
+    &-ok {
+      @extend %socials-link;
+
+      background: no-repeat url('../../../static/images/svg/socials/ok.svg') center center;
+    }
+
+    &-yt {
+      @extend %socials-link;
+
+      background: no-repeat url('../../../static/images/svg/socials/yt.svg') center center;
+    }
+
+    &-zen {
+      @extend %socials-link;
+
+      background: no-repeat url('../../../static/images/svg/socials/zen.svg') center center;
+    }
+
+    &-tg {
+      @extend %socials-link;
+
+      background: no-repeat url('../../../static/images/svg/socials/tg.svg') center center;
+    }
+  }
+}
+
+
