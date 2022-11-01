@@ -1,0 +1,5 @@
+{
+  "events_one": "{{count}} 个活动正在运行",
+  "events_few": "{{count}} 活动运行",
+  "events_many": "{{count}} 活动运行"
+}

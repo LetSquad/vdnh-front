@@ -29,7 +29,8 @@ module.exports = () => {
         new HtmlWebpackPlugin({
             template: `${PATHS.public}/index.html`,
             filename: "./index.html",
-            title: "PetHelper"
+            title: "ВДНХ",
+            favicon: `${PATHS.public}/favicon.ico`
         }),
         new CleanWebpackPlugin({
             cleanOnceBeforeBuildPatterns: []
@@ -42,6 +43,12 @@ module.exports = () => {
                 }, {
                     from: `${PATHS.public}/robots.txt`,
                     to: ""
+                }, {
+                    from: `${PATHS.public}/favicon.ico`,
+                    to: ""
+                }, {
+                    from: `${PATHS.public}/locales`,
+                    to: "locales/"
                 }
             ]
         }),
@@ -49,7 +56,7 @@ module.exports = () => {
         new webpack.DefinePlugin({
             "process.env.NODE_ENV": JSON.stringify(mode),
             "process.env.DEBUG": JSON.stringify(process.env.DEBUG),
-            "process.env.PUBLIC_URL": JSON.stringify(process.env.PUBLIC_URL),
+            "process.env.MAPBOX_KEY": JSON.stringify(process.env.MAPBOX_KEY),
             "process.env.EXTERNAL_URL": JSON.stringify(process.env.EXTERNAL_URL)
         }),
         new ForkTsCheckerWebpackPlugin()
@@ -88,7 +95,7 @@ module.exports = () => {
         static: {
             directory: PATHS.dist
         },
-        port: 8888,
+        port: 8880,
         client: {
             overlay: {
                 warnings: false,
@@ -116,7 +123,7 @@ module.exports = () => {
             extensions: [".js", ".jsx", ".ts", ".tsx", "json", ".css", ".scss", ".svg", ".ignore"],
             alias: {
                 "@coreStyles": path.resolve(__dirname, "src/styles"),
-                "@pages": path.resolve(__dirname, "src/pages"),
+                "@routes": path.resolve(__dirname, "src/routes"),
                 "@models": path.resolve(__dirname, "src/models"),
                 "@api": path.resolve(__dirname, "src/api"),
                 "@static": path.resolve(__dirname, "src/static"),
@@ -124,7 +131,8 @@ module.exports = () => {
                 "@coreUtils": path.resolve(__dirname, "src/utils"),
                 "@components": path.resolve(__dirname, "src/components"),
                 "@parts": path.resolve(__dirname, "src/components/parts"),
-                "@hooks": path.resolve(__dirname, "src/utils/hooks")
+                "@hooks": path.resolve(__dirname, "src/utils/hooks"),
+                "@i18n": path.resolve(__dirname, "src/i18n.ts")
             }
         },
         module: {
@@ -189,7 +197,7 @@ module.exports = () => {
                 cacheGroups: {
                     vendor: {
                         name: "vendors",
-                        test: /node_modules\/(?!zxcvbn)(?!react-calendar)(?!react-datepicker)(?!date-fns)/,
+                        test: /node_modules\/(?!react)(?!react-dom)/,
                         chunks: "all",
                         enforce: true,
                         maxSize: 249_856

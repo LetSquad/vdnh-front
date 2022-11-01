@@ -1,0 +1,24 @@
+@use 'src/styles/variables.module' as variables;
+
+.header-menu {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 24px;
+  vertical-align: middle;
+
+  > a {
+    color: variables.$primary;
+    display: inline-block;
+    font-family: 's', sans-serif;
+    font-weight: 500;
+    margin: 0 32px 0 0;
+
+    &:global(.active) {
+      color: variables.$black;
+    }
+
+    &:hover {
+      color: variables.$black;
+    }
+  }
+}

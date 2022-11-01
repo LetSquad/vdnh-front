@@ -1,0 +1,54 @@
+@use 'src/styles/variables.module' as variables;
+
+.footer {
+  background: variables.$primary;
+  padding: 40px 0 0;
+
+  &-content {
+    display: block;
+    margin: 0 auto;
+    max-width: 1680px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.socials {
+  border-top: solid 2px variables.$border-with-opacity;
+  padding: 24px 0 30px;
+  position: relative;
+
+  > div > a {
+    filter: brightness(1);
+    height: 48px;
+    opacity: 1;
+    width: 48px;
+
+    &:hover {
+      filter: brightness(0);
+      opacity: 1;
+    }
+  }
+}
+
+.links {
+  border-top: solid 2px variables.$border-with-opacity;
+  padding: 24px 0;
+  position: relative;
+
+  > a {
+    color: variables.$white;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 500;
+    margin-right: 16px;
+
+    &:global(.active) {
+      color: variables.$black;
+    }
+
+    &:hover {
+      color: variables.$black;
+    }
+  }
+}

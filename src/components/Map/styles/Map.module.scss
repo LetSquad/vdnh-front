@@ -1,0 +1,42 @@
+@use 'src/styles/variables.module' as variables;
+
+.popup {
+  &-type {
+    color: variables.$secondary;
+    display: block;
+    font-family: 'vl2-bold', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    line-height: 18px;
+    margin: 0 0 7px;
+    text-transform: uppercase;
+  }
+
+  &-title {
+    color: variables.$black;
+    font-size: 16px;
+    font-weight: 500;
+    height: 40px;
+    line-height: 20px;
+    margin: 0 0 6px;
+    overflow: hidden;
+  }
+
+  &-time {
+    color: #898989;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 15px;
+  }
+
+  &-pic {
+    background: no-repeat center center;
+    background-size: cover;
+    border-radius: 4px;
+    height: 92px;
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    width: 92px;
+  }
+}
