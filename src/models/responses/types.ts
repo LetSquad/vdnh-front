@@ -13,5 +13,5 @@ export type MapPointsResponse = {
 } & BaseResponse;
 
 export type RouteResponse = {
-    dataBlock: Route;
+    mapData: Route;
 } & BaseResponse;
