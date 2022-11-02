@@ -95,7 +95,7 @@ export const mapPointsSlice = createSlice({
 
             const lang = i18n.language;
 
-            state.mapPoints = action.payload.dataBlock.map((mapPoint) => {
+            state.mapPoints = action.payload.mapData.map((mapPoint) => {
                 if (mapPoint.properties.url === window.location.pathname) {
                     mapPoint.properties = {
                         ...mapPoint.properties,

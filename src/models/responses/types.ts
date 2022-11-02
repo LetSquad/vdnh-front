@@ -9,7 +9,7 @@ export interface BaseResponse {
 }
 
 export type MapPointsResponse = {
-    dataBlock: MapPointFeature[];
+    mapData: MapPointFeature[];
 } & BaseResponse;
 
 export type RouteResponse = {
