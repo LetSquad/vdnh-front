@@ -1,6 +1,8 @@
 $header-height: 80px;
 $header-height-mobile: 56px;
 $header-vertical-margin: 10px;
+$header-horizontal-desktop-margin: 16px;
+$header-horizontal-mobile-margin: calc(#{$header-horizontal-desktop-margin} / 2);
 $white: #fff;
 $black: #262626;
 $dark-grey: #635e5c; // icons
@@ -16,6 +18,8 @@ $secondary-dark: #285de8; // hovered button
 $secondary-darken: #1a4ac6; // pressed button
 $secondary-light: #dae5f1;
 $primary: #e22c38;
+$primary-dark: darken($primary, 3%); // hovered button
+$primary-darken: darken($primary, 7%); // pressed button
 $primary-light: #f7ebe6;
 
 

@@ -1,0 +1,24 @@
+.container {
+  align-items: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.field,
+%routes-filter-period-fields-times-field {
+  flex: 1 1 50%;
+  margin: 0 !important;
+  padding: 0;
+
+  &-start {
+    @extend %routes-filter-period-fields-times-field;
+    padding-right: 10px;
+  }
+
+  &-end {
+    @extend %routes-filter-period-fields-times-field;
+    padding-left: 10px;
+  }
+}

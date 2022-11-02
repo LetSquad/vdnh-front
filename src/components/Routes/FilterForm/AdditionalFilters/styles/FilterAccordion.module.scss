@@ -1,0 +1,29 @@
+:global {
+  .ui.accordion .content.active {
+    padding: 10px 0 5px !important;
+  }
+}
+
+.accordion {
+  &-container {
+    height: 100%;
+    padding: 0 !important;
+  }
+
+  &-title {
+    font-family: 's', sans-serif !important;
+    font-size: 15px !important;
+    font-weight: bold;
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    width: 100%;
+
+    &-field {
+      margin: 0 !important;
+    }
+  }
+}

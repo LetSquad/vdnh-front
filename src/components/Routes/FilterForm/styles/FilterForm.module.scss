@@ -1,0 +1,37 @@
+@use 'src/styles/variables.module' as variables;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - #{variables.$header-height-mobile} - 3 * #{variables.$header-vertical-margin} - 40px);
+  row-gap: 15px;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+  row-gap: 15px;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}
+
+.title {
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.message {
+  margin: 0 !important;
+
+  &-container {
+    width: 100%;
+  }
+}
+
+.submit {
+  margin-top: 0 !important;
+}

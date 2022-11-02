@@ -1,9 +1,25 @@
-export const defaultLocale = "ru";
+export enum SupportedLocales {
+    RU = "ru",
+    EN = "en",
+    CN = "cn"
+}
 
-export type Locales = "Ru" | "En" | "Cn";
+export enum SupportedLocalesCapitalize {
+    RU = "Ru",
+    EN = "En",
+    CN = "Cn"
+}
 
-export const supportedLocales = ["ru", "en", "cn"];
+export const defaultLocale = SupportedLocales.RU;
 
-export const supportedLocalesWithTitle = [{ code: "ru", title: "РУ" }, { code: "en", title: "EN" }, { code: "cn", title: "简体中文" }];
+export type Locales = SupportedLocalesCapitalize.RU | SupportedLocalesCapitalize.EN | SupportedLocalesCapitalize.CN;
 
-export const defaultLocalesNamespaces = ["routes"];
+export const supportedLocales = Object.values(SupportedLocales);
+
+export const supportedLocalesWithTitle = [
+    { code: SupportedLocales.RU, title: "РУ" },
+    { code: SupportedLocales.EN, title: "EN" },
+    { code: SupportedLocales.CN, title: "简体中文" }
+];
+
+export const defaultLocalesNamespaces = ["routes", "errors"];

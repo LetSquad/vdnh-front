@@ -2,11 +2,15 @@ import { configureStore } from "@reduxjs/toolkit";
 import promise from "redux-promise-middleware";
 import thunk from "redux-thunk";
 
-import placesReducer from "./places/reducer";
+import mapPointsReducer from "./mapPoints/reducer";
+import routesReducer from "./routes/reducer";
+import trafficReducer from "./traffic/reducer";
 
 export const store = configureStore({
     reducer: {
-        places: placesReducer
+        mapPoints: mapPointsReducer,
+        routes: routesReducer,
+        traffic: trafficReducer
     },
     devTools: process.env.NODE_ENV !== "production",
     // eslint-disable-next-line unicorn/prefer-spread

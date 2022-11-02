@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import styles from "./styles/LoadingErrorBlock.module.scss";
 
 interface LoadingErrorBlockProps {
@@ -7,24 +9,26 @@ interface LoadingErrorBlockProps {
 }
 
 export default function LoadingErrorBlock({ isLoadingErrorObjectText, reload, additionalContent }: LoadingErrorBlockProps) {
+    const { t } = useTranslation("errors");
+
     return (
         <div className={styles.failedContainer}>
             <span>
-                {`Произошла ошибка при получении ${isLoadingErrorObjectText}. `}
+                {t("errors:baseError.text", { errorInfo: isLoadingErrorObjectText })}
                 {reload
                     ? (
                         <>
-                            {"Попробуйте повторить "}
+                            {t("errors:baseError.repeatWithLink")}
                             <span
                                 aria-hidden
                                 className={styles.failedContainerLink}
                                 onClick={reload}
                             >
-                                загрузку
+                                {t("errors:baseError.repeatLink")}
                             </span>
                         </>
                     )
-                    : "Попробуйте позднее"}
+                    : t("errors:baseError.repeat")}
             </span>
             {additionalContent}
         </div>

@@ -1,7 +1,7 @@
 import { Feature, Point } from "geojson";
 
 import { Locales } from "@coreUtils/localizations/locales_constants";
-import { IconType, ObjectType } from "@models/places/enums";
+import { IconType, MapPointCategory } from "@models/mapPoints/enums";
 
 type TitleLocalizations = {
     [key in `title${Locales}`]: string | null;
@@ -32,15 +32,20 @@ export interface Property {
 }
 
 export type PlaceProperty = Property & {
-    category: ObjectType.PLACE;
+    category: MapPointCategory.PLACE;
     events: number[]
 };
 
 export type EventProperty = Property & {
-    category: ObjectType.EVENT;
+    category: MapPointCategory.EVENT;
     places: number[];
 };
 
-export interface ObjectFeature extends Feature<Point, PlaceProperty | EventProperty> {
+export interface MapPointFeature extends Feature<Point, PlaceProperty | EventProperty> {
     id: number;
+}
+
+export interface MapPointInfo {
+    id: number,
+    category: MapPointCategory
 }
