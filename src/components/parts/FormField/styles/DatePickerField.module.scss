@@ -1,0 +1,49 @@
+@use 'src/styles/variables.module' as variables;
+
+:global {
+  /* stylelint-disable */
+  .react-datepicker__year-dropdown-container--select,
+  .react-datepicker__month-dropdown-container--select,
+  .react-datepicker__month-year-dropdown-container--select,
+  .react-datepicker__year-dropdown-container--scroll,
+  .react-datepicker__month-dropdown-container--scroll,
+  .react-datepicker__month-year-dropdown-container--scroll {
+    /* stylelint-enable */
+    margin: 0 15px !important;
+  }
+
+  /* stylelint-disable */
+  .react-datepicker__triangle {
+    /* stylelint-enable */
+    transform: translate3d(105px, 0, 0) !important;
+  }
+
+  /* stylelint-disable */
+  .react-datepicker__time-box {
+    /* stylelint-enable */
+    max-height: 195px !important;
+  }
+
+  /* stylelint-disable */
+  .react-datepicker__time-list {
+    /* stylelint-enable */
+    max-height: 195px !important;
+  }
+
+  .react-datepicker {
+    max-height: 235px !important;
+  }
+
+  /* stylelint-disable */
+  .react-datepicker__input-container {
+    /* stylelint-enable */
+    > input {
+      background: variables.$white !important;
+      border: 1px solid variables.$border-with-opacity !important;
+      border-radius: 4px !important;
+      color: variables.$black !important;
+      font-family: 's', sans-serif !important;
+      padding: 10px 14px !important;
+    }
+  }
+}

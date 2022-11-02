@@ -1,0 +1,115 @@
+@use 'src/styles/variables.module' as variables;
+
+.container {
+  margin: 15px 0;
+}
+
+.field {
+  align-items: center;
+  background: variables.$white;
+  border: 1px solid variables.$border-with-opacity;
+  border-radius: 4px;
+  color: variables.$black;
+  cursor: pointer;
+  display: flex;
+  flex: 0 0 auto;
+  float: right;
+  font-weight: 500;
+  line-height: 1;
+  outline: 0;
+  overflow: hidden;
+  padding: 10px 14px;
+  position: relative;
+  text-align: left;
+  text-overflow: ellipsis;
+  transition: background 0.1s ease,box-shadow 0.1s ease,color 0.1s ease,-webkit-box-shadow 0.1s ease;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 70%;
+
+  &-container {
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+
+  &-label {
+    float: left;
+    font-weight: bold;
+    margin-right: 15px;
+    width: 30%;
+  }
+}
+
+.group,
+%people-number-picker-group {
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  background: variables.$white;
+  border: 1px solid variables.$border-with-opacity;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 8%);
+  float: right;
+  position: absolute;
+  right: 0;
+  transition: opacity 0.1s ease;
+  width: max-content;
+  will-change: transform,opacity;
+  z-index: 101;
+
+  &-visible {
+    @extend %people-number-picker-group;
+    display: block;
+    visibility: visible;
+  }
+
+  &-invisible {
+    @extend %people-number-picker-group;
+    display: none;
+    visibility: visible;
+  }
+}
+
+.picker,
+%people-number-picker {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 15px;
+
+  &-adult {
+    @extend %people-number-picker;
+    margin: 15px 0 0 !important;
+  }
+
+  &-kid {
+    @extend %people-number-picker;
+    margin: 0 0 15px !important;
+  }
+
+
+  > label {
+    float: left;
+    margin-right: 15px !important;
+  }
+
+  /*> div:global(.input) {
+    border: none !important;
+    float: right;
+    padding: 0 !important;
+    width: 40px !important;
+
+    > button {
+      margin: 0 !important;
+    }
+
+    > input {
+      padding: 10px 14px !important;
+      text-align: center;
+    }
+  }*/
+}

@@ -1,0 +1,45 @@
+{
+  "filterForm": {
+    "label": "Составьте свой маршрут",
+    "fields": {
+      "dateStart": {
+        "label": "Время начала маршрута",
+        "placeholder": "Укажите примерное время начала маршрута"
+      },
+      "dateEnd": {
+        "label": "Время окончания маршрута",
+        "placeholder": "Укажите примерное время окончания маршрута"
+      },
+      "peopleNumber": {
+        "label": "Количество гостей",
+        "placeholder": {
+          "adult_zero": "{{count}} Взрослых",
+          "adult_one": "{{count}} Взрослый",
+          "adult_few": "{{count}} Взрослых",
+          "adult_many": "{{count}} Взрослых",
+          "kid_zero": "{{count}} Детей",
+          "kid_one": "{{count}} Ребенок",
+          "kid_few": "{{count}} Ребенка",
+          "kid_many": "{{count}} Детей"
+        },
+        "kid": {
+          "label": "Дети"
+        },
+        "adult": {
+          "label": "Взрослые"
+        }
+      },
+      "popularity": {
+        "popular": "Популярные",
+        "balanced": "Сбалансировано",
+        "hidden": "Запрятанные"
+      },
+      "difficulty": {
+        "easy": "Неспешный",
+        "medium": "Средний",
+        "hard": "Быстрый темп"
+      }
+    },
+    "submit": "Составить"
+  }
+}

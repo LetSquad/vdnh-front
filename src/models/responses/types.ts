@@ -1,4 +1,5 @@
-import { ObjectFeature } from "@models/places/types";
+import { MapPointFeature } from "@models/mapPoints/types";
+import { Route } from "@models/userRoutes/types";
 
 export interface BaseResponse {
     meta: {
@@ -7,6 +8,10 @@ export interface BaseResponse {
     };
 }
 
-export type PlacesResponse = {
-    dataBlock: ObjectFeature[];
+export type MapPointsResponse = {
+    dataBlock: MapPointFeature[];
+} & BaseResponse;
+
+export type RouteResponse = {
+    dataBlock: Route;
 } & BaseResponse;

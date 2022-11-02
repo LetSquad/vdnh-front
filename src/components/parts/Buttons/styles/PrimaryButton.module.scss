@@ -1,0 +1,17 @@
+@use '~sass-mq' as *;
+@use 'src/styles/variables.module' as variables;
+
+.button {
+  background: variables.$primary !important;
+  border-radius: 4px !important;
+  color: variables.$white !important;
+  transition: 0.3s background-color !important;
+
+  &:hover {
+    background: variables.$primary-dark !important;
+  }
+
+  &:focus {
+    background: variables.$primary-darken !important;
+  }
+}

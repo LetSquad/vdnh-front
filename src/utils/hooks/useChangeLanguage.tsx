@@ -1,7 +1,7 @@
 import { createAction } from "@reduxjs/toolkit";
 import { useTranslation } from "react-i18next";
 
-import { supportedLocales } from "@coreUtils/localizations/locales_constants";
+import { SupportedLocales, supportedLocales } from "@coreUtils/localizations/locales_constants";
 import { setLanguageToLocalStorage } from "@coreUtils/localizations/utils";
 import { useAppDispatch } from "@store/hooks";
 
@@ -10,7 +10,7 @@ export function useChangeLanguage() {
 
     const { i18n } = useTranslation();
 
-    return (newLang: string) => {
+    return (newLang: SupportedLocales) => {
         if (!supportedLocales.includes(newLang) || i18n.language === newLang) {
             return;
         }

@@ -1,7 +1,7 @@
-import { IconType, ObjectType } from "@models/places/enums";
-import { ObjectFeature } from "@models/places/types";
+import { IconType, MapPointCategory } from "@models/mapPoints/enums";
+import { MapPointFeature } from "@models/mapPoints/types";
 
-export const places: ObjectFeature[] = [
+export const mapPoints: MapPointFeature[] = [
     {
         type: "Feature",
         id: 3581,
@@ -10,7 +10,7 @@ export const places: ObjectFeature[] = [
             coordinates: [37.629_229_298_606, 55.831_480_279_736]
         },
         properties: {
-            category: ObjectType.PLACE,
+            category: MapPointCategory.PLACE,
             isVisible: true,
             zoom: 14.5,
             color: "#F0AF18",
@@ -42,7 +42,7 @@ export const places: ObjectFeature[] = [
             coordinates: [37.621_895_312_114, 55.835_078_576_371]
         },
         properties: {
-            category: ObjectType.PLACE,
+            category: MapPointCategory.PLACE,
             isVisible: true,
             zoom: 11.8,
             color: "#336AF7",
@@ -74,7 +74,7 @@ export const places: ObjectFeature[] = [
             coordinates: [37.626_987_220_951, 55.832_749_492_873]
         },
         properties: {
-            category: ObjectType.PLACE,
+            category: MapPointCategory.PLACE,
             isVisible: true,
             zoom: 11.8,
             color: "#336AF7",
@@ -106,7 +106,7 @@ export const places: ObjectFeature[] = [
             coordinates: [37.621_895_312_114, 55.835_078_576_371]
         },
         properties: {
-            category: ObjectType.EVENT,
+            category: MapPointCategory.EVENT,
             isVisible: true,
             zoom: 15,
             color: "#F0AF18",
@@ -138,7 +138,7 @@ export const places: ObjectFeature[] = [
             coordinates: [37.621_895_312_114, 55.835_078_576_371]
         },
         properties: {
-            category: ObjectType.EVENT,
+            category: MapPointCategory.EVENT,
             isVisible: true,
             places: [3581],
             zoom: 15,
@@ -170,7 +170,7 @@ export const places: ObjectFeature[] = [
             coordinates: [37.628_342_99, 55.829_079_03]
         },
         properties: {
-            category: ObjectType.EVENT,
+            category: MapPointCategory.EVENT,
             isVisible: true,
             places: [],
             zoom: 15,

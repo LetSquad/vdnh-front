@@ -14,17 +14,22 @@ import mapboxgl, {
     Popup
 } from "mapbox-gl";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Loader } from "semantic-ui-react";
 
 import basePartStyles from "@coreStyles/baseParts.module.scss";
-import { ObjectType } from "@models/places/enums";
-import { ObjectFeature } from "@models/places/types";
+import { MapPointCategory } from "@models/mapPoints/enums";
+import { MapPointFeature } from "@models/mapPoints/types";
 import { BaseRoutesSlugs } from "@models/routes/enums";
 import LoadingErrorBlock from "@parts/LoadingErrorBlock/LoadingErrorBlock";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { getPlacesRequest, setPlaceActive, setPlacesUnActive } from "@store/places/reducer";
-import { selectCurrentPlace, selectIsPlacesLoading, selectIsPlacesLoadingFailed } from "@store/places/selectors";
+import { getMapPointsRequest, setMapPointActive, setMapPointsUnActive } from "@store/mapPoints/reducer";
+import {
+    selectCurrentMapPoint,
+    selectIsMapPointsInitialState,
+    selectIsMapPointsLoading,
+    selectIsMapPointsLoadingFailed
+} from "@store/mapPoints/selectors";
 
 import { MapContext } from "./MapContext";
 import styles from "./styles/Map.module.scss";
@@ -32,20 +37,22 @@ import styles from "./styles/Map.module.scss";
 const CONTAINER_ID = "map-container";
 
 interface MapProps {
-    places: ObjectFeature[];
+    mapPoints: MapPointFeature[];
     children?: JSX.Element | JSX.Element[]
 }
 
-export default function Map({ places, children }: MapProps) {
+export default function Map({ mapPoints, children }: MapProps) {
     const dispatch = useAppDispatch();
 
     const { t } = useTranslation("map");
 
     const navigate = useNavigate();
+    const location = useLocation();
 
-    const isPlacesLoading = useAppSelector(selectIsPlacesLoading);
-    const isPlacesLoadingLoadingFailed = useAppSelector(selectIsPlacesLoadingFailed);
-    const currentPlace = useAppSelector(selectCurrentPlace);
+    const isPlacesInitialState = useAppSelector(selectIsMapPointsInitialState);
+    const isPlacesLoading = useAppSelector(selectIsMapPointsLoading);
+    const isPlacesLoadingLoadingFailed = useAppSelector(selectIsMapPointsLoadingFailed);
+    const currentPlace = useAppSelector(selectCurrentMapPoint);
 
     const [map, setMap] = useState<MapboxMap>();
 
@@ -58,7 +65,21 @@ export default function Map({ places, children }: MapProps) {
 
     const addDataToMap = useCallback(({ target: _map }: MapboxEvent) => {
         _map
-            .addSource("places", { type: "geojson", data: { type: "FeatureCollection", features: places } })
+            .addSource("places", { type: "geojson", data: { type: "FeatureCollection", features: mapPoints } })
+            .addSource(
+                "route",
+                {
+                    type: "geojson",
+                    data: {
+                        type: "Feature",
+                        properties: {},
+                        geometry: {
+                            type: "LineString",
+                            coordinates: []
+                        }
+                    }
+                }
+            )
             .addLayer({
                 id: "places-dots",
                 type: "circle",
@@ -132,7 +153,23 @@ export default function Map({ places, children }: MapProps) {
                 filter: [
                     "==", ["get", "active"], true
                 ]
+            })
+            .addLayer({
+                id: "route",
+                type: "line",
+                source: "route",
+                layout: {
+                    "line-join": "round",
+                    "line-cap": "round"
+                },
+                paint: {
+                    "line-color": "#3887be",
+                    "line-width": 5,
+                    "line-opacity": 0.75
+                }
             });
+
+        setMap(_map);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -145,7 +182,7 @@ export default function Map({ places, children }: MapProps) {
         if (features.length > 0 && features[0].id !== currentPlace?.id) {
             const newActivePlace = features[0];
 
-            dispatch(setPlaceActive(newActivePlace.id));
+            dispatch(setMapPointActive(newActivePlace.id));
 
             const { coordinates } = newActivePlace.geometry as Point;
 
@@ -158,10 +195,27 @@ export default function Map({ places, children }: MapProps) {
                 navigate(newActivePlace.properties.url);
             }
         } else if (features.length === 0) {
-            dispatch(setPlacesUnActive());
-            navigate(BaseRoutesSlugs.PLACES);
+            dispatch(setMapPointsUnActive());
+
+            switch (true) {
+                case location.pathname.startsWith(BaseRoutesSlugs.PLACES) && location.pathname !== BaseRoutesSlugs.PLACES: {
+                    navigate(BaseRoutesSlugs.PLACES);
+                    break;
+                }
+                case location.pathname.startsWith(BaseRoutesSlugs.ROUTES) && location.pathname !== BaseRoutesSlugs.ROUTES: {
+                    navigate(BaseRoutesSlugs.ROUTES);
+                    break;
+                }
+                case location.pathname.startsWith(BaseRoutesSlugs.EVENTS) && location.pathname !== BaseRoutesSlugs.EVENTS: {
+                    navigate(BaseRoutesSlugs.EVENTS);
+                    break;
+                }
+                default: {
+                    break;
+                }
+            }
         }
-    }, [currentPlace, dispatch, navigate]);
+    }, [currentPlace?.id, dispatch, location.pathname, navigate]);
 
     const onMouseEnterPlace = useCallback((event: MapMouseEvent, popup: Popup) => {
         const features = event.target.queryRenderedFeatures(
@@ -180,7 +234,7 @@ export default function Map({ places, children }: MapProps) {
                 `<div class="${styles.popupType}">${hoveredPlace.properties?.localizedType}</div>
                 <div class="${styles.popupTitle}">${hoveredPlace.properties?.localizedTitle}</div>`;
 
-            if (hoveredPlace.properties?.category === ObjectType.PLACE) {
+            if (hoveredPlace.properties?.category === MapPointCategory.PLACE) {
                 const events = JSON.parse(hoveredPlace.properties.events);
 
                 if (events.length > 0) {
@@ -207,8 +261,8 @@ export default function Map({ places, children }: MapProps) {
     }, []);
 
     useEffect(() => {
-        if (!places) {
-            dispatch(getPlacesRequest());
+        if (isPlacesInitialState) {
+            dispatch(getMapPointsRequest());
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -234,8 +288,6 @@ export default function Map({ places, children }: MapProps) {
             _map.on("click", onMapClick);
             _map.on("mouseenter", ["places", "places-dots"], (event) => onMouseEnterPlace(event, popup));
             _map.on("mouseleave", ["places", "places-dots"], (event) => onMouseLeavePlace(event, popup));
-
-            setMap(_map);
         }
 
         return () => map && map.remove();
@@ -257,10 +309,10 @@ export default function Map({ places, children }: MapProps) {
             const source = map.getSource("places");
 
             if (source && "setData" in source) {
-                source.setData({ type: "FeatureCollection", features: places });
+                source.setData({ type: "FeatureCollection", features: mapPoints });
             }
         }
-    }, [places, map]);
+    }, [mapPoints, map]);
 
     if (isPlacesLoading) {
         return (
@@ -277,7 +329,7 @@ export default function Map({ places, children }: MapProps) {
         return (
             <LoadingErrorBlock
                 isLoadingErrorObjectText="информации о приеме"
-                reload={getPlacesRequest}
+                reload={getMapPointsRequest}
             />
         );
     }
