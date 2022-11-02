@@ -42,7 +42,7 @@ export const routesSlice = createSlice({
         builder.addCase(getRouteRequest.fulfilled, (state, action) => {
             state.isRouteLoading = false;
 
-            state.route = action.payload.dataBlock;
+            state.route = action.payload.mapData;
         });
     }
 });
