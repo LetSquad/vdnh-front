@@ -5,16 +5,14 @@ import { routeUrl } from "@api/apiUrls";
 import { RouteResponse } from "@models/responses/types";
 import { Route, RouteFiltersFormValues } from "@models/userRoutes/types";
 
-import { route } from "../../route";
-
-interface PlacesState {
+interface RoutesState {
     route?: Route;
     isRouteLoading: boolean;
     isRouteLoadingFailed: boolean;
 }
 
-const initialState: PlacesState = {
-    route,
+const initialState: RoutesState = {
+    route: undefined,
     isRouteLoading: false,
     isRouteLoadingFailed: false
 };

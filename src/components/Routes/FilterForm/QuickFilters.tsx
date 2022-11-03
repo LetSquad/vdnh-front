@@ -11,12 +11,12 @@ export default function QuickFilters() {
 
     const popularityOptions = useMemo(() => Object.values(Popularity).map((attribute) => ({
         value: attribute,
-        displayText: t(`userRoutes:filterForm.fields.popularity.${attribute}`)
+        displayText: t(`userRoutes:filterForm.fields.popularity.${attribute.toLowerCase()}`)
     })), [t]);
 
     const difficultyOptions = useMemo(() => Object.values(Difficulty).map((attribute) => ({
         value: attribute,
-        displayText: t(`userRoutes:filterForm.fields.difficulty.${attribute}`)
+        displayText: t(`userRoutes:filterForm.fields.difficulty.${attribute.toLowerCase()}`)
     })), [t]);
 
     return (

@@ -1,4 +1,6 @@
 {
+  "filterButton": "Фильтр",
+  "routeButton": "Маршрут",
   "filterForm": {
     "label": "Составьте свой маршрут",
     "fields": {

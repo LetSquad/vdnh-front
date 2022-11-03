@@ -1,6 +1,34 @@
+@use '~sass-mq' as *;
 @use 'src/styles/variables.module' as variables;
 
 .popup {
+  background: variables.$white;
+  border-radius: 4px;
+  bottom: 100%;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.04), 0 12px 12px rgba(0, 0, 0, 0.04);
+  left: 50%;
+  min-height: 124px;
+  padding: 20px 124px 16px 16px;
+  position: absolute;
+  transform: translate3d(-50%, -10px, 0);
+  width: 343px;
+  z-index: 100;
+
+  &::before {
+    border-color: variables.$white transparent transparent;
+    border-style: solid;
+    border-width: 10px 10px 0;
+    content: '';
+    display: block;
+    height: 0;
+    left: 50%;
+    position: absolute;
+    top: 100%;
+    transform: translate3d(-50%, 0, 0);
+    width: 0;
+    z-index: 2;
+  }
+
   &-type {
     color: variables.$secondary;
     display: block;
@@ -38,5 +66,35 @@
     right: 16px;
     top: 16px;
     width: 92px;
+  }
+}
+
+.traffic-button,
+%traffic-button {
+  position: absolute;
+  z-index: 100;
+
+  @include mq($until: 1024px) {
+    right: variables.$header-horizontal-mobile-margin;
+    top: calc(#{variables.$header-height-mobile} +  2 * #{variables.$header-vertical-margin});
+  }
+
+  @include mq($from: 1025px) {
+    right: variables.$header-horizontal-desktop-margin;
+    top: calc(#{variables.$header-height} +  2 * #{variables.$header-vertical-margin});
+  }
+
+  &-unactive {
+    @extend %traffic-button;
+    background-color: darken(variables.$primary-light, 5%) !important;
+    color: variables.$black !important;
+
+    &:hover {
+      background-color: darken(variables.$primary-light, 10%) !important;
+    }
+
+    &:focus {
+      background-color: darken(variables.$primary-light, 15%) !important;
+    }
   }
 }

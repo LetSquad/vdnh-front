@@ -18,22 +18,8 @@
 
   @include mq($from: 1025px) {
     left: variables.$header-horizontal-desktop-margin;
+    max-height: calc(50% - 2 * #{variables.$header-vertical-margin} - #{variables.$header-height-mobile});
     top: calc(#{variables.$header-height} + 2 * #{variables.$header-vertical-margin});
-  }
-}
-
-.filter-button {
-  position: absolute;
-  z-index: 100;
-
-  @include mq($until: 1024px) {
-    left: variables.$header-horizontal-mobile-margin;
-    top: calc(#{variables.$header-height-mobile} +  2 * #{variables.$header-vertical-margin});
-  }
-
-  @include mq($from: 1025px) {
-    left: variables.$header-horizontal-desktop-margin;
-    top: calc(#{variables.$header-height} +  2 * #{variables.$header-vertical-margin});
   }
 }
 

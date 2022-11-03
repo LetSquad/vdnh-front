@@ -4,11 +4,13 @@ import thunk from "redux-thunk";
 
 import mapPointsReducer from "./mapPoints/reducer";
 import routesReducer from "./routes/reducer";
+import trafficReducer from "./traffic/reducer";
 
 export const store = configureStore({
     reducer: {
         mapPoints: mapPointsReducer,
-        routes: routesReducer
+        routes: routesReducer,
+        traffic: trafficReducer
     },
     devTools: process.env.NODE_ENV !== "production",
     // eslint-disable-next-line unicorn/prefer-spread

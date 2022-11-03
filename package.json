@@ -5,8 +5,8 @@
    "version": "1.0.0-MVP",
    "private": true,
    "scripts": {
-      "dev": "cross-env NODE_ENV=development webpack serve",
-      "prod": "npm run lint && cross-env NODE_ENV=production webpack",
+      "dev": "cross-env NODE_ENV=development MAPBOX_KEY=pk.eyJ1IjoiaXZhbnNhdm9za2luIiwiYSI6ImNsOXJhc2x6cjBkbnIzbnFsYmM0YTViZDUifQ.LoqZc9vp8OW-3WXS9GqnBw webpack serve",
+      "prod": "npm run lint && cross-env NODE_ENV=production MAPBOX_KEY=pk.eyJ1IjoiaXZhbnNhdm9za2luIiwiYSI6ImNsOXJhc2x6cjBkbnIzbnFsYmM0YTViZDUifQ.LoqZc9vp8OW-3WXS9GqnBw webpack",
       "build": "cross-env NODE_ENV=production webpack",
       "bundle-analyze": "mkdir -p dist/analyze && cross-env NODE_ENV=production WITH_ANALYZER=true webpack --profile --json > dist/analyze/stats.json && webpack-bundle-analyzer dist/analyze/stats.json",
       "lint": "npm run eslint && npm run stylelint",

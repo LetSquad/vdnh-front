@@ -27,3 +27,13 @@ export const selectCurrentMapPoint = createSelector(
         mapPoint.id === currentMapPointInfo?.id && mapPoint.properties.category === currentMapPointInfo?.category
     ))
 );
+
+export const selectCurrentPlace = createSelector(
+    [selectCurrentMapPoint],
+    (mapPoint) => (mapPoint?.properties.category === MapPointCategory.PLACE ? mapPoint : undefined)
+);
+
+export const selectCurrentEvent = createSelector(
+    [selectCurrentMapPoint],
+    (mapPoint) => (mapPoint?.properties.category === MapPointCategory.EVENT ? mapPoint : undefined)
+);

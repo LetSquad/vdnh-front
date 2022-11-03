@@ -7,15 +7,15 @@ export enum RouteFiltersFieldsName {
 }
 
 export enum Popularity {
-    POPULAR = "popular",
-    BALANCED = "balanced",
-    HIDDEN = "hidden"
+    POPULAR = "POPULAR",
+    BALANCED = "BALANCED",
+    HIDDEN = "HIDDEN"
 }
 
 export enum Difficulty {
-    EASY = "easy",
-    MEDIUM = "medium",
-    HARD = "hard"
+    EASY = "EASY",
+    MEDIUM = "MEDIUM",
+    HARD = "HARD"
 }
 
 export enum RouteFiltersPeopleNumberFieldsName {

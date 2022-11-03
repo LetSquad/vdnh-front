@@ -5,22 +5,23 @@ import React, {
     useState
 } from "react";
 
+import classNames from "classnames";
 import { Point } from "geojson";
 import mapboxgl, {
     LngLatBounds,
     Map as MapboxMap,
     MapboxEvent,
     MapMouseEvent,
-    Popup
+    Marker
 } from "mapbox-gl";
 import { useTranslation } from "react-i18next";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { Loader } from "semantic-ui-react";
 
 import basePartStyles from "@coreStyles/baseParts.module.scss";
 import { MapPointCategory } from "@models/mapPoints/enums";
 import { MapPointFeature } from "@models/mapPoints/types";
-import { BaseRoutesSlugs } from "@models/routes/enums";
+import PrimaryButton from "@parts/Buttons/PrimaryButton";
 import LoadingErrorBlock from "@parts/LoadingErrorBlock/LoadingErrorBlock";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { getMapPointsRequest, setMapPointActive, setMapPointsUnActive } from "@store/mapPoints/reducer";
@@ -30,6 +31,8 @@ import {
     selectIsMapPointsLoading,
     selectIsMapPointsLoadingFailed
 } from "@store/mapPoints/selectors";
+import { getTrafficRequest, resetTraffic } from "@store/traffic/reducer";
+import { selectIsTrafficLoading, selectTraffic } from "@store/traffic/selectors";
 
 import { MapContext } from "./MapContext";
 import styles from "./styles/Map.module.scss";
@@ -46,13 +49,15 @@ export default function Map({ mapPoints, children }: MapProps) {
 
     const { t } = useTranslation("map");
 
-    const navigate = useNavigate();
-    const location = useLocation();
+    const [searchParams, setSearchParams] = useSearchParams();
 
     const isPlacesInitialState = useAppSelector(selectIsMapPointsInitialState);
     const isPlacesLoading = useAppSelector(selectIsMapPointsLoading);
     const isPlacesLoadingLoadingFailed = useAppSelector(selectIsMapPointsLoadingFailed);
     const currentPlace = useAppSelector(selectCurrentMapPoint);
+
+    const traffic = useAppSelector(selectTraffic);
+    const isTrafficLoading = useAppSelector(selectIsTrafficLoading);
 
     const [map, setMap] = useState<MapboxMap>();
 
@@ -63,9 +68,18 @@ export default function Map({ mapPoints, children }: MapProps) {
         [map]
     );
 
+    const onTrafficButtonClick = useCallback(() => {
+        if (!traffic) {
+            dispatch(getTrafficRequest());
+        } else {
+            dispatch(resetTraffic());
+        }
+    }, [dispatch, traffic]);
+
     const addDataToMap = useCallback(({ target: _map }: MapboxEvent) => {
         _map
             .addSource("places", { type: "geojson", data: { type: "FeatureCollection", features: mapPoints } })
+            .addSource("traffic", { type: "geojson", data: { type: "FeatureCollection", features: traffic || [] } })
             .addSource(
                 "route",
                 {
@@ -167,6 +181,45 @@ export default function Map({ mapPoints, children }: MapProps) {
                     "line-width": 5,
                     "line-opacity": 0.75
                 }
+            })
+            .addLayer({
+                id: "traffic",
+                type: "heatmap",
+                source: "traffic",
+                minzoom: 14,
+                maxzoom: 20,
+                paint: {
+                    "heatmap-weight": [
+                        "interpolate", ["linear"], ["get", "loadFactor"],
+                        0.01, 1,
+                        1, 100
+                    ],
+                    "heatmap-intensity": [
+                        "interpolate", ["linear"], ["zoom"],
+                        13, 0,
+                        20, 1
+                    ],
+                    "heatmap-color": [
+                        "interpolate", ["linear"], ["heatmap-density"],
+                        0, "rgba(0,0,0,0)",
+                        0.1, "rgb(0,255,0)",
+                        0.3, "rgb(150,207,103)",
+                        0.5, "rgb(221,231,0)",
+                        0.7, "rgb(241,119,52)",
+                        0.9, "rgb(246,81,18)",
+                        1, "rgb(255,0,0)"
+                    ],
+                    "heatmap-radius": [
+                        "interpolate", ["linear"], ["zoom"],
+                        13, 50,
+                        20, 100
+                    ],
+                    "heatmap-opacity": [
+                        "interpolate", ["linear"], ["zoom"],
+                        13, 0.5,
+                        20, 0.9
+                    ]
+                }
             });
 
         setMap(_map);
@@ -192,32 +245,25 @@ export default function Map({ mapPoints, children }: MapProps) {
             });
 
             if (newActivePlace.properties) {
-                navigate(newActivePlace.properties.url);
+                searchParams.set(newActivePlace.properties.category.toLowerCase(), newActivePlace.id as string);
+                setSearchParams(searchParams);
             }
         } else if (features.length === 0) {
             dispatch(setMapPointsUnActive());
 
-            switch (true) {
-                case location.pathname.startsWith(BaseRoutesSlugs.PLACES) && location.pathname !== BaseRoutesSlugs.PLACES: {
-                    navigate(BaseRoutesSlugs.PLACES);
-                    break;
-                }
-                case location.pathname.startsWith(BaseRoutesSlugs.ROUTES) && location.pathname !== BaseRoutesSlugs.ROUTES: {
-                    navigate(BaseRoutesSlugs.ROUTES);
-                    break;
-                }
-                case location.pathname.startsWith(BaseRoutesSlugs.EVENTS) && location.pathname !== BaseRoutesSlugs.EVENTS: {
-                    navigate(BaseRoutesSlugs.EVENTS);
-                    break;
-                }
-                default: {
-                    break;
-                }
+            for (const key of searchParams.keys()) {
+                searchParams.delete(key);
             }
-        }
-    }, [currentPlace?.id, dispatch, location.pathname, navigate]);
 
-    const onMouseEnterPlace = useCallback((event: MapMouseEvent, popup: Popup) => {
+            setSearchParams(searchParams);
+        }
+    }, [currentPlace?.id, dispatch, searchParams, setSearchParams]);
+
+    const onMouseMove = useCallback((event: MapMouseEvent, popup: Marker, element: HTMLDivElement) => {
+        if (!event.target.loaded()) {
+            return;
+        }
+
         const features = event.target.queryRenderedFeatures(
             event.point,
             { layers: ["places", "places-dots"] }
@@ -231,7 +277,8 @@ export default function Map({ mapPoints, children }: MapProps) {
             event.target.getCanvas().style.cursor = "pointer";
 
             let html =
-                `<div class="${styles.popupType}">${hoveredPlace.properties?.localizedType}</div>
+                `<div class="${styles.popup}">
+                <div class="${styles.popupType}">${hoveredPlace.properties?.localizedType}</div>
                 <div class="${styles.popupTitle}">${hoveredPlace.properties?.localizedTitle}</div>`;
 
             if (hoveredPlace.properties?.category === MapPointCategory.PLACE) {
@@ -245,20 +292,23 @@ export default function Map({ mapPoints, children }: MapProps) {
 
             if (hoveredPlace.properties?.pic) {
                 // eslint-disable-next-line unicorn/prefer-spread
-                html = html.concat("\n", `<div class="${styles.popupPic}" style="background-image: url(" ${hoveredPlace.properties?.pic}")" />`);
+                html = html.concat("\n", `<div class="${styles.popupPic}" style="background-image: url('${hoveredPlace.properties?.pic}')" />`);
             }
 
+            // eslint-disable-next-line unicorn/prefer-spread
+            html = html.concat("\n", "</div>");
+
+            element.innerHTML = html;
+
             popup
-                .setHTML(html)
                 .setLngLat([coordinates[0], coordinates[1]])
                 .addTo(event.target);
+        } else {
+            event.target.getCanvas().style.cursor = "";
+            element.innerHTML = "";
+            popup.remove();
         }
     }, [t]);
-
-    const onMouseLeavePlace = useCallback((event: MapMouseEvent, popup: Popup) => {
-        event.target.getCanvas().style.cursor = "";
-        popup.remove();
-    }, []);
 
     useEffect(() => {
         if (isPlacesInitialState) {
@@ -275,19 +325,17 @@ export default function Map({ mapPoints, children }: MapProps) {
                 style: "https://vdnh.ru/gis/api/rpc/get_style?style_number=1",
                 center: [37.624_13, 55.833_883],
                 zoom: 14,
+                minZoom: 14,
+                maxZoom: 20,
                 maxBounds: new LngLatBounds([37.624_13 - 0.07, 55.833_883 - 0.04], [37.624_13 + 0.07, 55.833_883 + 0.04])
             });
 
-            const popup = new Popup({
-                closeButton: false,
-                closeOnClick: false,
-                closeOnMove: false
-            });
+            const element = document.createElement("div");
+            const popup = new Marker({ element });
 
             _map.on("load", addDataToMap);
             _map.on("click", onMapClick);
-            _map.on("mouseenter", ["places", "places-dots"], (event) => onMouseEnterPlace(event, popup));
-            _map.on("mouseleave", ["places", "places-dots"], (event) => onMouseLeavePlace(event, popup));
+            _map.on("mousemove", (event) => onMouseMove(event, popup, element));
         }
 
         return () => map && map.remove();
@@ -314,6 +362,16 @@ export default function Map({ mapPoints, children }: MapProps) {
         }
     }, [mapPoints, map]);
 
+    useEffect(() => {
+        if (map) {
+            const source = map.getSource("traffic");
+
+            if (source && "setData" in source) {
+                source.setData({ type: "FeatureCollection", features: traffic || [] });
+            }
+        }
+    }, [traffic, map]);
+
     if (isPlacesLoading) {
         return (
             <div className={basePartStyles.flexBaseCenterContainer}>
@@ -339,6 +397,14 @@ export default function Map({ mapPoints, children }: MapProps) {
             id={CONTAINER_ID}
             className={basePartStyles.baseContainer}
         >
+            <PrimaryButton
+                className={classNames(styles.trafficButton, { [styles.trafficButtonUnactive]: !traffic })}
+                disabled={isTrafficLoading}
+                loading={isTrafficLoading}
+                onClick={onTrafficButtonClick}
+            >
+                {t("map:trafficControl")}
+            </PrimaryButton>
             <MapContext.Provider value={mapContextValue}>
                 {children}
             </MapContext.Provider>

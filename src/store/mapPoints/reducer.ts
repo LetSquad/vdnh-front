@@ -2,15 +2,12 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios, { AxiosResponse } from "axios";
 
 import { mapPointsUrl } from "@api/apiUrls";
-import { getLanguageFromLocalStorage } from "@coreUtils/localizations/utils";
 import { changeLanguage } from "@hooks/useChangeLanguage";
 import { MapPointFeature, MapPointInfo } from "@models/mapPoints/types";
 import { MapPointsResponse } from "@models/responses/types";
 import { localizePlace, localizePlaces } from "@store/mapPoints/utils";
 
 import i18n from "@i18n";
-
-import { mapPoints } from "../../mapPoints";
 
 interface MapPointsState {
     mapPoints: MapPointFeature[];
@@ -20,24 +17,10 @@ interface MapPointsState {
     isMapPointsLoadingFailed: boolean;
 }
 
-const _lang = getLanguageFromLocalStorage();
-
-const formatMapPoints = mapPoints.map((mapPoint) => {
-    if (mapPoint.properties && _lang) {
-        if (mapPoint.properties.url === window.location.pathname) {
-            mapPoint.properties = { ...mapPoint.properties, active: true };
-        }
-
-        localizePlace(mapPoint, _lang);
-    }
-
-    return mapPoint;
-});
-
 const initialState: MapPointsState = {
-    mapPoints: formatMapPoints,
+    mapPoints: [],
     currentMapPointInfo: undefined,
-    isMapPointsInitialState: false,
+    isMapPointsInitialState: true,
     isMapPointsLoading: false,
     isMapPointsLoadingFailed: false
 };
@@ -96,7 +79,12 @@ export const mapPointsSlice = createSlice({
             const lang = i18n.language;
 
             state.mapPoints = action.payload.mapData.map((mapPoint) => {
-                if (mapPoint.properties.url === window.location.pathname) {
+                const searchParams = new URLSearchParams(window.location.search);
+
+                if (
+                    searchParams.has(mapPoint.properties.category.toLowerCase()) &&
+                    searchParams.get(mapPoint.properties.category.toLowerCase()) === mapPoint.id.toString()
+                ) {
                     mapPoint.properties = {
                         ...mapPoint.properties,
                         active: true

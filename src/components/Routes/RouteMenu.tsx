@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
 import { Feature, LineString } from "geojson";
 
@@ -37,7 +37,5 @@ export default function RouteMenu() {
         }
     }, [map, route]);
 
-    return !route
-        ? <FilterForm />
-        : <RouteInfo />;
+    return !route ? <FilterForm /> : <RouteInfo />;
 }

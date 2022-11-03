@@ -1,5 +1,6 @@
 {
   "events_one": "Проводится {{count}} событие",
   "events_few": "Проводится {{count}} события",
-  "events_many": "Проводится {{count}} событий"
+  "events_many": "Проводится {{count}} событий",
+  "trafficControl": "Загруженность"
 }
