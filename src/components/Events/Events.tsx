@@ -1,6 +1,6 @@
 import { lazy } from "react";
 
-import MapPointInfo from "@components/MapPointInfo/MapPointInfo";
+import MapPointInfoBlock from "@components/MapPointInfo/MapPointInfo";
 import basePartStyles from "@coreStyles/baseParts.module.scss";
 import { WithSuspense } from "@coreUtils/WithSuspense";
 import { useAppSelector } from "@store/hooks";
@@ -16,7 +16,7 @@ export default function Events() {
         <div className={basePartStyles.baseContainer}>
             <WithSuspense>
                 <Map mapPoints={places}>
-                    {currentMapPoint && <MapPointInfo mapPoint={currentMapPoint} />}
+                    {currentMapPoint && <MapPointInfoBlock mapPoint={currentMapPoint} />}
                 </Map>
             </WithSuspense>
         </div>
