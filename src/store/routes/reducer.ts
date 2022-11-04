@@ -44,7 +44,11 @@ export const routesSlice = createSlice({
         builder.addCase(getRouteRequest.fulfilled, (state, action) => {
             state.isRouteLoading = false;
 
-            state.route = action.payload.mapData;
+            if (action.payload.mapData.length > 0) {
+                state.route = action.payload.mapData;
+            } else {
+                state.isRouteLoadingFailed = true;
+            }
         });
     }
 });

@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios, { AxiosResponse } from "axios";
-import { DateTime } from "luxon";
 import { toast } from "react-hot-toast";
 
 import { trafficUrl } from "@api/apiUrls";
@@ -20,10 +19,9 @@ const initialState: TrafficState = {
 };
 
 export const getTrafficRequest = createAsyncThunk("getTrafficRequest", async (values?: { day: number, time: string }) => {
-    const now = DateTime.now().setLocale("en");
     const response: AxiosResponse<TrafficResponse> = await axios.get<TrafficResponse>(
         trafficUrl,
-        { params: { day: values?.day || now.weekdayLong.toUpperCase(), time: values?.time || now.toFormat("hh:mm") } }
+        { params: { day: values?.day, time: values?.time } }
     );
 
     return response.data;

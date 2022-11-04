@@ -1,6 +1,6 @@
 import { lazy } from "react";
 
-import MapPointInfo from "@components/MapPointInfo/MapPointInfo";
+import MapPointInfoBlock from "@components/MapPointInfo/MapPointInfo";
 import basePartStyles from "@coreStyles/baseParts.module.scss";
 import { WithSuspense } from "@coreUtils/WithSuspense";
 import { useAppSelector } from "@store/hooks";
@@ -16,7 +16,7 @@ export default function Places() {
         <div className={basePartStyles.baseContainer}>
             <WithSuspense>
                 <Map mapPoints={places}>
-                    {currentPlace && <MapPointInfo mapPoint={currentPlace} />}
+                    {currentPlace && <MapPointInfoBlock mapPoint={currentPlace} />}
                 </Map>
             </WithSuspense>
         </div>
