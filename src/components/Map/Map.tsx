@@ -386,7 +386,7 @@ export default function Map({ mapPoints, children }: MapProps) {
     if (isPlacesLoadingLoadingFailed) {
         return (
             <LoadingErrorBlock
-                isLoadingErrorObjectText="информации о приеме"
+                isLoadingErrorObjectText="данных"
                 reload={getMapPointsRequest}
             />
         );
