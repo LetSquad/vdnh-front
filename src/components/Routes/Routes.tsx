@@ -1,4 +1,4 @@
-import React, { lazy } from "react";
+import React, { lazy, useCallback, useEffect } from "react";
 
 import { useTranslation } from "react-i18next";
 import { Icon } from "semantic-ui-react";
@@ -8,8 +8,9 @@ import basePartStyles from "@coreStyles/baseParts.module.scss";
 import { WithSuspense } from "@coreUtils/WithSuspense";
 import { useToggle } from "@hooks/useToogle";
 import PrimaryButton from "@parts/Buttons/PrimaryButton";
-import { useAppSelector } from "@store/hooks";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { selectPlacesAndStandaloneEvents } from "@store/mapPoints/selectors";
+import { resetRoute } from "@store/routes/reducer";
 import { selectAllRouteMapPoint, selectRoute } from "@store/routes/selectors";
 
 import styles from "./styles/Routes.module.scss";
@@ -17,6 +18,8 @@ import styles from "./styles/Routes.module.scss";
 const Map = lazy(/* webpackChunkName: "Map" */ () => import("@components/Map/Map"));
 
 export default function Routes() {
+    const dispatch = useAppDispatch();
+
     const { t } = useTranslation("userRoutes");
 
     const mapPoints = useAppSelector(selectPlacesAndStandaloneEvents);
@@ -24,6 +27,15 @@ export default function Routes() {
     const routeWaypoint = useAppSelector(selectAllRouteMapPoint);
 
     const [isMenuOpen, , openMenu, closeMenu] = useToggle(true);
+
+    const reset = useCallback(() => {
+        dispatch(resetRoute());
+    }, [dispatch]);
+
+    // eslint-disable-next-line arrow-body-style
+    useEffect(() => {
+        return () => reset();
+    }, [reset]);
 
     return (
         <div className={basePartStyles.baseContainer}>
