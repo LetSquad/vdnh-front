@@ -1,0 +1,16 @@
+@use 'src/styles/variables.module' as variables;
+
+.button {
+  margin: 0 !important;
+}
+
+.input {
+  height: 36px;
+  opacity: 1 !important;
+  width: 45px !important;
+
+  > input {
+    opacity: 1 !important;
+    text-align: center !important;
+  }
+}

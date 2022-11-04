@@ -30,19 +30,17 @@
   z-index: 100;
 
   @include mq($until: 1024px) {
-    bottom: auto !important;
     height: variables.$header-height-mobile;
-    left: 8px !important;
-    max-width: calc(100% - 16px);
-    right: 8px !important;
+    left: variables.$header-horizontal-mobile-margin;
+    max-width: calc(100% - 2 * #{variables.$header-horizontal-mobile-margin});
+    right: variables.$header-horizontal-mobile-margin;
   }
 
   @include mq($from: 1025px) {
-    bottom: -60px;
     height: variables.$header-height;
-    left: 16px;
-    max-width: calc(100% - 32px);
-    right: 16px;
+    left: variables.$header-horizontal-desktop-margin;
+    max-width: calc(100% - 2 * #{variables.$header-horizontal-desktop-margin});
+    right: variables.$header-horizontal-desktop-margin;
   }
 }
 

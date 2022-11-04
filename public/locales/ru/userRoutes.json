@@ -1,0 +1,78 @@
+{
+  "filterButton": "Фильтр",
+  "routeButton": "Маршрут",
+  "filterForm": {
+    "label": "Составьте свой маршрут",
+    "fields": {
+      "dateStart": {
+        "label": "Время начала маршрута",
+        "placeholder": "Укажите примерное время начала маршрута"
+      },
+      "dateEnd": {
+        "label": "Время окончания маршрута",
+        "placeholder": "Укажите примерное время окончания маршрута"
+      },
+      "peopleNumber": {
+        "label": "Количество гостей",
+        "placeholder": {
+          "adult_zero": "{{count}} Взрослых",
+          "adult_one": "{{count}} Взрослый",
+          "adult_few": "{{count}} Взрослых",
+          "adult_many": "{{count}} Взрослых",
+          "kid_zero": "{{count}} Детей",
+          "kid_one": "{{count}} Ребенок",
+          "kid_few": "{{count}} Ребенка",
+          "kid_many": "{{count}} Детей"
+        },
+        "kid": {
+          "label": "Дети"
+        },
+        "adult": {
+          "label": "Взрослые"
+        }
+      },
+      "popularity": {
+        "popular": "Популярные",
+        "balanced": "Сбалансировано",
+        "hidden": "Запрятанные"
+      },
+      "difficulty": {
+        "easy": "Неспешный",
+        "medium": "Средний",
+        "hard": "Быстрый темп"
+      },
+      "food": "Перекусить по дороге",
+      "loadFactor": "Меньше людей",
+      "payment": {
+        "free": "Бесплатный",
+        "cheap": "Дешевый",
+        "irrelevant": "Неважно"
+      },
+      "movement": {
+        "walking": "Пеший",
+        "bicycle": "Велосипедный"
+      },
+      "additional": {
+        "title": "Расширенный фильтры",
+        "tags": {
+          "nature": "Природа",
+          "art": "Искусство",
+          "animals": "Животные",
+          "architecture": "Архитектура",
+          "moscow": "Москва",
+          "tech": "Технологии",
+          "sport": "Спорт",
+          "history": "История"
+        }
+      }
+    },
+    "error": {
+      "title": "Произошла непредвиденная ошибка",
+      "content": "Повторите построение маршрут еще раз позднее"
+    },
+    "submit": "Составить"
+  },
+  "routeInfo": {
+    "reset": "Сбросить маршрут"
+  }
+}

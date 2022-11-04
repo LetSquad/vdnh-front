@@ -11,13 +11,13 @@ export const BaseRoutes: PageType = {
     EVENTS: {
         localizeNameKey: "routes:events",
         defaultName: "События",
-        slug: BaseRoutesSlugs.EVENTS_WITH_CHILD,
+        slug: BaseRoutesSlugs.EVENTS,
         component: Events
     },
     PLACES: {
         localizeNameKey: "routes:places",
         defaultName: "Места",
-        slug: BaseRoutesSlugs.PLACES_WITH_CHILD,
+        slug: BaseRoutesSlugs.PLACES,
         component: Places
     },
     ROUTES: {

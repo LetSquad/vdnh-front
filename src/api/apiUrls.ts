@@ -1,4 +1,10 @@
-const externalUrl = process.env.EXTERNAL_URL || "https://localhost:8443";
-const baseUrl = `${externalUrl}/api`;
+const externalUrl = process.env.EXTERNAL_URL || "http://localhost:8080";
+const baseUrl = `${externalUrl}`;
+const mapUrl = `${baseUrl}/map`;
+const routesUrl = `${baseUrl}/route`;
 
-export const placesUrl = `${baseUrl}/places`;
+export const mapPointsUrl = `${mapUrl}/data`;
+
+export const routeUrl = `${routesUrl}/navigate`;
+
+export const trafficUrl = `${mapUrl}/heatmap`;

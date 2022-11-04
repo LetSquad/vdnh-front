@@ -1,0 +1,12 @@
+@use 'src/styles/variables.module' as variables;
+
+.input {
+  > input {
+    background: variables.$white !important;
+    border: 1px solid variables.$border-with-opacity !important;
+    border-radius: 4px !important;
+    color: variables.$black !important;
+    font-family: 's', sans-serif !important;
+    padding: 10px 14px !important;
+  }
+}
