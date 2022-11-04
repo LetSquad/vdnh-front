@@ -14,6 +14,7 @@ export default function RouteTimeFields() {
     const { t } = useTranslation("userRoutes");
 
     const roundedNow = roundTimeToMinutes(DateTime.now(), 30);
+    const roundedEnd = roundedNow.plus({ minute: 30 });
 
     return (
         <div className={styles.container}>
@@ -34,7 +35,9 @@ export default function RouteTimeFields() {
                     type={FormFieldType.DATE_TIMEPICKER}
                     placeholder={t("userRoutes:filterForm.fields.dateEnd.placeholder")}
                     className={styles.fieldEnd}
-                    minDate={roundedNow.plus({ minute: 30 }).toJSDate()}
+                    minDate={roundedEnd.toJSDate()}
+                    minTime={roundedEnd.toJSDate()}
+                    maxTime={roundedNow.set({ minute: 30, hour: 23 }).toJSDate()}
                 />
             </WithSuspense>
         </div>
