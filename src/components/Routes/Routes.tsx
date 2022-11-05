@@ -11,7 +11,7 @@ import PrimaryButton from "@parts/Buttons/PrimaryButton";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { selectPlacesAndStandaloneEvents } from "@store/mapPoints/selectors";
 import { resetRoute } from "@store/routes/reducer";
-import { selectAllSelectedRouteMapPoint, selectCurrentRoute } from "@store/routes/selectors";
+import { selectAllCurrentRouteMapPoint, selectCurrentRoute } from "@store/routes/selectors";
 
 import styles from "./styles/Routes.module.scss";
 
@@ -24,7 +24,7 @@ export default function Routes() {
 
     const mapPoints = useAppSelector(selectPlacesAndStandaloneEvents);
     const route = useAppSelector(selectCurrentRoute);
-    const routeWaypoint = useAppSelector(selectAllSelectedRouteMapPoint);
+    const routeWaypoint = useAppSelector(selectAllCurrentRouteMapPoint);
 
     const [isMenuOpen, , openMenu, closeMenu] = useToggle(true);
 
