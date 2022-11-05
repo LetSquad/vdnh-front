@@ -1,6 +1,6 @@
 import { lazy } from "react";
 
-import MapPointInfoBlock from "@components/MapPointInfo/MapPointInfo";
+import MapPointInfoBlock from "@components/MapPointInfo/MapPointInfoBlock";
 import basePartStyles from "@coreStyles/baseParts.module.scss";
 import { WithSuspense } from "@coreUtils/WithSuspense";
 import { useAppSelector } from "@store/hooks";

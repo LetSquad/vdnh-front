@@ -3,12 +3,19 @@ import { createSelector } from "@reduxjs/toolkit";
 import { RootState } from "@store/index";
 import { selectAllMapPoints } from "@store/mapPoints/selectors";
 
-export const selectRoute = (state: RootState) => state.routes.route || [];
+export const selectRoutes = (state: RootState) => state.routes.routes || [];
+export const selectReviewRoute = (state: RootState) => state.routes.reviewRoute;
+export const selectSelectedRoute = (state: RootState) => state.routes.selectedRoute;
 
-export const selectAllRouteMapPoint = createSelector(
-    [selectAllMapPoints, selectRoute],
-    (mapPoints, route) => (route.length > 0
-        ? mapPoints.filter((mapPoint) => (route[0].mapPoints.find((mapPointInfo) => (
+export const selectCurrenctRoute = createSelector(
+    [selectReviewRoute, selectSelectedRoute],
+    (reviewRoute, selectedRoute) => reviewRoute ?? selectedRoute
+);
+
+export const selectAllSelectedRouteMapPoint = createSelector(
+    [selectAllMapPoints, selectReviewRoute],
+    (mapPoints, route) => (route
+        ? mapPoints.filter((mapPoint) => (route.mapPoints.find((mapPointInfo) => (
             mapPointInfo.id === mapPoint.id && mapPointInfo.category === mapPoint.properties.category))))
         : [])
 );

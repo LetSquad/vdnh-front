@@ -41,9 +41,15 @@ export type EventProperty = Property & {
     places: number[];
 };
 
-export interface MapPointFeature extends Feature<Point, PlaceProperty | EventProperty> {
+export interface PlaceFeature extends Feature<Point, PlaceProperty> {
     id: number;
 }
+
+export interface EventFeature extends Feature<Point, EventProperty> {
+    id: number;
+}
+
+export type MapPointFeature = PlaceFeature | EventFeature;
 
 export interface MapPointInfo {
     id: number,
