@@ -184,7 +184,7 @@ export default function Map({ mapPoints, children }: MapProps) {
                 paint: {
                     "line-color": "#e22c38",
                     "line-width": 3,
-                    "line-opacity": 0.75,
+                    "line-opacity": 0.65,
                     "line-dasharray": [2, 3]
                 }
             })

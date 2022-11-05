@@ -12,8 +12,8 @@ export const selectCurrentRoute = createSelector(
     (reviewRoute, selectedRoute) => reviewRoute ?? selectedRoute
 );
 
-export const selectAllSelectedRouteMapPoint = createSelector(
-    [selectAllMapPoints, selectSelectedRoute],
+export const selectAllCurrentRouteMapPoint = createSelector(
+    [selectAllMapPoints, selectCurrentRoute],
     (mapPoints, route) => (route
         ? mapPoints.filter((mapPoint) => (route.mapPoints.find((mapPointInfo) => (
             mapPointInfo.id === mapPoint.id && mapPointInfo.category === mapPoint.properties.category))))
