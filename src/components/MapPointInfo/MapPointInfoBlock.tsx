@@ -71,7 +71,7 @@ export default function MapPointInfoBlock({ mapPoint }: MapPointInfoProps) {
                         {t("map:place.additionalInfo")}
                     </PrimaryButton>
                     {
-                        mapPoint.properties.ticketsUrl
+                        mapPoint.properties.category === MapPointCategory.PLACE && mapPoint.properties.ticketsUrl
                             ? (
                                 <SecondaryButton
                                     target="_blank"
@@ -85,7 +85,7 @@ export default function MapPointInfoBlock({ mapPoint }: MapPointInfoProps) {
                 </div>
             </div>
             {
-                mapPoint.properties.scheduleClosingTime
+                mapPoint.properties.category === MapPointCategory.PLACE && mapPoint.properties.scheduleClosingTime
                     ? (
                         <div>
                             <b>
@@ -95,7 +95,8 @@ export default function MapPointInfoBlock({ mapPoint }: MapPointInfoProps) {
                     ) : null
             }
             {
-                !mapPoint.properties.scheduleClosingTime && mapPoint.properties.scheduleDayOff === true
+                mapPoint.properties.category === MapPointCategory.PLACE && !mapPoint.properties.scheduleClosingTime &&
+                mapPoint.properties.scheduleDayOff === true
                     ? (
                         <div>
                             <b>

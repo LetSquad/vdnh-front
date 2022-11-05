@@ -12,6 +12,7 @@ import RouteTimeFields from "@components/Routes/FilterForm/RouteTimeFields";
 import { roundTimeToMinutes } from "@coreUtils/utils";
 import {
     Difficulty,
+    LocationPlacement,
     Movement,
     Payment,
     Popularity,
@@ -22,7 +23,7 @@ import { RouteFiltersFormValues } from "@models/userRoutes/types";
 import PrimaryButton from "@parts/Buttons/PrimaryButton";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { getRouteRequest } from "@store/routes/reducer";
-import { selectIsRouteLoading, selectIsRouteLoadingFailed } from "@store/routes/selectors";
+import { selectIsRouteEmpty, selectIsRouteLoading, selectIsRouteLoadingFailed } from "@store/routes/selectors";
 
 import styles from "./styles/FilterForm.module.scss";
 
@@ -33,6 +34,7 @@ export default function FilterForm() {
 
     const isRouteLoading = useAppSelector(selectIsRouteLoading);
     const isRouteLoadingFailed = useAppSelector(selectIsRouteLoadingFailed);
+    const isRouteEmpty = useAppSelector(selectIsRouteEmpty);
 
     const initialValues = useMemo(() => {
         const roundedNow = roundTimeToMinutes(DateTime.now(), 30);
@@ -48,6 +50,7 @@ export default function FilterForm() {
             [RouteFiltersFieldsName.DIFFICULTY]: Difficulty.MEDIUM,
             [RouteFiltersFieldsName.LOAD_FACTOR]: false,
             [RouteFiltersFieldsName.FOOD]: true,
+            [RouteFiltersFieldsName.LOCATION_PLACEMENT]: LocationPlacement.IRRELEVANT,
             [RouteFiltersFieldsName.PAYMENT]: Payment.IRRELEVANT,
             [RouteFiltersFieldsName.MOVEMENT]: Movement.WALKING,
             [RouteFiltersFieldsName.TAGS]: []
@@ -76,15 +79,26 @@ export default function FilterForm() {
                     <PeopleNumberPicker />
                     <QuickFilters />
                     <FilterAccordion />
-                    {(isRouteLoadingFailed) && (
+                    {(isRouteLoadingFailed || isRouteEmpty) && (
                         <div className={styles.messageContainer}>
-                            <Message
-                                visible
-                                error
-                                className={styles.message}
-                                header={t("userRoutes:filterForm.error.title")}
-                                content={t("userRoutes:filterForm.error.content")}
-                            />
+                            {isRouteLoadingFailed && (
+                                <Message
+                                    visible
+                                    error
+                                    className={styles.message}
+                                    header={t("userRoutes:filterForm.error.title")}
+                                    content={t("userRoutes:filterForm.error.content")}
+                                />
+                            )}
+                            {isRouteEmpty && (
+                                <Message
+                                    visible
+                                    warning
+                                    className={styles.message}
+                                    header={t("userRoutes:filterForm.empty.title")}
+                                    content={t("userRoutes:filterForm.empty.content")}
+                                />
+                            )}
                         </div>
                     )}
                 </div>

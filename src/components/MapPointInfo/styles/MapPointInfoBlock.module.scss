@@ -2,17 +2,18 @@
 @use 'src/styles/variables.module' as variables;
 
 .container {
-  width: 40%;
-  overflow: auto;
   background: variables.$white;
   border-radius: 4px;
   box-shadow: 0 0 12px rgb(0 0 0 / 4%), 0 12px 12px rgb(0 0 0 / 4%);
+  overflow: auto;
   padding: 30px;
   position: absolute !important;
+  width: 40%;
   z-index: 5;
 
   @include mq($until: 1024px) {
     left: variables.$header-horizontal-desktop-margin;
+    max-height: calc(100% - 2 * #{variables.$header-vertical-margin} - #{variables.$header-height-mobile} - 60px);
     max-width: calc(100% - 2 * #{variables.$header-horizontal-mobile-margin});
     right: variables.$header-horizontal-desktop-margin;
     top: calc(#{variables.$header-height-mobile} + 2 * #{variables.$header-vertical-margin});
@@ -20,7 +21,7 @@
 
   @include mq($from: 1025px) {
     left: variables.$header-horizontal-desktop-margin;
-    max-height: calc(50% - 2 * #{variables.$header-vertical-margin} - #{variables.$header-height-mobile});
+    max-height: calc(100% - 2 * #{variables.$header-vertical-margin} - #{variables.$header-height-mobile} - 60px);
     top: calc(#{variables.$header-height} + 2 * #{variables.$header-vertical-margin});
   }
 }
