@@ -19,7 +19,13 @@ export default function CheckboxGroupField({
     const isErrorDisplay = useMemo(() => Boolean(error && (touched || (!touched && value))), [error, touched, value]);
 
     const onClick = useCallback((_value: string) => {
-        setValue([_value, ...value]);
+        const index = value.indexOf(_value);
+        if (index > -1) {
+            value.splice(index, 1);
+        } else {
+            setValue([_value, ...value]);
+        }
+
         setTouched(true);
     }, [setTouched, setValue, value]);
 

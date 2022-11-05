@@ -4,19 +4,29 @@ import { useTranslation } from "react-i18next";
 
 import { WithSuspense } from "@coreUtils/WithSuspense";
 import { FormFieldType } from "@models/forms/enums";
-import { Movement, Payment, RouteFiltersFieldsName } from "@models/userRoutes/enums";
+import {
+    LocationPlacement,
+    Movement,
+    Payment,
+    RouteFiltersFieldsName
+} from "@models/userRoutes/enums";
 import FormField from "@parts/FormField/FormField";
 import FormFieldPlaceholder from "@parts/FormField/Placeholders/FormFieldPlaceholder";
 
 export default function AdditionalQuickFilters() {
     const { t } = useTranslation("userRoutes");
 
-    const popularityOptions = useMemo(() => Object.values(Payment).map((attribute) => ({
+    const locationPlacementOptions = useMemo(() => Object.values(LocationPlacement).map((attribute) => ({
+        value: attribute,
+        displayText: t(`userRoutes:filterForm.fields.locationPlacement.${attribute.toLowerCase()}`)
+    })), [t]);
+
+    const paymentOptions = useMemo(() => Object.values(Payment).map((attribute) => ({
         value: attribute,
         displayText: t(`userRoutes:filterForm.fields.payment.${attribute.toLowerCase()}`)
     })), [t]);
 
-    const difficultyOptions = useMemo(() => Object.values(Movement).map((attribute) => ({
+    const movementOptions = useMemo(() => Object.values(Movement).map((attribute) => ({
         value: attribute,
         displayText: t(`userRoutes:filterForm.fields.movement.${attribute.toLowerCase()}`)
     })), [t]);
@@ -39,10 +49,18 @@ export default function AdditionalQuickFilters() {
             </WithSuspense>
             <WithSuspense loader={<FormFieldPlaceholder />}>
                 <FormField
+                    name={RouteFiltersFieldsName.LOCATION_PLACEMENT}
+                    type={FormFieldType.BUTTON_GROUP}
+                    fluid
+                    options={locationPlacementOptions}
+                />
+            </WithSuspense>
+            <WithSuspense loader={<FormFieldPlaceholder />}>
+                <FormField
                     name={RouteFiltersFieldsName.PAYMENT}
                     type={FormFieldType.BUTTON_GROUP}
                     fluid
-                    options={popularityOptions}
+                    options={paymentOptions}
                 />
             </WithSuspense>
             <WithSuspense loader={<FormFieldPlaceholder />}>
@@ -50,7 +68,7 @@ export default function AdditionalQuickFilters() {
                     name={RouteFiltersFieldsName.MOVEMENT}
                     type={FormFieldType.BUTTON_GROUP}
                     fluid
-                    options={difficultyOptions}
+                    options={movementOptions}
                 />
             </WithSuspense>
         </div>

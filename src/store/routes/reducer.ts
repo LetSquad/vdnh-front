@@ -11,6 +11,7 @@ interface RoutesState {
     selectedRoute?: Route;
     isRouteLoading: boolean;
     isRouteLoadingFailed: boolean;
+    isRouteEmpty: boolean;
 }
 
 const initialState: RoutesState = {
@@ -18,7 +19,8 @@ const initialState: RoutesState = {
     selectedRoute: undefined,
     reviewRoute: undefined,
     isRouteLoading: false,
-    isRouteLoadingFailed: false
+    isRouteLoadingFailed: false,
+    isRouteEmpty: false
 };
 
 export const getRouteRequest = createAsyncThunk("getRouteRequest", async (values: RouteFiltersFormValues) => {
@@ -63,7 +65,7 @@ export const routesSlice = createSlice({
                 state.routes = action.payload.mapData;
                 [state.reviewRoute] = action.payload.mapData;
             } else {
-                state.isRouteLoadingFailed = true;
+                state.isRouteEmpty = true;
             }
         });
     }

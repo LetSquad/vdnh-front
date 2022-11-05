@@ -5,6 +5,7 @@ export enum RouteFiltersFieldsName {
     POPULARITY = "popularity",
     DIFFICULTY = "difficulty",
     LOAD_FACTOR = "loadFactor",
+    LOCATION_PLACEMENT = "locationPlacement",
     FOOD = "food",
     PAYMENT = "payment",
     MOVEMENT = "movement",
@@ -32,6 +33,12 @@ export enum Payment {
 export enum Movement {
     WALKING = "WALKING",
     BICYCLE = "BICYCLE"
+}
+
+export enum LocationPlacement {
+    INDOORS = "INDOORS",
+    OUTSIDE = "OUTSIDE",
+    IRRELEVANT = "IRRELEVANT"
 }
 
 export enum Tags {
