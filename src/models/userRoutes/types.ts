@@ -12,6 +12,7 @@ import {
 } from "@models/userRoutes/enums";
 
 export interface Route {
+    id: string;
     geometry: LineString;
     mapPoints: MapPointInfo[];
 }

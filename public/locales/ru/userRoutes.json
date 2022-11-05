@@ -74,5 +74,9 @@
   },
   "routeInfo": {
     "reset": "Сбросить маршрут"
+  },
+  "routesPreview": {
+    "select": "Выбрать маршрут",
+    "text": "{{count}} маршрут"
   }
 }

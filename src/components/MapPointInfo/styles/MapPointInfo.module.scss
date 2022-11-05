@@ -1,30 +1,5 @@
-@use '~sass-mq' as *;
-@use 'src/styles/variables.module' as variables;
-
 .container {
-  background: variables.$white;
-  border-radius: 4px;
-  box-shadow: 0 0 12px rgb(0 0 0 / 4%), 0 12px 12px rgb(0 0 0 / 4%);
-  padding: 30px;
-  position: absolute !important;
-  z-index: 5;
-
-  @include mq($until: 1024px) {
-    left: variables.$header-horizontal-desktop-margin;
-    max-width: calc(100% - 2 * #{variables.$header-horizontal-mobile-margin});
-    right: variables.$header-horizontal-desktop-margin;
-    top: calc(#{variables.$header-height-mobile} + 2 * #{variables.$header-vertical-margin});
-  }
-
-  @include mq($from: 1025px) {
-    left: variables.$header-horizontal-desktop-margin;
-    max-height: calc(50% - 2 * #{variables.$header-vertical-margin} - #{variables.$header-height-mobile});
-    top: calc(#{variables.$header-height} + 2 * #{variables.$header-vertical-margin});
-  }
-}
-
-.close-icon {
-  position: absolute;
-  right: 7px;
-  top: 7px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 7px;
 }

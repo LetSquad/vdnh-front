@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios, { AxiosResponse } from "axios";
 
 import { routeUrl } from "@api/apiUrls";
@@ -6,13 +6,17 @@ import { RouteResponse } from "@models/responses/types";
 import { Route, RouteFiltersFormValues } from "@models/userRoutes/types";
 
 interface RoutesState {
-    route?: Route[];
+    routes?: Route[];
+    reviewRoute?: Route;
+    selectedRoute?: Route;
     isRouteLoading: boolean;
     isRouteLoadingFailed: boolean;
 }
 
 const initialState: RoutesState = {
-    route: undefined,
+    routes: undefined,
+    selectedRoute: undefined,
+    reviewRoute: undefined,
     isRouteLoading: false,
     isRouteLoadingFailed: false
 };
@@ -28,14 +32,25 @@ export const routesSlice = createSlice({
     initialState,
     reducers: {
         resetRoute: (state) => {
-            state.route = undefined;
+            state.routes = undefined;
+            state.selectedRoute = undefined;
+            state.reviewRoute = undefined;
+        },
+        changeReviewRoute: (state, action: PayloadAction<Route>) => {
+            state.reviewRoute = action.payload;
+        },
+        selectRoute: (state) => {
+            state.selectedRoute = state.reviewRoute;
+            state.reviewRoute = undefined;
         }
     },
     extraReducers: (builder) => {
         builder.addCase(getRouteRequest.pending, (state) => {
             state.isRouteLoading = true;
             state.isRouteLoadingFailed = false;
-            state.route = undefined;
+            state.routes = undefined;
+            state.selectedRoute = undefined;
+            state.reviewRoute = undefined;
         });
         builder.addCase(getRouteRequest.rejected, (state) => {
             state.isRouteLoading = false;
@@ -45,7 +60,8 @@ export const routesSlice = createSlice({
             state.isRouteLoading = false;
 
             if (action.payload.mapData.length > 0) {
-                state.route = action.payload.mapData;
+                state.routes = action.payload.mapData;
+                [state.reviewRoute] = action.payload.mapData;
             } else {
                 state.isRouteLoadingFailed = true;
             }
@@ -53,6 +69,6 @@ export const routesSlice = createSlice({
     }
 });
 
-export const { resetRoute } = routesSlice.actions;
+export const { resetRoute, changeReviewRoute, selectRoute } = routesSlice.actions;
 
 export default routesSlice.reducer;
