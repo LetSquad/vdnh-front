@@ -8,9 +8,15 @@ interface MapPointInfoProps {
 
 export default function MapPointInfo({ mapPoint }: MapPointInfoProps) {
     return (
-        <div className={styles.container}>
-            <div>{mapPoint.properties.localizedTitle}</div>
-            <div>{mapPoint.properties.localizedType}</div>
-        </div>
+        <li>
+            <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={mapPoint.properties.url}
+                className={styles.eventInfo}
+            >
+                {mapPoint.properties.localizedTitle}
+            </a>
+        </li>
     );
 }

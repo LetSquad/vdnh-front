@@ -2,6 +2,8 @@
 @use 'src/styles/variables.module' as variables;
 
 .container {
+  width: 40%;
+  overflow: auto;
   background: variables.$white;
   border-radius: 4px;
   box-shadow: 0 0 12px rgb(0 0 0 / 4%), 0 12px 12px rgb(0 0 0 / 4%);
@@ -27,4 +29,27 @@
   position: absolute;
   right: 7px;
   top: 7px;
+}
+
+.place-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pic {
+  background: no-repeat center center;
+  background-size: cover;
+  border-radius: 4px;
+  height: 92px;
+  width: 92px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.events-list > ul {
+  padding-inline-start: 15px;
 }
