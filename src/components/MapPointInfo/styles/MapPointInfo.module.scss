@@ -1,5 +1,5 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  row-gap: 7px;
+@use 'src/styles/variables.module' as variables;
+
+.event-info {
+  color: variables.$secondary;
 }

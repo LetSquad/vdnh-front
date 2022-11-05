@@ -1,5 +1,13 @@
 {
   "events_one": "{{count}} 个活动正在运行",
   "events_few": "{{count}} 活动运行",
-  "events_many": "{{count}} 活动运行"
+  "events_many": "{{count}} 活动运行",
+  "trafficControl": "工作量",
+  "place": {
+    "additionalInfo": "附加信息",
+    "tickets": "门票",
+    "closingTime": "工作至",
+    "dayOff": "休假",
+    "events": "事态发展"
+  }
 }

@@ -3,5 +3,12 @@
   "events_few": "Проводится {{count}} события",
   "events_many": "Проводится {{count}} событий",
   "trafficControl": "Загруженность",
-  "loadingError": "информации об объектах"
+  "loadingError": "информации об объектах",
+  "place": {
+    "additionalInfo": "Подробная информация",
+    "tickets": "Купить билет",
+    "closingTime": "Сегодня до",
+    "dayOff": "Сегодня выходной",
+    "events": "События"
+  }
 }

@@ -1,5 +1,13 @@
 {
   "events_one": "{{count}} event running",
   "events_few": "{{count}} events running",
-  "events_many": "{{count}} events running"
+  "events_many": "{{count}} events running",
+  "trafficControl": "Traffic control",
+  "place": {
+    "additionalInfo": "Additional info",
+    "tickets": "Tickets",
+    "closingTime": "Working until",
+    "dayOff": "Day off",
+    "events": "Events"
+  }
 }

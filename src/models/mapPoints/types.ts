@@ -28,7 +28,11 @@ export interface Property {
     type: TypeLocalizations;
     icon: IconType;
     url: string;
+    ticketsUrl?: string | null;
     pic: string;
+    scheduleClosingTime: string | null;
+    scheduleDayOff: boolean | null;
+    scheduleAdditionalInfo: string[] | null;
 }
 
 export type PlaceProperty = Property & {
