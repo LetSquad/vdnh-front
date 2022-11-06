@@ -18,17 +18,17 @@ export default function AdditionalQuickFilters() {
 
     const locationPlacementOptions = useMemo(() => Object.values(LocationPlacement).map((attribute) => ({
         value: attribute,
-        displayText: t(`userRoutes:filterForm.fields.locationPlacement.${attribute.toLowerCase()}`)
+        displayText: t(`userRoutes:filterForm.fields.additional.locationPlacement.${attribute.toLowerCase()}`)
     })), [t]);
 
     const paymentOptions = useMemo(() => Object.values(Payment).map((attribute) => ({
         value: attribute,
-        displayText: t(`userRoutes:filterForm.fields.payment.${attribute.toLowerCase()}`)
+        displayText: t(`userRoutes:filterForm.fields.additional.payment.${attribute.toLowerCase()}`)
     })), [t]);
 
     const movementOptions = useMemo(() => Object.values(Movement).map((attribute) => ({
         value: attribute,
-        displayText: t(`userRoutes:filterForm.fields.movement.${attribute.toLowerCase()}`)
+        displayText: t(`userRoutes:filterForm.fields.additional.movement.${attribute.toLowerCase()}`)
     })), [t]);
 
     return (
@@ -37,14 +37,14 @@ export default function AdditionalQuickFilters() {
                 <FormField
                     name={RouteFiltersFieldsName.LOAD_FACTOR}
                     type={FormFieldType.CHECKBOX}
-                    label={t("userRoutes:filterForm.fields.loadFactor")}
+                    label={t("userRoutes:filterForm.fields.additional.loadFactor")}
                 />
             </WithSuspense>
             <WithSuspense loader={<FormFieldPlaceholder />}>
                 <FormField
                     name={RouteFiltersFieldsName.FOOD}
                     type={FormFieldType.CHECKBOX}
-                    label={t("userRoutes:filterForm.fields.food")}
+                    label={t("userRoutes:filterForm.fields.additional.food")}
                 />
             </WithSuspense>
             <WithSuspense loader={<FormFieldPlaceholder />}>

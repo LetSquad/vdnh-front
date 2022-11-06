@@ -18,8 +18,8 @@ export const supportedLocales = Object.values(SupportedLocales);
 
 export const supportedLocalesWithTitle = [
     { code: SupportedLocales.RU, title: "РУ" },
-    { code: SupportedLocales.EN, title: "EN" },
-    { code: SupportedLocales.CN, title: "简体中文" }
+    { code: SupportedLocales.CN, title: "简体中文" },
+    { code: SupportedLocales.EN, title: "EN" }
 ];
 
 export const defaultLocalesNamespaces = ["routes", "errors"];

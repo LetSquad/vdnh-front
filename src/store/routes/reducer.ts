@@ -50,6 +50,7 @@ export const routesSlice = createSlice({
         builder.addCase(getRouteRequest.pending, (state) => {
             state.isRouteLoading = true;
             state.isRouteLoadingFailed = false;
+            state.isRouteEmpty = false;
             state.routes = undefined;
             state.selectedRoute = undefined;
             state.reviewRoute = undefined;

@@ -5,9 +5,13 @@ import { EventFeature, PlaceFeature } from "@models/mapPoints/types";
 import { RootState } from "@store/index";
 
 export const selectAllMapPoints = (state: RootState) => state.mapPoints.mapPoints;
+export const selectActiveTags = (state: RootState) => state.mapPoints.activeTags;
 export const selectPlaces = createSelector(
-    [selectAllMapPoints],
-    (mapPoints) => mapPoints.filter((mapPoint) => mapPoint.properties.category === MapPointCategory.PLACE) as PlaceFeature[]
+    [selectAllMapPoints, selectActiveTags],
+    (mapPoints, activeTags) => {
+        const places = mapPoints.filter((mapPoint) => mapPoint.properties.category === MapPointCategory.PLACE) as PlaceFeature[];
+        return places.filter((mapPoint) => activeTags.includes(mapPoint.properties.tag));
+    }
 );
 export const selectEvents = createSelector(
     [selectAllMapPoints],

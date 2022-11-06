@@ -4,6 +4,7 @@ import axios, { AxiosResponse } from "axios";
 import { mapPointsUrl } from "@api/apiUrls";
 import { changeLanguage } from "@hooks/useChangeLanguage";
 import { MapPointFeature, MapPointInfo } from "@models/mapPoints/types";
+import { ExtendedTags } from "@models/places/enums";
 import { MapPointsResponse } from "@models/responses/types";
 import { localizePlace, localizePlaces } from "@store/mapPoints/utils";
 
@@ -11,6 +12,7 @@ import i18n from "@i18n";
 
 interface MapPointsState {
     mapPoints: MapPointFeature[];
+    activeTags: ExtendedTags[];
     currentMapPointInfo?: MapPointInfo;
     isMapPointsInitialState: boolean;
     isMapPointsLoading: boolean;
@@ -19,6 +21,7 @@ interface MapPointsState {
 
 const initialState: MapPointsState = {
     mapPoints: [],
+    activeTags: Object.values(ExtendedTags),
     currentMapPointInfo: undefined,
     isMapPointsInitialState: true,
     isMapPointsLoading: false,
@@ -60,6 +63,14 @@ export const mapPointsSlice = createSlice({
             });
 
             state.currentMapPointInfo = undefined;
+        },
+        setNewTag: (state, action: PayloadAction<ExtendedTags>) => {
+            const index = state.activeTags.indexOf(action.payload);
+            if (index > -1) {
+                state.activeTags.splice(index, 1);
+            } else {
+                state.activeTags = [action.payload, ...state.activeTags];
+            }
         }
     },
     extraReducers: (builder) => {
@@ -109,6 +120,6 @@ export const mapPointsSlice = createSlice({
     }
 });
 
-export const { setMapPointActive, setMapPointsUnActive } = mapPointsSlice.actions;
+export const { setMapPointActive, setMapPointsUnActive, setNewTag } = mapPointsSlice.actions;
 
 export default mapPointsSlice.reducer;

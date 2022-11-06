@@ -2,6 +2,7 @@ import { Feature, Point } from "geojson";
 
 import { Locales } from "@coreUtils/localizations/locales_constants";
 import { IconType, MapPointCategory } from "@models/mapPoints/enums";
+import { ExtendedTags } from "@models/places/enums";
 
 type TitleLocalizations = {
     [key in `title${Locales}`]: string | null;
@@ -38,6 +39,7 @@ export type PlaceProperty = Property & {
     scheduleClosingTime: string | null;
     scheduleDayOff: boolean | null;
     scheduleAdditionalInfo: string[] | null;
+    tag: ExtendedTags;
 };
 
 export type EventProperty = Property & {

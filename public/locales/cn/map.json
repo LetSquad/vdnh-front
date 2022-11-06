@@ -3,6 +3,7 @@
   "events_few": "{{count}} 活动运行",
   "events_many": "{{count}} 活动运行",
   "trafficControl": "工作量",
+  "loadingError": "有关对象的信息",
   "place": {
     "additionalInfo": "附加信息",
     "tickets": "门票",
