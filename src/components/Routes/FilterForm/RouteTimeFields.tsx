@@ -39,16 +39,6 @@ export default function RouteTimeFields() {
                     placeholder={t("userRoutes:filterForm.fields.dateEnd.placeholder")}
                     className={styles.fieldEnd}
                     minDate={value ? DateTime.fromISO(value).toJSDate() : roundedEnd.toJSDate()}
-                    minTime={
-                        value
-                            ? DateTime.fromISO(value).plus({ minute: 30 }).toJSDate()
-                            : roundedEnd.plus({ minute: 30 }).toJSDate()
-                    }
-                    maxTime={
-                        value
-                            ? DateTime.fromISO(value).set({ minute: 30, hour: 23 }).toJSDate()
-                            : roundedNow.set({ minute: 30, hour: 23 }).toJSDate()
-                    }
                 />
             </WithSuspense>
         </div>
