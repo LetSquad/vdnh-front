@@ -15,6 +15,7 @@ import mapboxgl, {
     Marker
 } from "mapbox-gl";
 import { useTranslation } from "react-i18next";
+import { useMediaQuery } from "react-responsive";
 import { useSearchParams } from "react-router-dom";
 import { Loader } from "semantic-ui-react";
 
@@ -47,6 +48,8 @@ interface MapProps {
 
 export default function Map({ mapPoints, children }: MapProps) {
     const dispatch = useAppDispatch();
+
+    const isMobile = useMediaQuery({ maxWidth: 1249 });
 
     const { t } = useTranslation("map");
 
@@ -192,7 +195,7 @@ export default function Map({ mapPoints, children }: MapProps) {
                 id: "traffic",
                 type: "heatmap",
                 source: "traffic",
-                minzoom: 14,
+                minzoom: isMobile ? 13 : 14,
                 maxzoom: 20,
                 paint: {
                     "heatmap-weight": [
@@ -203,7 +206,7 @@ export default function Map({ mapPoints, children }: MapProps) {
                     "heatmap-intensity": [
                         "interpolate", ["linear"], ["zoom"],
                         13, 0,
-                        20, 1
+                        20, 0.5
                     ],
                     "heatmap-color": [
                         "interpolate", ["linear"], ["heatmap-density"],
@@ -217,8 +220,8 @@ export default function Map({ mapPoints, children }: MapProps) {
                     ],
                     "heatmap-radius": [
                         "interpolate", ["linear"], ["zoom"],
-                        13, 50,
-                        20, 100
+                        13, isMobile ? 30 : 50,
+                        20, isMobile ? 60 : 100
                     ],
                     "heatmap-opacity": [
                         "interpolate", ["linear"], ["zoom"],
@@ -352,7 +355,7 @@ export default function Map({ mapPoints, children }: MapProps) {
                 style: "https://vdnh.ru/gis/api/rpc/get_style?style_number=1",
                 center: [37.624_13, 55.833_883],
                 zoom: 14,
-                minZoom: 14,
+                minZoom: isMobile ? 13 : 14,
                 maxZoom: 20,
                 maxBounds: new LngLatBounds([37.624_13 - 0.07, 55.833_883 - 0.04], [37.624_13 + 0.07, 55.833_883 + 0.04])
             });
