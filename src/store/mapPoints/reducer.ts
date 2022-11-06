@@ -64,8 +64,13 @@ export const mapPointsSlice = createSlice({
 
             state.currentMapPointInfo = undefined;
         },
-        setActiveTags: (state, action: PayloadAction<ExtendedTags[]>) => {
-            state.activeTags = action.payload;
+        setNewTag: (state, action: PayloadAction<ExtendedTags>) => {
+            const index = state.activeTags.indexOf(action.payload);
+            if (index > -1) {
+                state.activeTags.splice(index, 1);
+            } else {
+                state.activeTags = [action.payload, ...state.activeTags];
+            }
         }
     },
     extraReducers: (builder) => {
@@ -115,6 +120,6 @@ export const mapPointsSlice = createSlice({
     }
 });
 
-export const { setMapPointActive, setMapPointsUnActive, setActiveTags } = mapPointsSlice.actions;
+export const { setMapPointActive, setMapPointsUnActive, setNewTag } = mapPointsSlice.actions;
 
 export default mapPointsSlice.reducer;

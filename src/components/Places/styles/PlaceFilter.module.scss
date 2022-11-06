@@ -1,0 +1,6 @@
+@use 'src/components/parts/FormField/styles/CheckboxGroupField.module.scss' as *;
+
+.container {
+  @extend %checkbox-group-field;
+  flex-direction: column;
+}

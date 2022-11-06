@@ -1,0 +1,16 @@
+{
+  "nature": "Nature",
+  "art": "Art",
+  "animals": "Animals",
+  "architecture": "Architecture",
+  "moscow": "Moscow",
+  "tech": "Tech",
+  "sport": "Sport",
+  "history": "History",
+  "kids": "For kids",
+  "food": "Food",
+  "transport": "Transport",
+  "first_aid": "First aid",
+  "wc": "WC",
+  "unknown": "Without category"
+}

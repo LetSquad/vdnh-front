@@ -14,9 +14,9 @@
 }
 
 .point-right-block {
+  align-items: flex-end;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   row-gap: 5px;
 }
 

@@ -37,6 +37,8 @@ export default function DateTimePickerField({
     timeIntervals = 30,
     includeTimes,
     includeDates,
+    minTime,
+    maxTime,
     onChange: additionalOnChange
 }: DateTimePickerFieldProps) {
     const { i18n: { language } } = useTranslation();
@@ -125,6 +127,8 @@ export default function DateTimePickerField({
                 onClickOutside={resetDateValue}
                 onBlur={setTouchedTrue}
                 autoComplete="off"
+                maxTime={maxTime}
+                minTime={minTime}
             />
             {isErrorDisplay && (
                 <Label

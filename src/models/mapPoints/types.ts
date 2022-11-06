@@ -27,7 +27,6 @@ export interface Property {
     shortTitle: ShortTitleLocalizations;
     localizedType?: string | null;
     type: TypeLocalizations;
-    tag: ExtendedTags;
     icon: IconType;
     url: string;
     pic: string;
@@ -40,6 +39,7 @@ export type PlaceProperty = Property & {
     scheduleClosingTime: string | null;
     scheduleDayOff: boolean | null;
     scheduleAdditionalInfo: string[] | null;
+    tag: ExtendedTags;
 };
 
 export type EventProperty = Property & {

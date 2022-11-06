@@ -1,42 +1,43 @@
 import { useCallback, useMemo } from "react";
 
-import { Form, FormikProvider, useFormik } from "formik";
+import { useTranslation } from "react-i18next";
+import { Checkbox } from "semantic-ui-react";
 
-import ExtendedTags from "@components/Places/ExtendedTags";
 import { ExtendedTags as ExtendedTagsEnum } from "@models/places/enums";
-import { PlaceFilterFormValues } from "@models/places/types";
-import PrimaryButton from "@parts/Buttons/PrimaryButton";
-import { useAppDispatch } from "@store/hooks";
-import { setActiveTags } from "@store/mapPoints/reducer";
+import checkboxGroupStyles from "@parts/FormField/styles/CheckboxGroupField.module.scss";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { setNewTag } from "@store/mapPoints/reducer";
+import { selectActiveTags } from "@store/mapPoints/selectors";
+
+import styles from "./styles/PlaceFilter.module.scss";
 
 export default function PlaceFilter() {
     const dispatch = useAppDispatch();
 
-    const initialValues: PlaceFilterFormValues = useMemo(() => ({
-        tags: Object.values(ExtendedTagsEnum)
-    }), []);
+    const { t } = useTranslation("tags");
 
-    const filterRoutes = useCallback((values: PlaceFilterFormValues) => {
-        dispatch(setActiveTags(values.tags));
+    const tags = useAppSelector(selectActiveTags);
+
+    const filterRoutes = useCallback((newTag: ExtendedTagsEnum) => {
+        dispatch(setNewTag(newTag));
     }, [dispatch]);
 
-    const formik = useFormik<PlaceFilterFormValues>({
-        onSubmit: filterRoutes,
-        initialValues,
-        validateOnBlur: false
-    });
+    const tagsOptions = useMemo(() => Object.values(ExtendedTagsEnum).map((attribute) => ({
+        value: attribute,
+        displayText: t(`tags:${attribute.toLowerCase()}`)
+    })), [t]);
 
     return (
-        <FormikProvider value={formik}>
-            <Form onSubmit={formik.handleSubmit}>
-                <ExtendedTags />
-                <PrimaryButton
-                    type="submit"
-                    fluid
-                >
-                    Применить
-                </PrimaryButton>
-            </Form>
-        </FormikProvider>
+        <div className={styles.container}>
+            {tagsOptions.map((option) => (
+                <Checkbox
+                    className={checkboxGroupStyles.checkbox}
+                    label={option.displayText}
+                    key={option.value}
+                    onChange={() => filterRoutes(option.value)}
+                    checked={tags.includes(option.value)}
+                />
+            ))}
+        </div>
     );
 }

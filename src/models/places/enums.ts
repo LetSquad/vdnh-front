@@ -9,6 +9,8 @@ export enum ExtendedTags {
     HISTORY = "HISTORY",
     KIDS = "KIDS",
     FOOD = "FOOD",
+    TRANSAPORT = "TRANSPORT",
+    FIRST_AID = "FIRST_AID",
     WC = "WC",
     UNKNOWN = "UNKNOWN"
 }

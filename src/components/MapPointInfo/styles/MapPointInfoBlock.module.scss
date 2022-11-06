@@ -5,11 +5,10 @@
   background: variables.$white;
   border-radius: 4px;
   box-shadow: 0 0 12px rgb(0 0 0 / 4%), 0 12px 12px rgb(0 0 0 / 4%);
+  min-width: 40%;
   overflow: auto;
   padding: 30px;
   position: absolute !important;
-  min-width: 40%;
-  max-width: 100%;
   z-index: 5;
 
   @include mq($until: 1024px) {
@@ -23,6 +22,7 @@
   @include mq($from: 1025px) {
     left: variables.$header-horizontal-desktop-margin;
     max-height: calc(90vh - 2 * #{variables.$header-vertical-margin} - #{variables.$header-height-mobile} - 60px);
+    max-width: calc(100% - 2 * #{variables.$header-horizontal-desktop-margin});
     top: calc(#{variables.$header-height} + 2 * #{variables.$header-vertical-margin});
   }
 }

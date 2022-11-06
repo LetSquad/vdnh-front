@@ -1,0 +1,16 @@
+{
+  "nature": "自然",
+  "art": "艺术",
+  "animals": "动物",
+  "architecture": "架构",
+  "moscow": "莫斯科",
+  "tech": "技术",
+  "sport": "运动",
+  "history": "历史",
+  "kids": "为孩子们",
+  "food": "食物",
+  "transport": "运输",
+  "first_aid": "急救",
+  "wc": "厕所",
+  "unknown": "无类别"
+}

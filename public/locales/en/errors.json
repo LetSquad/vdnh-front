@@ -1,0 +1,9 @@
+{
+  "traffic": "There was an error while getting information about object load. Please try again later",
+  "baseError": {
+    "text": "There was an error on receipt {{errorInfo}}. ",
+    "repeatWithLink": "Try again ",
+    "repeatLink": "downloading",
+    "repeat": "Try again later"
+  }
+}

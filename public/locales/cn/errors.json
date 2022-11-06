@@ -1,0 +1,9 @@
+{
+  "traffic": "获取有关对象加载的信息时发生错误。 请稍后再试",
+  "baseError": {
+    "text": "接收时发生错误 {{errorInfo}}. ",
+    "repeatWithLink": "再试一次 ",
+    "repeatLink": "下载",
+    "repeat": "稍后再试"
+  }
+}

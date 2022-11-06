@@ -9,11 +9,11 @@ import FormField from "@parts/FormField/FormField";
 import FormFieldPlaceholder from "@parts/FormField/Placeholders/FormFieldPlaceholder";
 
 export default function Tags() {
-    const { t } = useTranslation("userRoutes");
+    const { t } = useTranslation("tags");
 
     const tagsOptions = useMemo(() => Object.values(TagsEnum).map((attribute) => ({
         value: attribute,
-        displayText: t(`userRoutes:filterForm.fields.additional.tags.${attribute.toLowerCase()}`)
+        displayText: t(`tags:${attribute.toLowerCase()}`)
     })), [t]);
 
     return (

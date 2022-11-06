@@ -1,0 +1,83 @@
+{
+  "filterButton": "Filter",
+  "routeButton": "Route",
+  "filterForm": {
+    "label": "Make your own route",
+    "fields": {
+      "dateStart": {
+        "label": "Start time of the route",
+        "placeholder": "Specify the approximate start time of the route"
+      },
+      "dateEnd": {
+        "label": "End time of the route",
+        "placeholder": "Specify the approximate time of the end of the route"
+      },
+      "peopleNumber": {
+        "label": "Number of guests",
+        "placeholder": {
+          "adult_zero": "{{count}} Adults",
+          "adult_one": "{{count}} Adult",
+          "adult_few": "{{count}} Adults",
+          "adult_many": "{{count}} Adults",
+          "kid_zero": "{{count}} Children",
+          "kid_one": "{{count}} Child",
+          "kid_few": "{{count}} Children",
+          "kid_many": "{{count}} Children"
+        },
+        "kid": {
+          "label": "Children"
+        },
+        "adult": {
+          "label": "Adults"
+        }
+      },
+      "popularity": {
+        "popular": "Popular",
+        "balanced": "Balanced",
+        "hidden": "Hidden-gem"
+      },
+      "difficulty": {
+        "easy": "Easy&Slow",
+        "medium": "Medium",
+        "hard": "Fast paced"
+      },
+      "additional": {
+        "title": "Advanced filters",
+        "food": "Eat on the way",
+        "loadFactor": "Less people",
+        "locationPlacement": {
+          "indoors": "Indoors",
+          "outside": "Outside",
+          "irrelevant": "Irrelevant"
+        },
+        "payment": {
+          "free": "Free",
+          "cheap": "Cheap",
+          "irrelevant": "Irrelevant"
+        },
+        "movement": {
+          "walking": "Walking",
+          "bicycle": "Bicycle"
+        }
+      }
+    },
+    "error": {
+      "title": "An unexpected error has occurred",
+      "content": "Rebuild the route again later"
+    },
+    "empty": {
+      "title": "Routes not found",
+      "content": "No routes were found matching the specified criteria. Try searching with other filters"
+    },
+    "submit": "Build route"
+  },
+  "routeInfo": {
+    "additionalInfo": "Additional info",
+    "reset": "Reset route",
+    "edit": "Edit route"
+  },
+  "routesPreview": {
+    "select": "Select route",
+    "text": "Route №{{count}}"
+  }
+}

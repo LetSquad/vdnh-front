@@ -41,37 +41,23 @@
         "medium": "Средний",
         "hard": "Быстрый темп"
       },
-      "food": "Перекусить по дороге",
-      "loadFactor": "Меньше людей",
-      "locationPlacement": {
-        "indoors": "В помещении",
-        "outside": "На улице",
-        "irrelevant": "Неважно"
-      },
-      "payment": {
-        "free": "Бесплатный",
-        "cheap": "Дешевый",
-        "irrelevant": "Неважно"
-      },
-      "movement": {
-        "walking": "Пеший",
-        "bicycle": "Велосипедный"
-      },
       "additional": {
         "title": "Расширенные фильтры",
-        "tags": {
-          "nature": "Природа",
-          "art": "Искусство",
-          "animals": "Животные",
-          "architecture": "Архитектура",
-          "moscow": "Москва",
-          "tech": "Технологии",
-          "sport": "Спорт",
-          "history": "История",
-          "kids": "Детям",
-          "food": "Еда",
-          "wc": "Туалеты",
-          "unknown": "Без категории"
+        "food": "Перекусить по дороге",
+        "loadFactor": "Меньше людей",
+        "locationPlacement": {
+          "indoors": "В помещении",
+          "outside": "На улице",
+          "irrelevant": "Неважно"
+        },
+        "payment": {
+          "free": "Бесплатный",
+          "cheap": "Дешевый",
+          "irrelevant": "Неважно"
+        },
+        "movement": {
+          "walking": "Пеший",
+          "bicycle": "Велосипедный"
         }
       }
     },

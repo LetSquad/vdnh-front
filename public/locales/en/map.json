@@ -3,6 +3,7 @@
   "events_few": "{{count}} events running",
   "events_many": "{{count}} events running",
   "trafficControl": "Traffic control",
+  "loadingError": "information about objects",
   "place": {
     "additionalInfo": "Additional info",
     "tickets": "Tickets",
