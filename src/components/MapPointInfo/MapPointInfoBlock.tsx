@@ -48,7 +48,7 @@ export default function MapPointInfoBlock({ mapPoint }: MapPointInfoProps) {
                 onClick={onClose}
                 className={styles.closeIcon}
             />
-            <h3>{mapPoint.properties.localizedTitle}</h3>
+            <h3 className={styles.title}>{mapPoint.properties.localizedTitle}</h3>
             <div className={styles.placeInfo}>
                 {
                     mapPoint.properties.pic
