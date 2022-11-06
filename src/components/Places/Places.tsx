@@ -1,5 +1,6 @@
 import React, { lazy } from "react";
 
+import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import { Icon } from "semantic-ui-react";
 
@@ -28,28 +29,21 @@ export default function Places() {
             <WithSuspense>
                 <Map mapPoints={places}>
                     <>
-                        {
-                            isMenuOpen
-                                ? (
-                                    <div className={styles.container}>
-                                        <Icon
-                                            className={styles.closeIcon}
-                                            name="remove"
-                                            link
-                                            onClick={closeMenu}
-                                        />
-                                        <PlaceFilter />
-                                    </div>
-                                )
-                                : (
-                                    <PrimaryButton
-                                        onClick={openMenu}
-                                        className={styles.filterButton}
-                                    >
-                                        {t("userRoutes:filterButton")}
-                                    </PrimaryButton>
-                                )
-                        }
+                        <div className={classNames(styles.container, { [styles.containerInvisible]: !isMenuOpen })}>
+                            <Icon
+                                className={styles.closeIcon}
+                                name="remove"
+                                link
+                                onClick={closeMenu}
+                            />
+                            <PlaceFilter />
+                        </div>
+                        <PrimaryButton
+                            onClick={openMenu}
+                            className={styles.filterButton}
+                        >
+                            {t("userRoutes:filterButton")}
+                        </PrimaryButton>
                         {currentPlace && <MapPointInfoBlock mapPoint={currentPlace} />}
                     </>
                 </Map>

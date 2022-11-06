@@ -23,6 +23,10 @@
     top: calc(#{variables.$header-height} + 2 * #{variables.$header-vertical-margin});
     width: 165px;
   }
+
+  &-invisible {
+    display: none;
+  }
 }
 
 .filter-button {
