@@ -13,7 +13,7 @@
 
   @include mq($until: 1024px) {
     left: variables.$header-horizontal-desktop-margin;
-    max-height: calc(100% - 2 * #{variables.$header-vertical-margin} - #{variables.$header-height-mobile} - 60px);
+    max-height: calc(100vh - 2 * #{variables.$header-vertical-margin} - #{variables.$header-height-mobile} - 60px);
     max-width: calc(100% - 2 * #{variables.$header-horizontal-mobile-margin});
     right: variables.$header-horizontal-desktop-margin;
     top: calc(#{variables.$header-height-mobile} + 2 * #{variables.$header-vertical-margin});
@@ -21,7 +21,7 @@
 
   @include mq($from: 1025px) {
     left: variables.$header-horizontal-desktop-margin;
-    max-height: calc(100% - 2 * #{variables.$header-vertical-margin} - #{variables.$header-height-mobile} - 60px);
+    max-height: calc(90vh - 2 * #{variables.$header-vertical-margin} - #{variables.$header-height-mobile} - 60px);
     top: calc(#{variables.$header-height} + 2 * #{variables.$header-vertical-margin});
   }
 }

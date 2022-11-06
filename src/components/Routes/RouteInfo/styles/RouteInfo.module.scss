@@ -1,14 +1,29 @@
+@use '~sass-mq' as *;
 @use 'src/styles/variables.module' as variables;
 
 .container {
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: overlay;
+
+  @include mq($until: 1024px) {
+    max-height: calc(90vh - #{variables.$header-height-mobile} - 3 * #{variables.$header-vertical-margin} - 40px);
+  }
+
+  @include mq($from: 1025px) {
+    max-height: calc(100vh - #{variables.$header-height} - 3 * #{variables.$header-vertical-margin} - 40px);
+  }
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
 }
 
 .button-container {
-  column-gap: 15px;
+  column-gap: 10px;
   display: flex;
-  margin-top: 5px;
+  margin: 15px 0;
 }
 
 .button {

@@ -11,7 +11,7 @@
 
   @include mq($until: 1024px) {
     left: variables.$header-horizontal-mobile-margin;
-    max-height: calc(100vh - #{variables.$header-height-mobile} - 3 * #{variables.$header-vertical-margin});
+    max-height: calc(90vh - #{variables.$header-height-mobile} - 3 * #{variables.$header-vertical-margin});
     max-width: calc(100% - 2 * #{variables.$header-horizontal-mobile-margin});
     right: variables.$header-horizontal-mobile-margin;
     top: calc(#{variables.$header-height-mobile} + 2 * #{variables.$header-vertical-margin});
