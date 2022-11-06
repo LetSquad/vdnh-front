@@ -1,0 +1,36 @@
+@use 'src/styles/variables.module' as variables;
+
+.point-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pic {
+  background: no-repeat center center;
+  background-size: cover;
+  border-radius: 4px;
+  height: 92px;
+  width: 92px;
+}
+
+.point-right-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  row-gap: 5px;
+}
+
+.type {
+  color: variables.$secondary;
+  display: block;
+  font-family: 'vl2-bold', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  line-height: 18px;
+  margin: 0 0 7px;
+  text-transform: uppercase;
+}
+
+.additional-info {
+  color: variables.$secondary;
+}

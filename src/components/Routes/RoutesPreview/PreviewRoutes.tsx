@@ -41,7 +41,7 @@ export default function PreviewRoutes() {
                     onClick={() => onChangeRoute(route)}
                     className={classNames(styles.route, { [styles.routeActive]: reviewRoute?.id === route.id })}
                 >
-                    {t("userRoutes:routesPreview.text", { count: index })}
+                    {t("userRoutes:routesPreview.text", { count: index + 1 })}
                 </div>
             ))}
             <div className={styles.buttonContainer}>

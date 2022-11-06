@@ -7,6 +7,7 @@
 
 .route {
   padding: 15px 20px;
+  cursor: pointer;
 
   &-active {
     background: variables.$border-with-opacity;
