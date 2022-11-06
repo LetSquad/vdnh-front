@@ -124,6 +124,7 @@ export default function DateTimePickerField({
                 includeDates={includeDates}
                 onClickOutside={resetDateValue}
                 onBlur={setTouchedTrue}
+                autoComplete="off"
             />
             {isErrorDisplay && (
                 <Label

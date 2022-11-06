@@ -1,3 +1,4 @@
+import { useField } from "formik";
 import { DateTime } from "luxon";
 import { useTranslation } from "react-i18next";
 
@@ -12,6 +13,8 @@ import styles from "./styles/RouteTimeFields.module.scss";
 
 export default function RouteTimeFields() {
     const { t } = useTranslation("userRoutes");
+
+    const [{ value }] = useField<string | undefined>(RouteFiltersFieldsName.DATE_TIME_START);
 
     const roundedNow = roundTimeToMinutes(DateTime.now(), 30);
     const roundedEnd = roundedNow.plus({ minute: 30 });
@@ -35,9 +38,13 @@ export default function RouteTimeFields() {
                     type={FormFieldType.DATE_TIMEPICKER}
                     placeholder={t("userRoutes:filterForm.fields.dateEnd.placeholder")}
                     className={styles.fieldEnd}
-                    minDate={roundedEnd.toJSDate()}
-                    minTime={roundedEnd.toJSDate()}
-                    maxTime={roundedNow.set({ minute: 30, hour: 23 }).toJSDate()}
+                    minDate={value ? DateTime.fromISO(value).toJSDate() : roundedEnd.toJSDate()}
+                    minTime={value ? DateTime.fromISO(value).toJSDate() : roundedEnd.toJSDate()}
+                    maxTime={
+                        value
+                            ? DateTime.fromISO(value).set({ minute: 30, hour: 23 }).toJSDate()
+                            : roundedNow.set({ minute: 30, hour: 23 }).toJSDate()
+                    }
                 />
             </WithSuspense>
         </div>
