@@ -2,6 +2,7 @@ import { Feature, Point } from "geojson";
 
 import { Locales } from "@coreUtils/localizations/locales_constants";
 import { IconType, MapPointCategory } from "@models/mapPoints/enums";
+import { ExtendedTags } from "@models/places/enums";
 
 type TitleLocalizations = {
     [key in `title${Locales}`]: string | null;
@@ -26,6 +27,7 @@ export interface Property {
     shortTitle: ShortTitleLocalizations;
     localizedType?: string | null;
     type: TypeLocalizations;
+    tag: ExtendedTags;
     icon: IconType;
     url: string;
     pic: string;
