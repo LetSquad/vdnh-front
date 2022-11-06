@@ -1,5 +1,6 @@
 import { createSelector } from "@reduxjs/toolkit";
 
+import { MapPointFeature } from "@models/mapPoints/types";
 import { RootState } from "@store/index";
 import { selectAllMapPoints } from "@store/mapPoints/selectors";
 
@@ -15,8 +16,10 @@ export const selectCurrentRoute = createSelector(
 export const selectAllCurrentRouteMapPoint = createSelector(
     [selectAllMapPoints, selectCurrentRoute],
     (mapPoints, route) => (route
-        ? mapPoints.filter((mapPoint) => (route.mapPoints.find((mapPointInfo) => (
-            mapPointInfo.id === mapPoint.id && mapPointInfo.category === mapPoint.properties.category))))
+        ? route.mapPoints
+            .map((mapPoint) => (mapPoints.find((_mapPoint) => (
+                mapPoint.id === _mapPoint.id && mapPoint.category === _mapPoint.properties.category))))
+            .filter((mapPoint) => !!mapPoint) as MapPointFeature[]
         : [])
 );
 
