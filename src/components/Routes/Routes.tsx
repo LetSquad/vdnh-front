@@ -50,6 +50,7 @@ export default function Routes() {
                                         name="remove"
                                         link
                                         onClick={closeMenu}
+                                        size="large"
                                     />
                                     <RouteMenu />
                                 </div>
