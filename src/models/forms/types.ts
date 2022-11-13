@@ -69,6 +69,7 @@ export interface TimePickerFieldProps extends BaseFieldProps {
     maxTime?: Date;
     minTime?: Date;
     timeIntervals?: number;
+    filterTime?: (date: Date) => boolean;
 }
 
 export type DateTimePickerFieldProps = BaseFieldProps & DatePickerFieldProps & TimePickerFieldProps & {
@@ -83,10 +84,3 @@ export type FormFieldProps =
     (DateTimePickerFieldProps & { type: FormFieldType.DATE_TIMEPICKER }) |
     (CheckboxGroupFieldProps & { type: FormFieldType.CHECKBOX_GROUP }) |
     (BaseFieldProps & { type: FormFieldType.CHECKBOX });
-
-export interface AccordionsFormFieldProps {
-    id: string;
-    initActiveState?: boolean;
-    accordionTitle: string;
-    fields: FormFieldProps[];
-}
