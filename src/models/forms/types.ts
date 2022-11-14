@@ -77,10 +77,25 @@ export type DateTimePickerFieldProps = BaseFieldProps & DatePickerFieldProps & T
     includeDates?: Date[];
 };
 
+export interface DropdownOption {
+    text: string;
+    value: string | number | boolean;
+    content?: string | JSX.Element;
+}
+
+export interface DropdownFieldProps extends BaseFieldProps {
+    options: DropdownOption[];
+    search?: boolean;
+    allowAdditions?: boolean;
+    clearable?: boolean;
+    multiple?: boolean;
+}
+
 export type FormFieldProps =
     (InputFieldProps & { type: FormFieldType.INPUT }) |
     (ButtonGroupFieldProps & { type: FormFieldType.BUTTON_GROUP }) |
     (InputNumberPickerFieldProps & { type: FormFieldType.NUMBER_PICKER }) |
     (DateTimePickerFieldProps & { type: FormFieldType.DATE_TIMEPICKER }) |
     (CheckboxGroupFieldProps & { type: FormFieldType.CHECKBOX_GROUP }) |
+    (DropdownFieldProps & { type: FormFieldType.DROPDOWN }) |
     (BaseFieldProps & { type: FormFieldType.CHECKBOX });

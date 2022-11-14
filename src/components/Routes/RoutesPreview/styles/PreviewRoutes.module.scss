@@ -6,8 +6,16 @@
 }
 
 .route {
+  column-gap: 5px;
   cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
   padding: 15px 20px;
+  row-gap: 5px;
+
+  &:hover {
+    background: lighten(variables.$border-with-opacity, 60);
+  }
 
   &-active {
     background: variables.$border-with-opacity;

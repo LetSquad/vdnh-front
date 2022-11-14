@@ -12,5 +12,6 @@
   "transport": "Transport",
   "first_aid": "First aid",
   "wc": "WC",
+  "entrance": "Entrances/exits",
   "unknown": "Without category"
 }

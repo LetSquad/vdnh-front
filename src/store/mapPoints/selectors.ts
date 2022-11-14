@@ -2,6 +2,7 @@ import { createSelector } from "@reduxjs/toolkit";
 
 import { MapPointCategory } from "@models/mapPoints/enums";
 import { EventFeature, PlaceFeature } from "@models/mapPoints/types";
+import { ExtendedTags } from "@models/places/enums";
 import { RootState } from "@store/index";
 
 export const selectAllMapPoints = (state: RootState) => state.mapPoints.mapPoints;
@@ -30,6 +31,11 @@ export const selectPlacesAndStandaloneEvents = createSelector(
         (mapPoint.properties.category === MapPointCategory.EVENT && mapPoint.properties.places.length === 0) ||
         (mapPoint.properties.category === MapPointCategory.PLACE)
     ))
+);
+
+export const selectAllEntrance = createSelector(
+    [selectPlaces],
+    (places) => places.filter((place) => place.properties.tag === ExtendedTags.ENTRANCE)
 );
 
 const selectPlace = (_state: RootState, place?: PlaceFeature) => place;

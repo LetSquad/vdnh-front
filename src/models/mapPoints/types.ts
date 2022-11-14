@@ -58,6 +58,11 @@ export interface EventFeature extends Feature<Point, EventProperty> {
 export type MapPointFeature = PlaceFeature | EventFeature;
 
 export interface MapPointInfo {
-    id: number,
-    category: MapPointCategory
+    id: number;
+    category: MapPointCategory;
+}
+
+export interface MapPointTimeInfo {
+    distance?: number;
+    time?: number;
 }

@@ -59,6 +59,17 @@
           "walking": "Пеший",
           "bicycle": "Велосипедный"
         }
+      },
+      "entrances": {
+        "title": "Начало и окончание маршрута",
+        "entrance": {
+          "title": "Начало маршрута",
+          "placeholder": "Выберете точку начала маршрута"
+        },
+        "exit": {
+          "title": "Окончание маршрута",
+          "placeholder": "Выберете точку окончания маршрута"
+        }
       }
     },
     "error": {
@@ -78,6 +89,15 @@
   },
   "routesPreview": {
     "select": "Выбрать маршрут",
-    "text": "Маршрут №{{count}}"
+    "text": "Маршрут №{{count}}",
+    "distance": {
+      "totalDistance": "Общее расстояние маршрута: {{distance}}",
+      "short_one": "{{count}} метр",
+      "short_few": "{{count}} метра",
+      "short_many": "{{count}} метров",
+      "long_one": "{{distance}} километр",
+      "long_few": "{{distance}} километра",
+      "long_many": "{{distance}} километров"
+    }
   }
 }

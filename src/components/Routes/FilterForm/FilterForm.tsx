@@ -3,12 +3,9 @@ import { useCallback, useMemo } from "react";
 import { FormikProvider, useFormik } from "formik";
 import { DateTime } from "luxon";
 import { useTranslation } from "react-i18next";
-import { Form, Message } from "semantic-ui-react";
+import { Form } from "semantic-ui-react";
 
-import FilterAccordion from "@components/Routes/FilterForm/AdditionalFilters/FilterAccordion";
-import PeopleNumberPicker from "@components/Routes/FilterForm/PeopleNumberPicker";
-import QuickFilters from "@components/Routes/FilterForm/QuickFilters";
-import RouteTimeFields from "@components/Routes/FilterForm/RouteTimeFields";
+import Fields from "@components/Routes/FilterForm/Fields/Fields";
 import { roundTimeToMinutes } from "@coreUtils/utils";
 import {
     Difficulty,
@@ -23,7 +20,7 @@ import { RouteFiltersFormValues } from "@models/userRoutes/types";
 import PrimaryButton from "@parts/Buttons/PrimaryButton";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { getRouteRequest } from "@store/routes/reducer";
-import { selectIsRouteEmpty, selectIsRouteLoading, selectIsRouteLoadingFailed } from "@store/routes/selectors";
+import { selectIsRouteLoading } from "@store/routes/selectors";
 
 import styles from "./styles/FilterForm.module.scss";
 
@@ -33,8 +30,6 @@ export default function FilterForm() {
     const { t } = useTranslation("userRoutes");
 
     const isRouteLoading = useAppSelector(selectIsRouteLoading);
-    const isRouteLoadingFailed = useAppSelector(selectIsRouteLoadingFailed);
-    const isRouteEmpty = useAppSelector(selectIsRouteEmpty);
 
     const initialValues = useMemo(() => {
         const roundedNow = roundTimeToMinutes(DateTime.now(), 30);
@@ -53,7 +48,9 @@ export default function FilterForm() {
             [RouteFiltersFieldsName.LOCATION_PLACEMENT]: LocationPlacement.IRRELEVANT,
             [RouteFiltersFieldsName.PAYMENT]: Payment.IRRELEVANT,
             [RouteFiltersFieldsName.MOVEMENT]: Movement.WALKING,
-            [RouteFiltersFieldsName.TAGS]: []
+            [RouteFiltersFieldsName.TAGS]: [],
+            [RouteFiltersFieldsName.ENTRANCE]: undefined,
+            [RouteFiltersFieldsName.EXIT]: undefined
         };
     }, []);
 
@@ -74,34 +71,7 @@ export default function FilterForm() {
                 className={styles.form}
             >
                 <h2 className={styles.title}>{t("userRoutes:filterForm.label")}</h2>
-                <div className={styles.fields}>
-                    <RouteTimeFields />
-                    <PeopleNumberPicker />
-                    <QuickFilters />
-                    <FilterAccordion />
-                    {(isRouteLoadingFailed || isRouteEmpty) && (
-                        <div className={styles.messageContainer}>
-                            {isRouteLoadingFailed && (
-                                <Message
-                                    visible
-                                    error
-                                    className={styles.message}
-                                    header={t("userRoutes:filterForm.error.title")}
-                                    content={t("userRoutes:filterForm.error.content")}
-                                />
-                            )}
-                            {isRouteEmpty && (
-                                <Message
-                                    visible
-                                    warning
-                                    className={styles.message}
-                                    header={t("userRoutes:filterForm.empty.title")}
-                                    content={t("userRoutes:filterForm.empty.content")}
-                                />
-                            )}
-                        </div>
-                    )}
-                </div>
+                <Fields />
                 <PrimaryButton
                     type="submit"
                     fluid

@@ -59,6 +59,17 @@
           "walking": "徒步",
           "bicycle": "自行车"
         }
+      },
+      "entrances": {
+        "title": "路线起点和终点",
+        "entrance": {
+          "title": "路线起点",
+          "placeholder": "选择路线的起点"
+        },
+        "exit": {
+          "title": "路线的尽头",
+          "placeholder": "选择路线的终点"
+        }
       }
     },
     "error": {
@@ -78,6 +89,15 @@
   },
   "routesPreview": {
     "select": "选择路线",
-    "text": "路线编号{{count}}"
+    "text": "路线编号{{count}}",
+    "distance": {
+      "totalDistance": "总路线距离: {{distance}}",
+      "short_one": "{{count}} 米",
+      "short_few": "{{count}} 米",
+      "short_many": "{{count}} 米",
+      "long_one": "{{distance}} 公里",
+      "long_few": "{{distance}} 公里",
+      "long_many": "{{distance}} 公里"
+    }
   }
 }

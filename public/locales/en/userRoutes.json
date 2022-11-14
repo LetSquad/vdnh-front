@@ -59,6 +59,17 @@
           "walking": "Walking",
           "bicycle": "Bicycle"
         }
+      },
+      "entrances": {
+        "title": "Route start and end",
+        "entrance": {
+          "title": "Route start",
+          "placeholder": "Choose the starting point of the route"
+        },
+        "exit": {
+          "title": "End of the route",
+          "placeholder": "Choose the end point of the route"
+        }
       }
     },
     "error": {
@@ -78,6 +89,15 @@
   },
   "routesPreview": {
     "select": "Select route",
-    "text": "Route №{{count}}"
+    "text": "Route №{{count}}",
+    "distance": {
+      "totalDistance": "Total route distance: {{distance}}",
+      "short_one": "{{count}} meter",
+      "short_few": "{{count}} meters",
+      "short_many": "{{count}} meters",
+      "long_one": "{{distance}} kilometer",
+      "long_few": "{{distance}} kilometers",
+      "long_many": "{{distance}} kilometers"
+    }
   }
 }
