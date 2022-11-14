@@ -4,8 +4,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
-  overflow-y: overlay;
+  row-gap: 10px;
 
   @include mq($until: 1024px) {
     max-height: calc(90vh - #{variables.$header-height-mobile} - 3 * #{variables.$header-vertical-margin} - 40px);
@@ -14,21 +13,12 @@
   @include mq($from: 1025px) {
     max-height: calc(100vh - #{variables.$header-height} - 3 * #{variables.$header-vertical-margin} - 40px);
   }
-
-  &::-webkit-scrollbar {
-    width: 0;
-  }
-}
-
-.distance {
-  font-size: 16px;
-  font-weight: bold;
 }
 
 .button-container {
   column-gap: 10px;
   display: flex;
-  margin: 15px 0;
+  flex-wrap: nowrap;
 }
 
 .button {

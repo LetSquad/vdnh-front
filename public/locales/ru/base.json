@@ -1,0 +1,25 @@
+{
+  "distance": {
+    "meters_one": "{{count}} метр",
+    "meters_few": "{{count}} метра",
+    "meters_many": "{{count}} метров",
+    "kilometers_one": "{{distance}} километр",
+    "kilometers_few": "{{distance}} километра",
+    "kilometers_many": "{{distance}} километров"
+  },
+  "time": {
+    "totalTime": "$t(base:time.hours, {\"count\": {{hours}}}) $t(base:time.minutes, {\"count\": {{minutes}}})",
+    "minutes_one": "{{count}} минута",
+    "minutes_few": "{{count}} минуты",
+    "minutes_many": "{{count}} минут",
+    "hours_one": "{{count}} час",
+    "hours_few": "{{count}} часа",
+    "hours_many": "{{count}} часов"
+  },
+  "buyTicket": "Купить билет",
+  "loyaltyProgram": {
+    "name": "Программа лояльности",
+    "getDiscount": "Получить скидку",
+    "description": "Присоединяйтесь к программе лояльности «Друзья ВДНХ» и получайте скидки в кафе и ресторанах и на покупку билетов."
+  }
+}

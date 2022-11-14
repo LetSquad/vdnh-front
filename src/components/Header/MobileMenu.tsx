@@ -3,6 +3,7 @@ import { useCallback, useMemo } from "react";
 import { Icon } from "semantic-ui-react";
 
 import { useIsOverlay, useToggleOverlay } from "@components/App/OverlayContext";
+import LoyaltyProgram from "@components/Header/LoyaltyProgram";
 import Localization from "@components/Localizations/Localization";
 import Socials from "@components/Socials/Socials";
 import { LinkWithResetPlaceActive } from "@coreUtils/LinkWithResetPlaceActive";
@@ -31,6 +32,7 @@ export default function MobileMenu() {
             <div className={styles.sidebarMenuTop}>
                 {menuOptions}
             </div>
+            <LoyaltyProgram />
             <div className={styles.sidebarMenuBottom}>
                 <div className={styles.sidebarMenuBottomContent}>
                     <div className={styles.phoneContainer}>

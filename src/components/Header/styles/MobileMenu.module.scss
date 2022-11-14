@@ -6,6 +6,8 @@
   display: block;
   margin-top: -5px;
   max-height: calc(100vh - #{variables.$header-height-mobile});
+  overflow-x: hidden;
+  overflow-y: overlay;
   position: absolute;
   width: 100%;
   z-index: 103;
@@ -46,7 +48,7 @@
   &-bottom {
     background: variables.$primary-light;
     border-radius: 0 0 4px 4px;
-    padding: 40px 16px 48px;
+    padding: 20px 16px 48px;
 
     &-content {
       float: none;

@@ -25,13 +25,21 @@ export default function RouteTimeFields() {
     const roundedNow = roundTimeToMinutes(DateTime.now(), 30);
     const roundedEnd = roundedNow.plus({ minute: 30 });
 
-    const filterPassedTime = useCallback((time: Date) => {
+    const filterEndTime = useCallback((time: Date) => {
         const startDateTime = dateTimeStart ? DateTime.fromISO(dateTimeStart) : DateTime.now();
 
         const selectedDate = DateTime.fromJSDate(time).set({ second: 0, millisecond: 0 });
 
         return selectedDate.diff(startDateTime.set({ second: 0, millisecond: 0 }), "minute").minutes >= 30;
     }, [dateTimeStart]);
+
+    const filterStartTime = useCallback((time: Date) => {
+        const now = DateTime.now();
+
+        const selectedDate = DateTime.fromJSDate(time).set({ second: 0, millisecond: 0 });
+
+        return selectedDate.diff(now.set({ second: 0, millisecond: 0 }), "minute").minutes >= 0;
+    }, []);
 
     useEffect(() => {
         if (dateTimeStart && dateTimeEnd) {
@@ -56,6 +64,7 @@ export default function RouteTimeFields() {
                     placeholder={t("userRoutes:filterForm.fields.dateStart.placeholder")}
                     className={styles.fieldStart}
                     minDate={roundedNow.toJSDate()}
+                    filterTime={filterStartTime}
                 />
             </WithSuspense>
             <WithSuspense loader={<FormFieldPlaceholder className={styles.fieldEnd} />}>
@@ -66,7 +75,7 @@ export default function RouteTimeFields() {
                     placeholder={t("userRoutes:filterForm.fields.dateEnd.placeholder")}
                     className={styles.fieldEnd}
                     minDate={dateTimeStart ? DateTime.fromISO(dateTimeStart).toJSDate() : roundedEnd.toJSDate()}
-                    filterTime={filterPassedTime}
+                    filterTime={filterEndTime}
                 />
             </WithSuspense>
         </div>

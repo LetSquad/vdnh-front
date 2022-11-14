@@ -17,12 +17,10 @@
         "placeholder": {
           "adult_zero": "{{count}} Adults",
           "adult_one": "{{count}} Adult",
-          "adult_few": "{{count}} Adults",
-          "adult_many": "{{count}} Adults",
+          "adult_other": "{{count}} Adults",
           "kid_zero": "{{count}} Children",
           "kid_one": "{{count}} Child",
-          "kid_few": "{{count}} Children",
-          "kid_many": "{{count}} Children"
+          "kid_other": "{{count}} Children"
         },
         "kid": {
           "label": "Children"
@@ -83,21 +81,29 @@
     "submit": "Build route"
   },
   "routeInfo": {
-    "additionalInfo": "Additional info",
     "reset": "Reset route",
-    "edit": "Edit route"
+    "edit": "Edit route",
+    "time": {
+      "title": "Time",
+      "total": "$t(userRoutes:routeInfo.time.hours, {\"hours\": {{hours}}) $t(userRoutes:routeInfo.time.minutes, {\"minutes\": {{minutes}})",
+      "minutes": "{{minutes}} min",
+      "hours": "{{hours}} h"
+    },
+    "distance": {
+      "title": "Distance",
+      "meters": "{{meters}} m",
+      "kilometers": "{{kilometers}} km"
+    },
+    "points": {
+      "title_one": "Point",
+      "title_other": "Points"
+    },
+    "pointInfo": {
+      "visitTime": "Average visit time: {{totalTime}}"
+    }
   },
   "routesPreview": {
     "select": "Select route",
-    "text": "Route №{{count}}",
-    "distance": {
-      "totalDistance": "Total route distance: {{distance}}",
-      "short_one": "{{count}} meter",
-      "short_few": "{{count}} meters",
-      "short_many": "{{count}} meters",
-      "long_one": "{{distance}} kilometer",
-      "long_few": "{{distance}} kilometers",
-      "long_many": "{{distance}} kilometers"
-    }
+    "text": "Route №{{count}}"
   }
 }

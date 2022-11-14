@@ -2,7 +2,7 @@ import { createAction } from "@reduxjs/toolkit";
 import { useTranslation } from "react-i18next";
 
 import { SupportedLocales, supportedLocales } from "@coreUtils/localizations/locales_constants";
-import { setLanguageToLocalStorage } from "@coreUtils/localizations/utils";
+import { setLanguageToLocalStorage } from "@coreUtils/localizations/localStorageUtils";
 import { useAppDispatch } from "@store/hooks";
 
 export function useChangeLanguage() {

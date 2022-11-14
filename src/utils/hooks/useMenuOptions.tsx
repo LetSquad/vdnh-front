@@ -10,17 +10,17 @@ import { BaseRoutesSlugs } from "@models/routes/enums";
 import { BaseRoutes } from "@routes/BaseRoutes/BaseRoutes";
 
 const Items = [{
-    localizedNameKey: BaseRoutes.EVENTS.localizeNameKey,
-    defaultName: BaseRoutes.EVENTS.defaultName,
-    url: BaseRoutesSlugs.EVENTS
+    localizedNameKey: BaseRoutes.ROUTES.localizeNameKey,
+    defaultName: BaseRoutes.ROUTES.defaultName,
+    url: BaseRoutesSlugs.ROUTES
 }, {
     localizedNameKey: BaseRoutes.PLACES.localizeNameKey,
     defaultName: BaseRoutes.PLACES.defaultName,
     url: BaseRoutesSlugs.PLACES
 }, {
-    localizedNameKey: BaseRoutes.ROUTES.localizeNameKey,
-    defaultName: BaseRoutes.ROUTES.defaultName,
-    url: BaseRoutesSlugs.ROUTES
+    localizedNameKey: BaseRoutes.EVENTS.localizeNameKey,
+    defaultName: BaseRoutes.EVENTS.defaultName,
+    url: BaseRoutesSlugs.EVENTS
 }];
 
 export function useMenuOptions(onClose?: () => void) {

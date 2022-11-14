@@ -1,0 +1,13 @@
+@use 'src/styles/variables.module' as variables;
+
+.banner {
+  background: variables.$primary-light;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 15px;
+  row-gap: 7px;
+}
+
+.description {
+  color: variables.$black;
+}

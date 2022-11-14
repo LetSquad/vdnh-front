@@ -83,21 +83,30 @@
     "submit": "撰写"
   },
   "routeInfo": {
-    "additionalInfo": "详细资料",
     "reset": "重置路线",
-    "edit": "编辑路线"
+    "edit": "编辑路线",
+    "time": {
+      "title": "时间",
+      "total": "$t(userRoutes:routeInfo.time.hours, {\"hours\": {{hours}}) $t(userRoutes:routeInfo.time.minutes, {\"minutes\": {{minutes}})",
+      "minutes": "{{minutes}}分钟",
+      "hours": "{{hours}}H"
+    },
+    "distance": {
+      "title": "距离",
+      "meters": "{{meters}}米",
+      "kilometers": "{{kilometers}}公里"
+    },
+    "points": {
+      "title_one": "分",
+      "title_few": "分",
+      "title_many": "分"
+    },
+    "pointInfo": {
+      "visitTime": "平均参观时间: {{totalTime}}"
+    }
   },
   "routesPreview": {
     "select": "选择路线",
-    "text": "路线编号{{count}}",
-    "distance": {
-      "totalDistance": "总路线距离: {{distance}}",
-      "short_one": "{{count}} 米",
-      "short_few": "{{count}} 米",
-      "short_many": "{{count}} 米",
-      "long_one": "{{distance}} 公里",
-      "long_few": "{{distance}} 公里",
-      "long_many": "{{distance}} 公里"
-    }
+    "text": "路线编号{{count}}"
   }
 }
