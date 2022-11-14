@@ -32,6 +32,24 @@ export default function PreviewRoutes() {
         dispatch(resetRoute());
     }, [dispatch]);
 
+    const distance = useCallback((route: Route) => {
+        if (!route.distance) {
+            return null;
+        }
+
+        if (route.distance < 1000) {
+            return t("userRoutes:routesPreview.distance.short", { count: route.distance });
+        }
+
+        return t(
+            "userRoutes:routesPreview.distance.long",
+            {
+                distance: Number.parseFloat((route.distance / 1000).toFixed(1)),
+                count: Math.trunc(route.distance / 1000)
+            }
+        );
+    }, [t]);
+
     return (
         <div className={styles.container}>
             {routes.map((route, index) => (
@@ -41,7 +59,8 @@ export default function PreviewRoutes() {
                     onClick={() => onChangeRoute(route)}
                     className={classNames(styles.route, { [styles.routeActive]: reviewRoute?.id === route.id })}
                 >
-                    {t("userRoutes:routesPreview.text", { count: index + 1 })}
+                    <span>{t("userRoutes:routesPreview.text", { count: index + 1 })}</span>
+                    {distance(route) && <span>{distance(route)}</span>}
                 </div>
             ))}
             <div className={styles.buttonContainer}>

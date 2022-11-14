@@ -23,6 +23,11 @@ export const selectAllCurrentRouteMapPoint = createSelector(
         : [])
 );
 
+export const selectSelectedRouteDistance = createSelector(
+    [selectSelectedRoute],
+    (route) => route?.distance
+);
+
 export const selectIsRouteLoading = (state: RootState) => state.routes.isRouteLoading;
 export const selectIsRouteLoadingFailed = (state: RootState) => state.routes.isRouteLoadingFailed;
 export const selectIsRouteEmpty = (state: RootState) => state.routes.isRouteEmpty;

@@ -46,6 +46,7 @@ createRoot(document.querySelector("#root") as Element).render(
                                             className={styles.toastDismissIcon}
                                             onClick={() => toast.dismiss(t.id)}
                                             link
+                                            size="large"
                                         />
                                     )}
                                 </>

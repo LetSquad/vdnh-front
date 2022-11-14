@@ -60,6 +60,7 @@ export default function InputField({
                             name="remove"
                             link
                             onClick={clearSearch}
+                            size="large"
                         />
                     )
                     : undefined}

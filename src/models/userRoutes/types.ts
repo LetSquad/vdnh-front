@@ -1,6 +1,6 @@
 import { LineString } from "geojson";
 
-import { MapPointInfo } from "@models/mapPoints/types";
+import { MapPointInfo, MapPointTimeInfo } from "@models/mapPoints/types";
 import {
     Difficulty,
     Movement,
@@ -15,6 +15,9 @@ export interface Route {
     id: string;
     geometry: LineString;
     mapPoints: MapPointInfo[];
+    mapPointTimes: MapPointTimeInfo[];
+    distance?: number;
+    time?: number;
 }
 
 export interface RouteFiltersFormValues {
@@ -26,6 +29,8 @@ export interface RouteFiltersFormValues {
     [RouteFiltersFieldsName.PAYMENT]: Payment;
     [RouteFiltersFieldsName.MOVEMENT]: Movement;
     [RouteFiltersFieldsName.TAGS]: Tags[];
+    [RouteFiltersFieldsName.ENTRANCE]?: number;
+    [RouteFiltersFieldsName.EXIT]?: number;
 }
 
 export interface RouteFiltersPeopleNumber {

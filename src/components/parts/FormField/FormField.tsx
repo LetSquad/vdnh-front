@@ -5,6 +5,7 @@ import { Form, Label } from "semantic-ui-react";
 import { WithSuspense } from "@coreUtils/WithSuspense";
 import { FormFieldType } from "@models/forms/enums";
 import { FormFieldProps } from "@models/forms/types";
+import DropdownField from "@parts/FormField/DropdownField";
 import FormFieldPlaceholder from "@parts/FormField/Placeholders/FormFieldPlaceholder";
 
 import Input from "../Inputs/Input";
@@ -45,6 +46,9 @@ export default function FormField({
             }
             case FormFieldType.CHECKBOX: {
                 return <CheckboxField {...props} />;
+            }
+            case FormFieldType.DROPDOWN: {
+                return <DropdownField {...props} />;
             }
             // skip default
         }

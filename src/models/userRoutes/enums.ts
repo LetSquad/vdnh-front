@@ -1,3 +1,8 @@
+export enum FormStep {
+    FILTERS,
+    ENTRANCE
+}
+
 export enum RouteFiltersFieldsName {
     DATE_TIME_START = "dateTimeStart",
     DATE_TIME_END = "dateTimeEnd",
@@ -9,7 +14,9 @@ export enum RouteFiltersFieldsName {
     FOOD = "food",
     PAYMENT = "payment",
     MOVEMENT = "movement",
-    TAGS = "tags"
+    TAGS = "tags",
+    ENTRANCE = "entrance",
+    EXIT = "exit"
 }
 
 export enum Popularity {

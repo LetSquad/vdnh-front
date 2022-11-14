@@ -1,15 +1,15 @@
-import { useTranslation } from "react-i18next";
 import { Accordion, Icon } from "semantic-ui-react";
 
-import AdditionalQuickFilters from "@components/Routes/FilterForm/AdditionalFilters/AdditionalQuickFilters";
-import Tags from "@components/Routes/FilterForm/AdditionalFilters/Tags";
 import { useToggle } from "@hooks/useToogle";
 
-import styles from "./styles/FilterAccordion.module.scss";
+import styles from "./styles/FormAccordion.module.scss";
 
-export default function FilterAccordion() {
-    const { t } = useTranslation("userRoutes");
+interface FormAccordionProps {
+    title: string;
+    children: JSX.Element[];
+}
 
+export default function FormAccordion({ title, children }: FormAccordionProps) {
     const [isOpen, toggleOpen] = useToggle();
 
     return (
@@ -22,12 +22,11 @@ export default function FilterAccordion() {
                     onClick={toggleOpen}
                 >
                     <Icon name="dropdown" />
-                    {t("userRoutes:filterForm.fields.additional.title")}
+                    {title}
                 </Accordion.Title>
                 <Accordion.Content active={isOpen}>
                     <div className={styles.accordionContent}>
-                        <AdditionalQuickFilters />
-                        <Tags />
+                        {children}
                     </div>
                 </Accordion.Content>
             </div>

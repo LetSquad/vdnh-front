@@ -12,5 +12,6 @@ export enum ExtendedTags {
     TRANSAPORT = "TRANSPORT",
     FIRST_AID = "FIRST_AID",
     WC = "WC",
+    ENTRANCE = "ENTRANCE",
     UNKNOWN = "UNKNOWN"
 }

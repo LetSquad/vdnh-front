@@ -35,6 +35,7 @@ export default function Places() {
                                 name="remove"
                                 link
                                 onClick={closeMenu}
+                                size="large"
                             />
                             <PlaceFilter />
                         </div>

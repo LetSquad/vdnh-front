@@ -39,6 +39,7 @@ export default function DateTimePickerField({
     includeDates,
     minTime,
     maxTime,
+    filterTime,
     onChange: additionalOnChange
 }: DateTimePickerFieldProps) {
     const { i18n: { language } } = useTranslation();
@@ -129,6 +130,7 @@ export default function DateTimePickerField({
                 autoComplete="off"
                 maxTime={maxTime}
                 minTime={minTime}
+                filterTime={filterTime}
             />
             {isErrorDisplay && (
                 <Label
