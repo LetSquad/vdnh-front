@@ -1,0 +1,61 @@
+@use 'src/styles/variables.module' as variables;
+@use '~sass-mq' as *;
+
+.container {
+  animation-duration: 0.6s;
+  animation-fill-mode: forwards;
+  animation-name: anim_in;
+  display: flex;
+  visibility: visible;
+}
+
+.info {
+  background: variables.$primary-light;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 8px;
+  width: 50%;
+
+  @include mq($until: 1024px) {
+    padding: 6px 8px 10px;
+  }
+
+  @include mq($from: 1025px) {
+    padding: 6px 16px 16px;
+  }
+
+  &-value {
+    color: variables.$black;
+    font-family: 'vl2', sans-serif;
+    margin: 0 0 2px;
+    text-transform: lowercase;
+
+    @include mq($until: 1024px) {
+      font-size: 20px;
+      line-height: 24px;
+    }
+
+    @include mq($from: 1025px) {
+      font-size: 30px;
+      line-height: 40px;
+    }
+  }
+
+  &-title {
+    color: variables.$semi-light-text;
+    font-weight: 500;
+
+    @include mq($until: 1024px) {
+      font-size: 14px;
+      letter-spacing: 0.3px;
+      line-height: 15px;
+    }
+
+    @include mq($from: 1025px) {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+}

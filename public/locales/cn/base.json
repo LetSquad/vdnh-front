@@ -1,0 +1,25 @@
+{
+  "distance": {
+    "meters_one": "{{count}}米",
+    "meters_few": "{{count}}米",
+    "meters_many": "{{count}}米",
+    "kilometers_one": "{{distance}}公里",
+    "kilometers_few": "{{distance}}公里",
+    "kilometers_many": "{{distance}}公里"
+  },
+  "time": {
+    "totalTime": "$t(base:time.hours, {\"count\": {{hours}}})$t(base:time.minutes, {\"count\": {{minutes}}})",
+    "minutes_one": "{{count}}分钟",
+    "minutes_few": "{{count}}分钟",
+    "minutes_many": "{{count}}分钟",
+    "hours_one": "{{count}}小时",
+    "hours_few": "{{count}}小时",
+    "hours_many": "{{count}}小时"
+  },
+  "buyTicket": "买票",
+  "loyaltyProgram": {
+    "name": "忠诚计划",
+    "getDiscount": "获得折扣",
+    "description": "加入“国经成就展之友”忠诚度计划，在咖啡馆和餐厅以及购票时享受折扣."
+  }
+}

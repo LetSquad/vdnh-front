@@ -1,0 +1,21 @@
+{
+  "distance": {
+    "meters_one": "{{count}} meter",
+    "meters_other": "{{count}} meters",
+    "kilometers_one": "{{distance}} kilometer",
+    "kilometers_other": "{{distance}} kilometers"
+  },
+  "time": {
+    "totalTime": "$t(base:time.hours, {\"count\": {{hours}}}) $t(base:time.minutes, {\"count\": {{minutes}}})",
+    "minutes_one": "{{count}} minute",
+    "minutes_other": "{{count}} minutes",
+    "hours_one": "{{count}} hour",
+    "hours_other": "{{count}} hours"
+  },
+  "buyTicket": "Buy ticket",
+  "loyaltyProgram": {
+    "name": "Loyalty program",
+    "getDiscount": "Get a discount",
+    "description": "Join the «Friends of VDNH» loyalty program and get discounts in cafes and restaurants and on ticket purchases."
+  }
+}

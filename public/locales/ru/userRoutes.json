@@ -83,21 +83,30 @@
     "submit": "Составить"
   },
   "routeInfo": {
-    "additionalInfo": "Подробная информация",
     "reset": "Сбросить маршрут",
-    "edit": "Редактировать маршрут"
+    "edit": "Редактировать маршрут",
+    "time": {
+      "title": "Время",
+      "total": "$t(userRoutes:routeInfo.time.hours, {\"hours\": {{hours}}) $t(userRoutes:routeInfo.time.minutes, {\"minutes\": {{minutes}})",
+      "minutes": "{{minutes}} мин",
+      "hours": "{{hours}} ч"
+    },
+    "distance": {
+      "title": "Расстояние",
+      "meters": "{{meters}} м",
+      "kilometers": "{{kilometers}} км"
+    },
+    "points": {
+      "title_one": "Точка",
+      "title_few": "Точек",
+      "title_many": "Точек"
+    },
+    "pointInfo": {
+      "visitTime": "Среднее время посещения: {{totalTime}}"
+    }
   },
   "routesPreview": {
     "select": "Выбрать маршрут",
-    "text": "Маршрут №{{count}}",
-    "distance": {
-      "totalDistance": "Общее расстояние маршрута: {{distance}}",
-      "short_one": "{{count}} метр",
-      "short_few": "{{count}} метра",
-      "short_many": "{{count}} метров",
-      "long_one": "{{distance}} километр",
-      "long_few": "{{distance}} километра",
-      "long_many": "{{distance}} километров"
-    }
+    "text": "Маршрут №{{count}}"
   }
 }

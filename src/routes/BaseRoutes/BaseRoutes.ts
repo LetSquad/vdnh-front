@@ -8,11 +8,11 @@ const Places = lazy(/* webpackChunkName: "Places" */ () => import("@components/P
 const Routes = lazy(/* webpackChunkName: "Routes" */ () => import("@components/Routes/Routes"));
 
 export const BaseRoutes: PageType = {
-    EVENTS: {
-        localizeNameKey: "routes:events",
-        defaultName: "События",
-        slug: BaseRoutesSlugs.EVENTS,
-        component: Events
+    ROUTES: {
+        localizeNameKey: "routes:routes",
+        defaultName: "Маршруты",
+        slug: BaseRoutesSlugs.ROUTES,
+        component: Routes
     },
     PLACES: {
         localizeNameKey: "routes:places",
@@ -20,10 +20,10 @@ export const BaseRoutes: PageType = {
         slug: BaseRoutesSlugs.PLACES,
         component: Places
     },
-    ROUTES: {
-        localizeNameKey: "routes:routes",
-        defaultName: "Маршруты",
-        slug: BaseRoutesSlugs.ROUTES,
-        component: Routes
+    EVENTS: {
+        localizeNameKey: "routes:events",
+        defaultName: "События",
+        slug: BaseRoutesSlugs.EVENTS,
+        component: Events
     }
 };

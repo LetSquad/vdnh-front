@@ -1,36 +1,195 @@
+@use '~sass-mq' as *;
 @use 'src/styles/variables.module' as variables;
+
+.container {
+  background: variables.$primary-light;
+  border-radius: 4px;
+}
+
+.order {
+  border-bottom: solid 1px variables.$border-with-opacity;
+  color: variables.$semi-light-text;
+  cursor: pointer;
+  position: relative;
+  transition: 0.3s background-color;
+
+  @include mq($until: 1024px) {
+    font-size: 16px;
+    line-height: 24px;
+    min-height: 48px;
+    padding: 12px 16px 12px 52px;
+  }
+
+  @include mq($from: 1025px) {
+    font-size: 18px;
+    line-height: 24px;
+    min-height: 64px;
+    padding: 20px 16px 20px 64px;
+  }
+
+  &:hover {
+    background: darken(variables.$primary-light, 5);
+    border-radius: 4px;
+  }
+
+  &::before {
+    background: variables.$secondary;
+    border-radius: 50%;
+    color: variables.$white;
+    content: attr(data-num);
+    display: block;
+    font-weight: bold;
+    position: absolute;
+    text-align: center;
+
+    @include mq($until: 1024px) {
+      font-size: 10px;
+      height: 24px;
+      left: 16px;
+      line-height: 24px;
+      top: 12px;
+      width: 24px;
+    }
+
+    @include mq($from: 1025px) {
+      font-size: 14px;
+      height: 32px;
+      left: 16px;
+      line-height: 32px;
+      top: 16px;
+      width: 32px;
+    }
+  }
+}
 
 .point-info {
   display: flex;
   justify-content: space-between;
+  position: relative;
+
+  @include mq($until: 1024px) {
+    min-height: 124px;
+    padding: 12px;
+  }
+
+  @include mq($from: 1025px) {
+    min-height: 200px;
+    padding: 16px;
+  }
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+  }
 }
 
 .pic {
-  background: no-repeat center center;
-  background-size: cover;
+  align-self: center;
   border-radius: 4px;
-  height: 92px;
-  width: 92px;
-}
 
-.point-right-block {
-  align-items: flex-end;
-  display: flex;
-  flex-direction: column;
-  row-gap: 5px;
+  @include mq($until: 1024px) {
+    height: 92px;
+    width: 92px;
+  }
+
+  @include mq($from: 1025px) {
+    width: 160px;
+  }
 }
 
 .type {
   color: variables.$secondary;
-  display: block;
+  display: inline-block;
   font-family: 'vl2-bold', sans-serif;
   font-size: 11px;
   letter-spacing: 0.04em;
-  line-height: 18px;
-  margin: 0 0 7px;
+  margin-bottom: 7px;
   text-transform: uppercase;
+
+  @include mq($until: 1024px) {
+    line-height: 18px;
+  }
+
+  @include mq($from: 1025px) {
+    line-height: 24px;
+  }
 }
 
-.additional-info {
-  color: variables.$secondary;
+.title,
+%route-point-title {
+  color: variables.$black;
+  display: block;
+  font-weight: 500;
+  margin-bottom: 10px;
+
+  @include mq($until: 1024px) {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  @include mq($from: 1025px) {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  &-with-margin {
+    @extend %route-point-title;
+    margin-bottom: 18px;
+  }
+}
+
+.visit-time,
+%route-point-visit-time {
+  color: variables.$text;
+  display: block;
+  font-weight: 500;
+
+  @include mq($until: 1024px) {
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  @include mq($from: 1025px) {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  &-with-margin {
+    @extend %route-point-visit-time;
+    margin-bottom: 18px;
+  }
+}
+
+.transition {
+  align-items: center;
+  color: variables.$semi-light-text;
+  column-gap: 10px;
+  display: flex;
+  line-height: 24px;
+
+  @include mq($until: 1024px) {
+    font-size: 16px;
+  }
+
+  @include mq($from: 1025px) {
+    font-size: 18px;
+  }
+}
+
+.description {
+  border-top: solid 1px variables.$border-with-opacity;
+  color: variables.$black;
+
+  @include mq($until: 1024px) {
+    font-size: 16px;
+    line-height: 24px;
+    padding: 16px;
+  }
+
+  @include mq($from: 1025px) {
+    font-size: 18px;
+    line-height: 24px;
+    padding: 16px;
+  }
 }

@@ -1,0 +1,7 @@
+@use 'src/styles/variables.module' as variables;
+
+.link {
+  color: variables.$secondary;
+  cursor: pointer;
+  margin-left: 5px;
+}

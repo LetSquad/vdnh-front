@@ -35,11 +35,13 @@ export interface Property {
 export type PlaceProperty = Property & {
     category: MapPointCategory.PLACE;
     events: number[],
-    ticketsUrl?: string | null;
-    scheduleClosingTime: string | null;
-    scheduleDayOff: boolean | null;
-    scheduleAdditionalInfo: string[] | null;
+    ticketsUrl?: string;
+    scheduleClosingTime?: string;
+    scheduleDayOff?: boolean;
+    scheduleAdditionalInfo?: string[];
+    visitTime?: number;
     tag: ExtendedTags;
+    descriptionLocalized?: string;
 };
 
 export type EventProperty = Property & {
@@ -57,9 +59,14 @@ export interface EventFeature extends Feature<Point, EventProperty> {
 
 export type MapPointFeature = PlaceFeature | EventFeature;
 
+type DescriptionLocalizations = {
+    [key in `description${Locales}`]: string | null;
+};
+
 export interface MapPointInfo {
     id: number;
     category: MapPointCategory;
+    description?: DescriptionLocalizations;
 }
 
 export interface MapPointTimeInfo {

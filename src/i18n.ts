@@ -3,7 +3,7 @@ import Backend from "i18next-http-backend";
 import { initReactI18next } from "react-i18next";
 
 import { defaultLocale, defaultLocalesNamespaces, supportedLocales } from "@coreUtils/localizations/locales_constants";
-import { getLanguageFromLocalStorage } from "@coreUtils/localizations/utils";
+import { getLanguageFromLocalStorage } from "@coreUtils/localizations/localStorageUtils";
 
 i18n
     .use(initReactI18next)

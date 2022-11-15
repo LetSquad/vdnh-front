@@ -22,4 +22,4 @@ export const supportedLocalesWithTitle = [
     { code: SupportedLocales.EN, title: "EN" }
 ];
 
-export const defaultLocalesNamespaces = ["routes", "errors"];
+export const defaultLocalesNamespaces = ["routes", "errors", "base"];
