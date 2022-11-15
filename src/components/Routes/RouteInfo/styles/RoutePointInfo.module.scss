@@ -94,6 +94,7 @@
   }
 
   @include mq($from: 1025px) {
+    height: 160px;
     width: 160px;
   }
 }

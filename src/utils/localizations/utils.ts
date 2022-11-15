@@ -1,19 +1,22 @@
 import i18n from "@i18n";
 
+const KILOMETER = 1000;
+const HOUR = 60;
+
 export function getDistanceLocalization(distance?: number) {
     if (!distance) {
         return null;
     }
 
-    if (distance < 1000) {
+    if (distance < KILOMETER) {
         return i18n.t("base:distance.meters", { count: Number.parseInt((distance).toFixed(0), 10) });
     }
 
     return i18n.t(
         "base:distance.kilometers",
         {
-            distance: Number.parseFloat((distance / 1000).toFixed(1)),
-            count: Math.trunc(distance / 1000)
+            distance: Number.parseFloat((distance / KILOMETER).toFixed(1)),
+            count: Math.trunc(distance / KILOMETER)
         }
     );
 }
@@ -23,19 +26,19 @@ export function getTimeLocalization(time?: number) {
         return null;
     }
 
-    const minutesRouteTime = Number.parseInt((time / 60).toFixed(0), 10);
+    const minutesRouteTime = Number.parseInt((time / HOUR).toFixed(0), 10);
 
-    if (minutesRouteTime < 60) {
+    if (minutesRouteTime < HOUR) {
         return i18n.t("base:time.minutes", { count: minutesRouteTime });
     }
 
-    const hours = Math.trunc(minutesRouteTime / 60);
+    const hours = Math.trunc(minutesRouteTime / HOUR);
 
     return i18n.t(
         "base:time.totalTime",
         {
-            minutes: minutesRouteTime - hours * 60,
-            hours: Math.trunc(minutesRouteTime / 60)
+            minutes: minutesRouteTime - hours * HOUR,
+            hours: Math.trunc(minutesRouteTime / HOUR)
         }
     );
 }
