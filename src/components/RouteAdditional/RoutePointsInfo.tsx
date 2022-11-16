@@ -11,12 +11,21 @@ import styles from "./styles/RoutePointsInfo.module.scss";
 interface RoutePointsInfoProps {
     mapPoints: MapPointFeature[];
     route: Route;
-    withOverflow?: boolean
+    withOverflow?: boolean;
+    withPadding?: boolean;
 }
 
-export default function RoutePointsInfo({ mapPoints, route, withOverflow = true }: RoutePointsInfoProps) {
+export default function RoutePointsInfo({
+    mapPoints, route, withOverflow = true, withPadding = false
+}: RoutePointsInfoProps) {
     return useMemo(() => (
-        <div className={classNames({ [styles.containerWithOverflow]: withOverflow, [styles.container]: !withOverflow })}>
+        <div
+            className={classNames({
+                [styles.containerWithOverflow]: withOverflow,
+                [styles.container]: !withOverflow && !withPadding,
+                [styles.containerWithPadding]: withPadding
+            })}
+        >
             {
                 mapPoints.map((mapPoint, i) => {
                     const mapPointTimeInfo = i < mapPoints.length - 1
@@ -34,5 +43,5 @@ export default function RoutePointsInfo({ mapPoints, route, withOverflow = true 
                 })
             }
         </div>
-    ), [mapPoints, route, withOverflow]);
+    ), [mapPoints, route, withOverflow, withPadding]);
 }

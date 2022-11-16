@@ -13,5 +13,10 @@
       width: 0;
     }
   }
+
+  &-with-padding {
+    @extend %route-points-info-container;
+    padding-bottom: 20px;
+  }
 }
 
