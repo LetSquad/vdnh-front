@@ -61,13 +61,17 @@ export default function DateTimePickerField({
     }, [additionalOnChange, formatJSDate, setValue]);
 
     const resetDateValue = useCallback(() => {
-        if (includeTimes && value) {
+        if (value) {
             const valueDate = DateTime.fromISO(value);
-            if (!includeTimes.some((includeTime) => DateTime.fromJSDate(includeTime) === valueDate)) {
+
+            if (
+                (includeTimes && !includeTimes.some((includeTime) => DateTime.fromJSDate(includeTime) === valueDate)) ||
+                (filterTime && !filterTime(new Date(value)))
+            ) {
                 setValue(undefined);
             }
         }
-    }, [includeTimes, setValue, value]);
+    }, [filterTime, includeTimes, setValue, value]);
 
     const includesTimesInDay = useMemo(
         () => {

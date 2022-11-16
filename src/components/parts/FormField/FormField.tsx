@@ -5,7 +5,6 @@ import { Form, Label } from "semantic-ui-react";
 import { WithSuspense } from "@coreUtils/WithSuspense";
 import { FormFieldType } from "@models/forms/enums";
 import { FormFieldProps } from "@models/forms/types";
-import DropdownField from "@parts/FormField/DropdownField";
 import FormFieldPlaceholder from "@parts/FormField/Placeholders/FormFieldPlaceholder";
 
 import Input from "../Inputs/Input";
@@ -17,6 +16,7 @@ const DateTimePickerField = lazy(/* webpackChunkName: "DateTimePickerField" */ (
 const ButtonGroupField = lazy(/* webpackChunkName: "ButtonGroupField" */ () => import("./ButtonGroupField"));
 const CheckboxGroupField = lazy(/* webpackChunkName: "CheckboxGroupField" */ () => import("./CheckboxGroupField"));
 const CheckboxField = lazy(/* webpackChunkName: "CheckboxField" */ () => import("./CheckboxField"));
+const DropdownField = lazy(/* webpackChunkName: "DropdownField" */ () => import("./DropdownField"));
 
 export default function FormField({
     defaultValue,

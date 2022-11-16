@@ -1,4 +1,5 @@
 import { MapPointFeature } from "@models/mapPoints/types";
+import { PreparedRouteInfo } from "@models/preparedRoutes/types";
 import { TrafficFeature } from "@models/traffic/types";
 import { Route } from "@models/userRoutes/types";
 
@@ -15,6 +16,10 @@ export type MapPointsResponse = {
 
 export type RouteResponse = {
     mapData: Route[];
+} & BaseResponse;
+
+export type PreparedRoutesResponse = {
+    mapData: PreparedRouteInfo[];
 } & BaseResponse;
 
 export type TrafficResponse = {

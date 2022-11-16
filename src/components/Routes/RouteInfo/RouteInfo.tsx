@@ -2,14 +2,15 @@ import { useCallback, useMemo } from "react";
 
 import { useTranslation } from "react-i18next";
 
-import RouteAdditionalInfo from "@components/Routes/RouteInfo/RouteAdditionalInfo";
-import RoutePointsInfo from "@components/Routes/RouteInfo/RoutePointsInfo";
+import RouteAdditionalInfo from "@components/RouteAdditional/RouteAdditionalInfo";
+import RoutePointsInfo from "@components/RouteAdditional/RoutePointsInfo";
 import { MapPointCategory } from "@models/mapPoints/enums";
+import { Route } from "@models/userRoutes/types";
 import PrimaryButton from "@parts/Buttons/PrimaryButton";
 import SecondaryButton from "@parts/Buttons/SecondaryButton";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { resetRoute } from "@store/routes/reducer";
-import { selectAllCurrentRouteMapPoint } from "@store/routes/selectors";
+import { selectAllCurrentRouteMapPoint, selectSelectedRoute } from "@store/routes/selectors";
 
 import styles from "./styles/RouteInfo.module.scss";
 
@@ -19,6 +20,7 @@ export default function RouteInfo() {
     const { t } = useTranslation("userRoutes");
 
     const mapPoints = useAppSelector(selectAllCurrentRouteMapPoint);
+    const route = useAppSelector(selectSelectedRoute) as Route;
 
     const reset = useCallback(() => {
         dispatch(resetRoute());
@@ -37,8 +39,11 @@ export default function RouteInfo() {
 
     return (
         <div className={styles.container}>
-            <RouteAdditionalInfo />
-            <RoutePointsInfo />
+            <RouteAdditionalInfo route={route} />
+            <RoutePointsInfo
+                mapPoints={mapPoints}
+                route={route}
+            />
             <div className={styles.buttonContainer}>
                 <SecondaryButton
                     className={styles.button}

@@ -14,6 +14,10 @@ const Items = [{
     defaultName: BaseRoutes.ROUTES.defaultName,
     url: BaseRoutesSlugs.ROUTES
 }, {
+    localizedNameKey: BaseRoutes.PREPARED_ROUTES.localizeNameKey,
+    defaultName: BaseRoutes.PREPARED_ROUTES.defaultName,
+    url: BaseRoutesSlugs.PREPARED_ROUTES
+}, {
     localizedNameKey: BaseRoutes.PLACES.localizeNameKey,
     defaultName: BaseRoutes.PLACES.defaultName,
     url: BaseRoutesSlugs.PLACES

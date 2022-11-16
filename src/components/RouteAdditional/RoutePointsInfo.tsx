@@ -1,17 +1,22 @@
 import { useMemo } from "react";
 
-import RoutePointInfo from "@components/Routes/RouteInfo/RoutePointInfo";
-import { useAppSelector } from "@store/hooks";
-import { selectAllCurrentRouteMapPoint, selectSelectedRoute } from "@store/routes/selectors";
+import classNames from "classnames";
+
+import RoutePointInfo from "@components/RouteAdditional/RoutePointInfo";
+import { MapPointFeature } from "@models/mapPoints/types";
+import { Route } from "@models/userRoutes/types";
 
 import styles from "./styles/RoutePointsInfo.module.scss";
 
-export default function RoutePointsInfo() {
-    const mapPoints = useAppSelector(selectAllCurrentRouteMapPoint);
-    const route = useAppSelector(selectSelectedRoute);
+interface RoutePointsInfoProps {
+    mapPoints: MapPointFeature[];
+    route: Route;
+    withOverflow?: boolean
+}
 
+export default function RoutePointsInfo({ mapPoints, route, withOverflow = true }: RoutePointsInfoProps) {
     return useMemo(() => (
-        <div className={styles.container}>
+        <div className={classNames({ [styles.containerWithOverflow]: withOverflow, [styles.container]: !withOverflow })}>
             {
                 mapPoints.map((mapPoint, i) => {
                     const mapPointTimeInfo = i < mapPoints.length - 1
@@ -23,10 +28,11 @@ export default function RoutePointsInfo() {
                             key={mapPoint.id}
                             mapPoint={mapPoint}
                             mapPointTimeInfo={mapPointTimeInfo}
+                            route={route}
                         />
                     );
                 })
             }
         </div>
-    ), [mapPoints, route?.mapPointTimes]);
+    ), [mapPoints, route, withOverflow]);
 }

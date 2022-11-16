@@ -1,0 +1,17 @@
+.container,
+%route-points-info-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+
+  &-with-overflow {
+    @extend %route-points-info-container;
+    overflow-x: hidden;
+    overflow-y: overlay;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+}
+

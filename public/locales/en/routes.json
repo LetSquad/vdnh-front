@@ -1,5 +1,7 @@
 {
   "events": "Events",
   "places": "Places",
-  "routes": "Routes"
+  "routes": "Routes",
+  "preparedRoutes": "Thematic routes",
+  "preparedRoute": "Thematic route"
 }

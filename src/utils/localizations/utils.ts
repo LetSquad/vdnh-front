@@ -33,12 +33,17 @@ export function getTimeLocalization(time?: number) {
     }
 
     const hours = Math.trunc(minutesRouteTime / HOUR);
+    const minutes = minutesRouteTime - hours * HOUR;
+
+    if (minutes === 0) {
+        return i18n.t("base:time.hours", { count: hours });
+    }
 
     return i18n.t(
         "base:time.totalTime",
         {
-            minutes: minutesRouteTime - hours * HOUR,
-            hours: Math.trunc(minutesRouteTime / HOUR)
+            minutes,
+            hours
         }
     );
 }
