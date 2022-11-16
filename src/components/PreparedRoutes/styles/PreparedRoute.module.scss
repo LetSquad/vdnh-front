@@ -1,7 +1,8 @@
 @use '~sass-mq' as *;
 @use 'src/styles/variables.module' as variables;
 
-.container {
+.container,
+%prepared-route-container {
   background: variables.$white;
   border-radius: 4px;
   box-shadow: 0 0 12px rgb(0 0 0 / 4%), 0 12px 12px rgb(0 0 0 / 4%);
@@ -24,9 +25,15 @@
     top: calc(#{variables.$header-height} + 2 * #{variables.$header-vertical-margin});
     width: 525px;
   }
+
+  &-hidden {
+    @extend %prepared-route-container;
+    display: none;
+  }
 }
 
-.open-button {
+.open-button,
+%prepared-route-open-button {
   position: absolute;
   z-index: 4;
 
@@ -39,6 +46,18 @@
     left: variables.$header-horizontal-desktop-margin;
     top: calc(#{variables.$header-height} +  2 * #{variables.$header-vertical-margin});
   }
+
+  &-hidden {
+    @extend %prepared-route-open-button;
+    display: none;
+  }
+}
+
+.loader-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 50px;
 }
 
 .close-icon {

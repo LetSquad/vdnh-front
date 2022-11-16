@@ -62,9 +62,10 @@ export default function PreparedRouteInfo() {
                     </span>
                 </div>
                 <RouteAdditionalInfo route={route.route} />
-                <Entrances />
+                <Entrances routeId={route.id} />
                 <RoutePointsInfo
                     withOverflow={false}
+                    withPadding
                     mapPoints={mapPoints}
                     route={route.route}
                 />

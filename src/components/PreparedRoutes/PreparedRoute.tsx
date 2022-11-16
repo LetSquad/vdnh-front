@@ -1,5 +1,6 @@
 import React, { lazy, useCallback, useEffect } from "react";
 
+import classNames from "classnames";
 import { toast } from "react-hot-toast";
 import { useTranslation } from "react-i18next";
 import {
@@ -67,7 +68,7 @@ export default function PreparedRoute() {
 
         if (searchParams.get("entrance")) {
             const entrance = searchParams.get("entrance");
-            if (Number.isNaN(entrance)) {
+            if (!Number.isNaN(entrance)) {
                 requestData.entrance = Number.parseInt(entrance as string, 10);
             } else {
                 searchParams.delete("entrance");
@@ -76,7 +77,7 @@ export default function PreparedRoute() {
 
         if (searchParams.get("exit")) {
             const exit = searchParams.get("exit");
-            if (Number.isNaN(exit)) {
+            if (!Number.isNaN(exit)) {
                 requestData.exit = Number.parseInt(exit as string, 10);
             } else {
                 searchParams.delete("exit");
@@ -93,17 +94,6 @@ export default function PreparedRoute() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    if (isCurrentPreparedRouteLoading) {
-        return (
-            <div className={basePartStyles.flexBaseCenterContainer}>
-                <Loader
-                    active
-                    inline="centered"
-                />
-            </div>
-        );
-    }
-
     if (isCurrentPreparedRouteLoadingFailed) {
         return (
             <LoadingErrorBlock
@@ -117,10 +107,18 @@ export default function PreparedRoute() {
         <div className={basePartStyles.baseContainer}>
             <WithSuspense>
                 <Map mapPoints={mapPoints}>
-                    {
-                        isMenuOpen
+                    <div className={classNames({ [styles.container]: isMenuOpen, [styles.containerHidden]: !isMenuOpen })}>
+                        {isCurrentPreparedRouteLoading
                             ? (
-                                <div className={styles.container}>
+                                <div className={styles.loaderContainer}>
+                                    <Loader
+                                        active
+                                        inline="centered"
+                                    />
+                                </div>
+                            )
+                            : (
+                                <>
                                     <Icon
                                         className={styles.arrowIcon}
                                         name="arrow left"
@@ -136,17 +134,15 @@ export default function PreparedRoute() {
                                         size="large"
                                     />
                                     <PreparedRouteInfo />
-                                </div>
-                            )
-                            : (
-                                <PrimaryButton
-                                    onClick={openMenu}
-                                    className={styles.openButton}
-                                >
-                                    {t("userRoutes:routeButton")}
-                                </PrimaryButton>
-                            )
-                    }
+                                </>
+                            )}
+                    </div>
+                    <PrimaryButton
+                        onClick={openMenu}
+                        className={classNames({ [styles.openButtonHidden]: isMenuOpen, [styles.openButton]: !isMenuOpen })}
+                    >
+                        {t("userRoutes:routeButton")}
+                    </PrimaryButton>
                 </Map>
             </WithSuspense>
         </div>
