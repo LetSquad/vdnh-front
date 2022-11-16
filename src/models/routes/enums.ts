@@ -3,5 +3,5 @@ export enum BaseRoutesSlugs {
     PLACES = "/places",
     ROUTES = "/routes",
     PREPARED_ROUTES = "/prepared-routes",
-    PREPARED_ROUTE = "/prepared-route/:routeId"
+    PREPARED_ROUTE = "/prepared-routes/:routeId"
 }
