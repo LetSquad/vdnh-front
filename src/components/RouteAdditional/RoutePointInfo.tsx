@@ -9,11 +9,10 @@ import { getDistanceLocalization, getTimeLocalization } from "@coreUtils/localiz
 import { capitalizeFirstLetter } from "@coreUtils/utils";
 import { MapPointCategory } from "@models/mapPoints/enums";
 import { MapPointFeature, MapPointTimeInfo } from "@models/mapPoints/types";
+import { Route } from "@models/userRoutes/types";
 import PrimaryButton from "@parts/Buttons/PrimaryButton";
 import ReadMore from "@parts/ReadMore/ReadMore";
 import distanceRoute from "@static/images/svg/distance-route.svg";
-import { useAppSelector } from "@store/hooks";
-import { selectSelectedRoute } from "@store/routes/selectors";
 
 import styles from "./styles/RoutePointInfo.module.scss";
 
@@ -21,12 +20,13 @@ interface RoutePointInfoProps {
     order: number;
     mapPoint: MapPointFeature;
     mapPointTimeInfo?: MapPointTimeInfo;
+    route: Route;
 }
 
-export default function RoutePointInfo({ order, mapPoint, mapPointTimeInfo }: RoutePointInfoProps) {
+export default function RoutePointInfo({
+    order, mapPoint, mapPointTimeInfo, route
+}: RoutePointInfoProps) {
     const { t, i18n: { language } } = useTranslation(["base", "userRoutes"]);
-
-    const route = useAppSelector(selectSelectedRoute);
 
     const map = useMap();
 

@@ -1,5 +1,7 @@
 {
   "events": "活动",
   "places": "地方",
-  "routes": "路线"
+  "routes": "路线",
+  "preparedRoutes": "专题路线",
+  "preparedRoute": "专题路线"
 }

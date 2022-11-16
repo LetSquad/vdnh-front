@@ -1,0 +1,54 @@
+@use '~sass-mq' as *;
+@use 'src/styles/variables.module' as variables;
+
+.container {
+  background: variables.$primary;
+
+  @include mq($until: 1024px) {
+    padding: calc(2 * #{variables.$header-vertical-margin} + #{variables.$header-height-mobile}) 8px 8px;
+  }
+
+  @include mq($from: 1025px) {
+    padding: calc(2 * #{variables.$header-vertical-margin} + #{variables.$header-height}) 16px 16px;
+  }
+}
+
+.info-container {
+  display: block;
+  margin: 0 auto;
+  max-width: 1680px;
+  position: relative;
+}
+
+.title {
+  color: variables.$white;
+  display: block;
+  font-family: 'vl2', sans-serif;
+  font-weight: normal;
+  margin: 0 0 0.5em;
+
+  @include mq($until: 1024px) {
+    font-size: 32px;
+    letter-spacing: -0.02em;
+    line-height: 36px;
+  }
+
+  @include mq($from: 1025px) {
+    font-size: 84px;
+    letter-spacing: -2px;
+    line-height: 72px;
+  }
+}
+
+.description {
+  color: variables.$white;
+  max-width: 440px;
+}
+
+.routes-container {
+  column-gap: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  row-gap: 8px;
+}

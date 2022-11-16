@@ -1,0 +1,22 @@
+{
+  "preparedRoutes": {
+    "title": "专题路线",
+    "description": "您不可能在一天内走遍整个 VDNKh。 但我们为您编制了适合任何公司和任何心情的主题路线。 选择一个，有时间看看最重要的。 然后回来看新的东西。",
+    "loadingError": "专题路线"
+  },
+  "preparedRoute": {
+    "incorrectIdError": "ID 为 {{routeId}} 的路线不存在。 请选择其他路线",
+    "loadingError": "专题路线"
+  },
+  "entrances": {
+    "title": "路线起点和终点",
+    "entrance": {
+      "title": "路线起点",
+      "placeholder": "选择路线的起点"
+    },
+    "exit": {
+      "title": "路线的尽头",
+      "placeholder": "选择路线的终点"
+    }
+  }
+}

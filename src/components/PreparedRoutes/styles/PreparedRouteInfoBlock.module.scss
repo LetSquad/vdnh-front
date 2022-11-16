@@ -1,0 +1,85 @@
+@use '~sass-mq' as *;
+@use 'src/styles/variables.module' as variables;
+
+.container {
+  background: variables.$white;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  transition: 0.3s background-color;
+  vertical-align: top;
+
+  @include mq($until: 1024px) {
+    height: auto;
+    padding: 16px;
+    width: calc((100% - 8px) / 2);
+  }
+
+  @include mq($from: 1025px) {
+    height: 496px;
+    padding: 20px 16px 36px;
+    width: calc((100% - 24px) / 4);
+  }
+
+  &:hover {
+    background: variables.$primary-light;
+  }
+}
+
+.title {
+  color: variables.$black;
+  display: block;
+  font-weight: 500;
+  height: 80px;
+  overflow: hidden;
+
+  @include mq($until: 1024px) {
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0 0 25px;
+  }
+
+  @include mq($from: 1025px) {
+    font-size: 36px;
+    line-height: 40px;
+    margin: 0 0 33px;
+  }
+}
+
+.image {
+  display: block;
+
+  @include mq($until: 1024px) {
+    margin: 0 auto 13px;
+    max-width: 105px;
+    padding: 0;
+    width: 60%;
+  }
+
+  @include mq($from: 1025px) {
+    margin: 0 auto;
+    max-width: 280px;
+    padding: 0 32px;
+  }
+}
+
+.time {
+  color: variables.$text;
+  display: block;
+  font-size: 14px;
+  line-height: 18px;
+
+  @include mq($until: 1024px) {
+    bottom: auto;
+    left: auto;
+    position: relative;
+  }
+
+  @include mq($from: 1025px) {
+    bottom: 18px;
+    left: 16px;
+    position: absolute;
+  }
+}

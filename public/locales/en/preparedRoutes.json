@@ -1,0 +1,22 @@
+{
+  "preparedRoutes": {
+    "title": "Thematic routes",
+    "description": "You can't get around the whole VDNH in one day. But we have compiled for you thematic routes for any company and for any mood. Choose one and have time to see the most important. And then come back to see something new.",
+    "loadingError": "thematic routes"
+  },
+  "preparedRoute": {
+    "incorrectIdError": "Route with id {{routeId}} does not exist. Please choose another route",
+    "loadingError": "thematic route"
+  },
+  "entrances": {
+    "title": "Route start and end",
+    "entrance": {
+      "title": "Route start",
+      "placeholder": "Choose the starting point of the route"
+    },
+    "exit": {
+      "title": "End of the route",
+      "placeholder": "Choose the end point of the route"
+    }
+  }
+}

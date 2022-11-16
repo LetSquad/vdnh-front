@@ -1,21 +1,21 @@
-import { Accordion, Icon } from "semantic-ui-react";
+import { Accordion as SemanticAccordion, Icon } from "semantic-ui-react";
 
 import { useToggle } from "@hooks/useToogle";
 
-import styles from "./styles/FormAccordion.module.scss";
+import styles from "./styles/Accordion.module.scss";
 
-interface FormAccordionProps {
+interface AccordionProps {
     title: string;
     children: JSX.Element[];
 }
 
-export default function FormAccordion({ title, children }: FormAccordionProps) {
+export default function Accordion({ title, children }: AccordionProps) {
     const [isOpen, toggleOpen] = useToggle();
 
     return (
-        <Accordion className={styles.accordionContainer}>
+        <SemanticAccordion className={styles.accordionContainer}>
             <div>
-                <Accordion.Title
+                <SemanticAccordion.Title
                     className={styles.accordionTitle}
                     active={isOpen}
                     index={0}
@@ -23,13 +23,13 @@ export default function FormAccordion({ title, children }: FormAccordionProps) {
                 >
                     <Icon name="dropdown" />
                     {title}
-                </Accordion.Title>
-                <Accordion.Content active={isOpen}>
+                </SemanticAccordion.Title>
+                <SemanticAccordion.Content active={isOpen}>
                     <div className={styles.accordionContent}>
                         {children}
                     </div>
-                </Accordion.Content>
+                </SemanticAccordion.Content>
             </div>
-        </Accordion>
+        </SemanticAccordion>
     );
 }

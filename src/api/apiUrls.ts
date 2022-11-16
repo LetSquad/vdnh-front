@@ -6,5 +6,6 @@ const routesUrl = `${baseUrl}/route`;
 export const mapPointsUrl = `${mapUrl}/data`;
 
 export const routeUrl = `${routesUrl}/navigate`;
+export const preparedRouteUrl = `${routesUrl}/prepared`;
 
 export const trafficUrl = `${mapUrl}/heatmap`;

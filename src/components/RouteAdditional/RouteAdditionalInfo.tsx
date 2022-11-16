@@ -2,17 +2,16 @@ import { useCallback, useMemo } from "react";
 
 import { useTranslation } from "react-i18next";
 
-import { useAppSelector } from "@store/hooks";
-import { selectSelectedRoute } from "@store/routes/selectors";
-
-import i18n from "@i18n";
+import { Route } from "@models/userRoutes/types";
 
 import styles from "./styles/RouteAdditionalInfo.module.scss";
 
-export default function RouteAdditionalInfo() {
-    const { t } = useTranslation("userRoutes");
+interface RouteAdditionalInfoProps {
+    route: Route;
+}
 
-    const route = useAppSelector(selectSelectedRoute);
+export default function RouteAdditionalInfo({ route }: RouteAdditionalInfoProps) {
+    const { t } = useTranslation("userRoutes");
 
     const distance = useMemo(() => {
         if (!route?.distance) {
@@ -20,10 +19,10 @@ export default function RouteAdditionalInfo() {
         }
 
         if (route.distance < 1000) {
-            return i18n.t("userRoutes:routeInfo.distance.meters", { meters: route.distance });
+            return t("userRoutes:routeInfo.distance.meters", { meters: Number.parseInt(route.distance.toFixed(0), 10) });
         }
 
-        return i18n.t(
+        return t(
             "userRoutes:routeInfo.distance.kilometers",
             { kilometers: Number.parseFloat((route.distance / 1000).toFixed(1)) }
         );
@@ -38,16 +37,21 @@ export default function RouteAdditionalInfo() {
         const minutesRouteTime = Number.parseInt((route.time / 60).toFixed(0), 10);
 
         if (minutesRouteTime < 60) {
-            return i18n.t("userRoutes:routeInfo.time.minutes", { minutes: minutesRouteTime });
+            return t("userRoutes:routeInfo.time.minutes", { minutes: minutesRouteTime });
         }
 
         const hours = Math.trunc(minutesRouteTime / 60);
+        const minutes = minutesRouteTime - hours * 60;
 
-        return i18n.t(
+        if (minutes === 0) {
+            return t("userRoutes:routeInfo.time.hours", { hours });
+        }
+
+        return t(
             "userRoutes:routeInfo.time.total",
             {
-                minutes: minutesRouteTime - hours * 60,
-                hours: Math.trunc(minutesRouteTime / 60)
+                minutes,
+                hours
             }
         );
         // eslint-disable-next-line react-hooks/exhaustive-deps
