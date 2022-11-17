@@ -5,7 +5,7 @@
   border-radius: 0 0 4px 4px;
   display: block;
   margin-top: -5px;
-  max-height: calc(100vh - #{variables.$header-height-mobile});
+  max-height: calc(90vh - #{variables.$header-height-mobile});
   overflow-x: hidden;
   overflow-y: overlay;
   position: absolute;
