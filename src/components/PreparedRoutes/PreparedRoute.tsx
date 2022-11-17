@@ -21,7 +21,7 @@ import PrimaryButton from "@parts/Buttons/PrimaryButton";
 import LoadingErrorBlock from "@parts/LoadingErrorBlock/LoadingErrorBlock";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { getPreparedRouteRequest, resetCurrentRoute } from "@store/preparedRoutes/reducer";
-import { selectAllCurrentPreparedRouteMapPoint, selectIsCurrenctPreparedRouteLoading, selectIsCurrenctPreparedRouteLoadingFailed } from "@store/preparedRoutes/selectors";
+import { selectAllCurrentPreparedRouteMapPoint, selectIsCurrentPreparedRouteLoading, selectIsCurrentPreparedRouteLoadingFailed } from "@store/preparedRoutes/selectors";
 
 import styles from "./styles/PreparedRoute.module.scss";
 
@@ -37,8 +37,8 @@ export default function PreparedRoute() {
     const navigate = useNavigate();
 
     const mapPoints = useAppSelector(selectAllCurrentPreparedRouteMapPoint);
-    const isCurrentPreparedRouteLoading = useAppSelector(selectIsCurrenctPreparedRouteLoading);
-    const isCurrentPreparedRouteLoadingFailed = useAppSelector(selectIsCurrenctPreparedRouteLoadingFailed);
+    const isCurrentPreparedRouteLoading = useAppSelector(selectIsCurrentPreparedRouteLoading);
+    const isCurrentPreparedRouteLoadingFailed = useAppSelector(selectIsCurrentPreparedRouteLoadingFailed);
 
     const [isMenuOpen, , openMenu, closeMenu] = useToggle(true);
 

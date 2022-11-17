@@ -19,7 +19,7 @@ export const selectAllCurrentPreparedRouteMapPoint = createSelector(
 
 export const selectIsPreparedRoutesLoading = (state: RootState) => state.preparedRoutes.isPreparedRoutesLoading;
 export const selectIsPreparedRoutesLoadingFailed = (state: RootState) => state.preparedRoutes.isPreparedRoutesLoadingFailed;
-export const selectIsCurrenctPreparedRouteLoading = (state: RootState) => state.preparedRoutes.isCurrentPreparedRouteLoading;
-export const selectIsCurrenctPreparedRouteLoadingFailed = (state: RootState) => (
+export const selectIsCurrentPreparedRouteLoading = (state: RootState) => state.preparedRoutes.isCurrentPreparedRouteLoading;
+export const selectIsCurrentPreparedRouteLoadingFailed = (state: RootState) => (
     state.preparedRoutes.isCurrentPreparedRouteLoadingFailed
 );
